@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="AnchorPane" prefHeight="680.0" prefWidth="980.0"
+            xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.ecosupport.ecoguide.Homepage1Controller">
+    <children>
+        <ImageView fitHeight="680.0" fitWidth="980.0" pickOnBounds="true">
+            <image>
+                <Image url="@images/Homepage1%20Backgroun%20photo.png"/>
+            </image>
+        </ImageView>
+        <ImageView fitHeight="54.0" fitWidth="968.0" layoutX="22.0" layoutY="17.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@images/Nav%20bar.png"/>
+            </image>
+        </ImageView>
+        <AnchorPane layoutX="86.0" layoutY="150.0" prefHeight="445.0" prefWidth="811.0">
+            <children>
+                <ImageView fitHeight="445.0" fitWidth="811.0" pickOnBounds="true">
+                    <image>
+                        <Image url="@images/Main%20view.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="445.0" fitWidth="552.0" layoutX="259.0" pickOnBounds="true">
+                    <image>
+                        <Image url="@images/Homepage1_middle_image.png"/>
+                    </image>
+                </ImageView>
+                <Label layoutX="65.0" layoutY="41.0" prefHeight="100.0" prefWidth="404.0" text="Welcome"
+                       textFill="#859a81">
+                    <font>
+                        <Font name="Calibri Bold" size="60.0"/>
+                    </font>
+                </Label>
+                <Text fill="WHITE" layoutX="48.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                      text="“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.”"
+                      wrappingWidth="335.2080078125">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Text>
+                <Button fx:id="animalBtn1" layoutX="48.0" layoutY="295.0" mnemonicParsing="false" prefHeight="29.0"
+                        prefWidth="90.0" stylesheets="@HomePage1Design.css" text="Animal">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="plantBtn1" layoutX="207.0" layoutY="295.0" mnemonicParsing="false" prefHeight="29.0"
+                        prefWidth="90.0" stylesheets="@HomePage1Design.css" text="Plants">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+        <Button fx:id="menuBtn" layoutX="900.0" layoutY="18.0" mnemonicParsing="false" opacity="0.28" prefHeight="50.0"
+                prefWidth="59.0" stylesheets="@HomePage1Design.css"/>
+    </children>
+</AnchorPane>
