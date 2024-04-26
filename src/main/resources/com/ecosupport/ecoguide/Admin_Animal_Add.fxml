@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="780.0" prefWidth="980.0"
+            xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.ecosupport.ecoguide.Admin_Animal_AddController">
+    <center>
+        <ScrollPane fitToWidth="true" prefHeight="650.0" prefWidth="980.0" BorderPane.alignment="CENTER">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1300.0" prefWidth="980.0">
+                    <children>
+                        <ImageView fitHeight="724.0" fitWidth="992.0" layoutX="-12.0" layoutY="-10.0"
+                                   pickOnBounds="true">
+                            <image>
+                                <Image url="@images/animal_add/animal_add_bg.png"/>
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="76.0" fitWidth="345.0" layoutX="314.0" layoutY="23.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@images/animal_add/add_animal_topic.png"/>
+                            </image>
+                        </ImageView>
+                        <AnchorPane layoutX="-2.0" layoutY="92.0" prefHeight="494.0" prefWidth="965.0">
+                            <children>
+                                <ImageView fitHeight="573.0" fitWidth="890.0" layoutX="44.0" layoutY="12.0"
+                                           pickOnBounds="true">
+                                    <image>
+                                        <Image url="@images/animal_add/fields%20background.png"/>
+                                    </image>
+                                </ImageView>
+                                <Label layoutX="67.0" layoutY="298.0" prefHeight="21.0" prefWidth="155.0" text="Name"
+                                       textFill="WHITE">
+                                    <font>
+                                        <Font name="Arial Bold" size="19.0"/>
+                                    </font>
+                                </Label>
+                                <Label layoutX="66.0" layoutY="362.0" prefHeight="25.0" prefWidth="185.0"
+                                       text="Scientific Name" textFill="WHITE">
+                                    <font>
+                                        <Font name="Arial Bold" size="19.0"/>
+                                    </font>
+                                </Label>
+                                <Label layoutX="66.0" layoutY="426.0" prefHeight="25.0" prefWidth="205.0"
+                                       text="Conversion Status" textFill="WHITE">
+                                    <font>
+                                        <Font name="Arial Bold" size="19.0"/>
+                                    </font>
+                                </Label>
+                                <Label layoutX="66.0" layoutY="488.0" prefHeight="25.0" prefWidth="185.0"
+                                       text="Population Size" textFill="WHITE">
+                                    <font>
+                                        <Font name="Arial Bold" size="19.0"/>
+                                    </font>
+                                </Label>
+                                <Label layoutX="562.0" layoutY="366.0" prefHeight="25.0" prefWidth="174.0"
+                                       text="Activity Pattern" textFill="WHITE">
+                                    <font>
+                                        <Font name="Arial Bold" size="19.0"/>
+                                    </font>
+                                </Label>
+                                <Label layoutX="562.0" layoutY="296.0" prefHeight="21.0" prefWidth="155.0" text="Diet"
+                                       textFill="WHITE">
+                                    <font>
+                                        <Font name="Arial Bold" size="19.0"/>
+                                    </font>
+                                </Label>
+                                <RadioButton fx:id="pattern_1" layoutX="643.0" layoutY="413.0" mnemonicParsing="false"
+                                             prefHeight="23.0" prefWidth="187.0" text="Active During Day"
+                                             textFill="WHITE">
+                                    <font>
+                                        <Font name="Arial Bold" size="17.0"/>
+                                    </font>
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="active_time"/>
+                                    </toggleGroup>
+                                </RadioButton>
+                                <RadioButton fx:id="pattern_3" layoutX="643.0" layoutY="505.0" mnemonicParsing="false"
+                                             prefHeight="23.0" prefWidth="280.0" text="Active During Dawn and Dusk"
+                                             textFill="WHITE" toggleGroup="$active_time">
+                                    <font>
+                                        <Font name="Arial Bold" size="17.0"/>
+                                    </font>
+                                </RadioButton>
+                                <RadioButton fx:id="pattern_2" layoutX="643.0" layoutY="462.0" mnemonicParsing="false"
+                                             prefHeight="23.0" prefWidth="187.0" text="Active at Night" textFill="WHITE"
+                                             toggleGroup="$active_time">
+                                    <font>
+                                        <Font name="Arial Bold" size="17.0"/>
+                                    </font>
+                                </RadioButton>
+                                <TextField fx:id="a_name" layoutX="251.0" layoutY="292.0" prefHeight="26.0"
+                                           prefWidth="225.0"/>
+                                <TextField fx:id="a_science_name" layoutX="251.0" layoutY="363.0" prefHeight="26.0"
+                                           prefWidth="225.0"/>
+                                <TextField fx:id="population" layoutX="251.0" layoutY="490.0" prefHeight="26.0"
+                                           prefWidth="70.0"/>
+                                <TextField fx:id="diet" layoutX="643.0" layoutY="294.0" prefHeight="26.0"
+                                           prefWidth="225.0"/>
+                                <TextArea fx:id="intro" layoutX="529.0" layoutY="94.0" prefHeight="158.0"
+                                          prefWidth="394.0"/>
+                                <Label layoutX="529.0" layoutY="57.0" prefHeight="21.0" prefWidth="168.0"
+                                       text="Description" textFill="#e8e8e8">
+                                    <font>
+                                        <Font name="Arial Bold" size="19.0"/>
+                                    </font>
+                                </Label>
+                                <ChoiceBox fx:id="con_status" layoutX="251.0" layoutY="421.0" prefHeight="31.0"
+                                           prefWidth="224.0"/>
+                                <Label fx:id="error_label" layoutX="314.0" layoutY="14.0" prefHeight="33.0"
+                                       prefWidth="350.0" textFill="#e13737"/>
+                                <ImageView fx:id="animal_photo" fitHeight="200.0" fitWidth="311.0" layoutX="59.0"
+                                           layoutY="31.0" pickOnBounds="true" preserveRatio="true"/>
+                                <Button fx:id="add_img" layoutX="59.0" layoutY="237.0" mnemonicParsing="false"
+                                        onAction="#chooseImage" prefHeight="31.0" prefWidth="111.0" text="Add Image"/>
+                            </children>
+                        </AnchorPane>
+                        <ImageView fitHeight="585.0" fitWidth="980.0" layoutY="713.0" pickOnBounds="true">
+                            <image>
+                                <Image url="@images/animal_add/mapbg.png"/>
+                            </image>
+
+                        </ImageView>
+                        <Button fx:id="reset_btn" layoutX="93.0" layoutY="1237.0" mnemonicParsing="false"
+                                onAction="#reset_all" prefHeight="47.0" prefWidth="145.0" text="Reset"/>
+                        <ImageView fitHeight="494.0" fitWidth="886.0" layoutX="45.0" layoutY="731.0"
+                                   pickOnBounds="true">
+                            <image>
+                                <Image url="@images/animal_add/animal_map.jpg"/>
+                            </image>
+                        </ImageView>
+                        <AnchorPane fx:id="mapImageView" layoutX="45.0" layoutY="731.0" onMouseClicked="#handleMapClick"
+                                    onMouseDragged="#handlePointerDragged" onMousePressed="#handlePointerPressed"
+                                    onMouseReleased="#handlePointerReleased" prefHeight="491.0" prefWidth="883.0">
+                            <children>
+                                <ImageView fx:id="pointerImageView" fitHeight="61.0" fitWidth="62.0" layoutX="808.0"
+                                           layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/animal_add/pointer_icon.png"/>
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </AnchorPane>
+                        <Button fx:id="submit_btn" layoutX="690.0" layoutY="1235.0" mnemonicParsing="false"
+                                onAction="#add_animal" prefHeight="49.0" prefWidth="145.0" text="Submit"/>
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+    </center>
+    <top>
+        <AnchorPane prefHeight="76.0" prefWidth="980.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="76.0" fitWidth="980.0" pickOnBounds="true">
+                    <image>
+                        <Image url="@images/animal_add/nav%20bar%20design.png"/>
+                    </image>
+                </ImageView>
+                <Button fx:id="back_btn" layoutX="729.0" layoutY="23.0" mnemonicParsing="false"
+                        onAction="#return_dashboard" prefHeight="31.0" prefWidth="180.0" text="Back to Dashboard"/>
+                <Label layoutX="285.0" layoutY="28.0" prefHeight="21.0" prefWidth="343.0" text="Logged User:"
+                       textFill="#e8dede"/>
+            </children>
+        </AnchorPane>
+    </top>
+</BorderPane>

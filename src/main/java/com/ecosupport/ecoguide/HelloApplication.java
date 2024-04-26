@@ -14,7 +14,7 @@ public class HelloApplication extends Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeDashboard.fxml")));
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/com/ecosupport/styless/AdminHomeDashboard.css");
+        scene.getStylesheets().add("/com/ecosupport/styles/AdminHomeDashboard.css");
         stage.setScene(scene);
         stage.show();
     }
