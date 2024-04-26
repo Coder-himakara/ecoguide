@@ -1,0 +1,67 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 4, 2024, 10:56:47 AM
+    Author     : adith
+*/
+
+.profile{
+    -fx-background-color: #BF3B3B;
+}
+
+.box{
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-background-color: #D9D9D9;
+}
+
+.TableView{
+    -fx-background-color: #558aa0;
+}
+
+.GreenBox{
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-background-color: #BAE7BF;
+}
+
+.TableButton{
+    -fx-background-color: #2BCBEE;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-border-color: #cfe2f3;
+    -fx-border-width: 4px 4px 4px 4px;
+}
+
+.SystemButton{
+    -fx-background-color:#D9D9D9;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-border-color: #BF3B3B;
+    -fx-border-width: 5px 5px 5px 5px;
+}
+
+.SideBar{
+    -fx-background-color: #D9D9D9;
+}
+
+.AddButtons{
+    -fx-background-color: #D9D9D9;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-border-color: #0bc546;
+    -fx-border-width: 5px 5px 5px 5px;
+}
+
+.Table{
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+}
+
+.TimeAndDate{
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-background-color: #8039c7;
+}
