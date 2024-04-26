@@ -1,0 +1,28 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 24, 2024, 4:02:56 PM
+    Author     : adith
+*/
+
+.box{
+    -fx-background-color: #000000;
+}
+
+.button{
+    -fx-background-color: #bae7bf;
+    -fx-background-radius: 50px;
+    -fx-border-radius: 50px;
+    -fx-border-width: 2px 6px 8px 6px;
+    -fx-border-color: #d6f1d9;
+}
+
+.mainButton{
+    -fx-background-color: #0bc546;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #85ffab;
+    -fx-border-width: 4px 4px 4px 4px;
+}

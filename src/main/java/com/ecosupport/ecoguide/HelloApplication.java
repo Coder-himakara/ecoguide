@@ -11,10 +11,10 @@ import java.util.Objects;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeDashboard.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Signup_Page.fxml")));
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/com/ecosupport/styles/AdminHomeDashboard.css");
+        //scene.getStylesheets().add("/com/ecosupport/styles/HomepageMenuCSS.css");
         stage.setScene(scene);
         stage.show();
     }
