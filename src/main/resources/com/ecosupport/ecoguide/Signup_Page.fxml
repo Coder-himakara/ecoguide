@@ -65,7 +65,7 @@
             </font>
         </Label>
         <TextField layoutX="416.0" layoutY="497.0" prefHeight="31.0" prefWidth="336.0" styleClass="textfield" stylesheets="@../styles/signupPage.css" />
-        <Button layoutX="417.0" layoutY="568.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="146.0" styleClass="signbutton" stylesheets="@../styles/signupPage.css" text="Signup">
+        <Button fx:id="signup_btn" layoutX="417.0" layoutY="568.0" mnemonicParsing="false" onAction="#signup_action" prefHeight="50.0" prefWidth="146.0" styleClass="signbutton" stylesheets="@../styles/signupPage.css" text="Signup">
             <font>
                 <Font name="System Bold" size="23.0" />
             </font>
