@@ -1,0 +1,10 @@
+.textfield{
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+.loginBtn{
+    -fx-background-color: #12c459;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+}
