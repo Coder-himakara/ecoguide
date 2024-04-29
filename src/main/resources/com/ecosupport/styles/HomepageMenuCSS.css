@@ -18,3 +18,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-width: 2px 6px 8px 6px;
     -fx-border-color: #d6f1d9;
 }
+
+.mainButton{
+    -fx-background-color: #0bc546;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #85ffab;
+    -fx-border-width: 4px 4px 4px 4px;
+}
