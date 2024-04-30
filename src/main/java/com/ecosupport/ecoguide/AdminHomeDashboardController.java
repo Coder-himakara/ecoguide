@@ -36,6 +36,9 @@ public class AdminHomeDashboardController implements Initializable {
     private Button add_animal_btn;
     @FXML
     private Button profile_update_btn;
+
+    @FXML
+    private Button logout_btn;
     @FXML
     private TableView<Modeltable_animals> animal_table;
     @FXML
@@ -155,6 +158,22 @@ public class AdminHomeDashboardController implements Initializable {
 
             // Call another method with the attribute
             storeSelected(attribute);
+        }
+    }
+
+    @FXML
+    public void admin_logout(ActionEvent event) {
+        try {
+            Stage sign_in_stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("AdminLogin.fxml"));
+            Scene scene = new Scene(root);
+            // scene.getStylesheets().add("/styles/admin_login.css");
+            sign_in_stage.setScene(scene);
+            Stage stage = (Stage) logout_btn.getScene().getWindow();
+            stage.close();
+            sign_in_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AdminHomeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
