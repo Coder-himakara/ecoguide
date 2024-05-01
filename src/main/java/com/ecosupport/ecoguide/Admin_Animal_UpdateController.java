@@ -2,7 +2,10 @@ package com.ecosupport.ecoguide;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -14,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -52,6 +56,7 @@ public class Admin_Animal_UpdateController implements Initializable {
 
     @FXML
     private ChoiceBox<String> con_status;
+    private String[] conversation = {"Endangered", "Critically Endangered", "Vulnerable", "Extinct", "Near threatened", "Not Evaluated", "None"};
 
     @FXML
     private Label error_label;
@@ -78,6 +83,11 @@ public class Admin_Animal_UpdateController implements Initializable {
     private Button back_btn;
 
     int selected_id = 0;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        con_status.getItems().addAll(conversation);
+    }
     @FXML
     void chooseImage(ActionEvent event) {
 
@@ -108,22 +118,22 @@ public class Admin_Animal_UpdateController implements Initializable {
 
     }
 
-    @FXML
-    void return_dashboard(ActionEvent event) {
 
-    }
 
     @FXML
     void update_animal_data(ActionEvent event) {
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
 
-    }
 
     public void setSelectedAttribute(int selectedId) {
+        setAnimalData(selectedId);
+        try {
+            retrieveImage(selectedId);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
     public void setAnimalData(int animal_id) {
@@ -154,8 +164,17 @@ public class Admin_Animal_UpdateController implements Initializable {
                 con_status.setValue(status);
                 count.setText(pop);
                 foodEats.setText(diet);
-                //animal_active.setText(active);
                 summary.setText(intro);
+                String[] activePatterns = {"Active During Day", "Active at Night","Active During Dawn and Dusk"};
+                RadioButton[] patterns = {pattern_1, pattern_2, pattern_3};
+
+                for (int i = 0; i < activePatterns.length; i++) {
+                    if (active.equals(activePatterns[i])) {
+                        active_time.selectToggle(patterns[i]);
+                        return;
+                    }
+                }
+                active_time.selectToggle(patterns[2]);
 
                 pointerImageView.setLayoutX(x_position - offsetX);
                 pointerImageView.setLayoutY(y_position - offsetY);
@@ -183,7 +202,7 @@ public class Admin_Animal_UpdateController implements Initializable {
                 Image image = new Image(new ByteArrayInputStream(imageBytes));
 
                 // Display the image in the ImageView
-                //animal_image.setImage(image);
+                animal_photo.setImage(image);
             } else {
                 System.out.println("No image found in the database.");
             }
@@ -193,5 +212,15 @@ public class Admin_Animal_UpdateController implements Initializable {
             System.out.println(e);
         }
     }
-
+    @FXML
+    void return_dashboard(ActionEvent event) throws IOException {
+        Stage sign_in_stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("AdminHomeDashboard.fxml"));
+        Scene scene = new Scene(root);
+        //scene.getStylesheets().add("/com/ecosupport/styles/admin_animal_add.css");
+        sign_in_stage.setScene(scene);
+        Stage stage = (Stage) back_btn.getScene().getWindow();
+        stage.close();
+        sign_in_stage.show();
+    }
 }

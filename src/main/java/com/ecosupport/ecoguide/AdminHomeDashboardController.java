@@ -141,7 +141,7 @@ public class AdminHomeDashboardController implements Initializable {
             sign_in_stage.show();
         } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.OK);
-            alert.setHeaderText("Are you sure?");
+            alert.setHeaderText("No Selection");
             alert.setContentText("Select an animal to view");
             Optional<ButtonType> result = alert.showAndWait();
             result.ifPresent(res -> {
@@ -208,8 +208,8 @@ public class AdminHomeDashboardController implements Initializable {
             sign_in_stage.show();
         } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.OK);
-            alert.setHeaderText("Are you sure?");
-            alert.setContentText("Do you want to update the animal's data?");
+            alert.setHeaderText("No selection");
+            alert.setContentText("Select an animal to update the data?");
             Optional<ButtonType> result = alert.showAndWait();
             result.ifPresent(res -> {
                 if (res == ButtonType.OK) {
