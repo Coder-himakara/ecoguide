@@ -1,29 +1,30 @@
 package com.ecosupport.ecoguide;
 
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Admin_Animal_UpdateController implements Initializable {
 
@@ -84,33 +85,90 @@ public class Admin_Animal_UpdateController implements Initializable {
 
     int selected_id = 0;
 
+    private double pointerX;
+    private double pointerY;
+    private double offsetX;
+    private double offsetY;
+    private File selectedFile;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         con_status.getItems().addAll(conversation);
+        mapImageView.setOnMouseClicked(this::handleMapClick);
     }
     @FXML
     void chooseImage(ActionEvent event) {
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Image File");
+        selectedFile = fileChooser.showOpenDialog(stage);
 
+        if (selectedFile != null) {
+            try {
+                Image image = new Image(new FileInputStream(selectedFile));
+                animal_photo.setImage(image);
+                // You can now save this image to the database
+                // For demonstration purposes, let's assume you have a method saveImageToDatabase()
+                //saveImageToDatabase(selectedFile);
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+        } else {
+            System.out.println("Insert an Image");
+        }
     }
 
     @FXML
     void handleMapClick(MouseEvent event) {
+        pointerX = event.getX();
+        pointerY = event.getY();
+        offsetX = pointerImageView.getFitWidth() / 2; // Adjust based on pointer image width
+        offsetY = pointerImageView.getFitHeight() / 2; // Adjust based on pointer image height
 
+        pointerImageView.setLayoutX(pointerX - offsetX);
+        pointerImageView.setLayoutY(pointerY - offsetY);
+        pointerImageView.setVisible(true);
+        //System.out.println("Mouse clicked");
     }
 
     @FXML
     void handlePointerDragged(MouseEvent event) {
+        // Calculate the new position of the pointer image based on the mouse drag position and offset
+        double newX = event.getX() - offsetX;
+        double newY = event.getY() - offsetY;
 
+        // Ensure that the pointer image stays within the bounds of the background pane
+        if (newX >= 0 && newX <= mapImageView.getWidth() - pointerImageView.getFitWidth()) {
+            pointerImageView.setLayoutX(newX);
+        }
+        if (newY >= 0 && newY <= mapImageView.getHeight() - pointerImageView.getFitHeight()) {
+            pointerImageView.setLayoutY(newY);
+        }
     }
 
     @FXML
     void handlePointerPressed(MouseEvent event) {
-
+        offsetX = event.getX() - pointerImageView.getLayoutX();
+        offsetY = event.getY() - pointerImageView.getLayoutY();
     }
 
     @FXML
     void handlePointerReleased(MouseEvent event) {
 
+    }
+
+    private Point2D getPointerFinalCoordinates() {
+        double x = pointerImageView.getLayoutX() + pointerImageView.getFitWidth() / 2;
+        double y = pointerImageView.getLayoutY() + pointerImageView.getFitHeight() / 2;
+        return new Point2D(x, y);
+    }
+
+    // You can call this method to get the final coordinates of the pointer
+    private void getFinalPointerCoordinates() {
+        Point2D finalCoordinates = getPointerFinalCoordinates();
+
+        // Now you have the final coordinates of the pointer
+        System.out.println("Pointer final coordinates: " + finalCoordinates);
     }
 
     @FXML
@@ -122,12 +180,55 @@ public class Admin_Animal_UpdateController implements Initializable {
 
     @FXML
     void update_animal_data(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.OK, ButtonType.CANCEL);
+        alert.setHeaderText("Are you sure?");
+        alert.setContentText("Do you want to update the data?");
+
+        AtomicReference<String> active_selected = new AtomicReference<>("");
+        active_time.selectedToggleProperty().addListener((ObservableValue<? extends Toggle> ov, Toggle t, Toggle t1) -> {
+            RadioButton selectedRadioButton = (RadioButton) t1.getToggleGroup().getSelectedToggle();
+            String selectedText = selectedRadioButton.getText();
+            active_selected.set(selectedText);
+            //System.out.println("Selected Radio Button: " + selectedText);
+        });
+
+        String sql = "UPDATE animals SET name = ? , scientific_name = ? , status = ? , population = ? , " +
+                "diet = ? , active = ? , intro = ? , x_position = ? , y_position = ?"
+                + "WHERE animal_id = ?";
+
+        Optional<ButtonType> result = alert.showAndWait();
+        result.ifPresent(res -> {
+            if (res == ButtonType.OK) {
+                try (Connection conn = DbConfig.getConnection();
+                     PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                    pstmt.setString(1, a_name.getText());
+                    pstmt.setString(2, a_science_name.getText());
+                    pstmt.setString(3, con_status.getValue());
+                    pstmt.setInt(4, Integer.parseInt(count.getText()));
+                    pstmt.setString(5, foodEats.getText());
+                    pstmt.setString(6, active_selected.get());
+                    pstmt.setString(7, summary.getText());
+                    pstmt.setDouble(8, pointerX);
+                    pstmt.setDouble(9, pointerY);
+                    pstmt.setInt(10, selected_id);
+
+                    pstmt.executeUpdate();
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+                System.out.println("OK pressed");
+            } else if (res == ButtonType.CANCEL) {
+                System.out.println("Canceled");
+            }
+        });
+
 
     }
 
 
 
     public void setSelectedAttribute(int selectedId) {
+        this.selected_id = selectedId;
         setAnimalData(selectedId);
         try {
             retrieveImage(selectedId);
