@@ -34,10 +34,6 @@ public class AdminHomeDashboardController implements Initializable {
     int selected_id = 0;
     @FXML
     private Button add_animal_btn;
-
-    @FXML
-    private Button update_btn;
-
     @FXML
     private Button profile_update_btn;
 
@@ -145,7 +141,7 @@ public class AdminHomeDashboardController implements Initializable {
             sign_in_stage.show();
         } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.OK);
-            alert.setHeaderText("No Selection");
+            alert.setHeaderText("Are you sure?");
             alert.setContentText("Select an animal to view");
             Optional<ButtonType> result = alert.showAndWait();
             result.ifPresent(res -> {
@@ -185,6 +181,7 @@ public class AdminHomeDashboardController implements Initializable {
             Logger.getLogger(AdminHomeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 
 
     @FXML
@@ -242,6 +239,7 @@ public class AdminHomeDashboardController implements Initializable {
 
         }
     }
+
 }
 
 
