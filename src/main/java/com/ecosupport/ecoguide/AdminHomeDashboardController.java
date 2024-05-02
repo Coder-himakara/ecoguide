@@ -170,7 +170,6 @@ public class AdminHomeDashboardController implements Initializable {
     }
 
     @FXML
-
     void backToHome(ActionEvent event) {
         try {
             Stage sign_in_stage = new Stage();
@@ -202,6 +201,8 @@ public class AdminHomeDashboardController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(AdminHomeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
 
+        }
+    }
 
     @FXML
     void goto_updatePage(ActionEvent event) {
@@ -242,3 +243,6 @@ public class AdminHomeDashboardController implements Initializable {
         }
     }
 }
+
+
+

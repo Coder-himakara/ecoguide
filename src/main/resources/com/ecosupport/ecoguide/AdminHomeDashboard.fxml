@@ -12,7 +12,6 @@
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecosupport.ecoguide.AdminHomeDashboardController">
 
     <top>
@@ -108,7 +107,7 @@
                                 <AnchorPane layoutX="541.0" layoutY="184.0" prefHeight="195.0" prefWidth="176.0" styleClass="GreenBox" stylesheets="@../styles/AdminHomeDashboard.css">
                                     <children>
 
-                                        <Button alignment="TOP_RIGHT" layoutX="22.0" layoutY="74.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Update">
+                                        <Button fx:id="update_btn" alignment="TOP_RIGHT" layoutX="22.0" layoutY="74.0" mnemonicParsing="false" onAction="#goto_updatePage" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Update">
 
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
@@ -284,7 +283,7 @@
                               </AnchorPane>
                           </children>
                       </AnchorPane>
-                  <Button layoutX="16.0" layoutY="74.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="188.0" styleClass="SystemButton" text="Profile Setting">
+                  <Button fx:id="profile_update_btn" layoutX="16.0" layoutY="74.0" mnemonicParsing="false" onAction="#admin_profile_update" prefHeight="40.0" prefWidth="188.0" styleClass="SystemButton" text="Profile Setting">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

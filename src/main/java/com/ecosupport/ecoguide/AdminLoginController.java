@@ -51,6 +51,7 @@ public class AdminLoginController {
     @FXML
     private Button homeBtn;
 
+    @FXML
     private TextField admin_id;
 
 
