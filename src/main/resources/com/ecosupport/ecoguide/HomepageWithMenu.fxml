@@ -54,8 +54,8 @@
                 </Button>
             </children>
         </AnchorPane>
-        <Button fx:id="menuBtn" layoutX="900.0" layoutY="18.0" mnemonicParsing="false" opacity="0.28" prefHeight="50.0" prefWidth="59.0" />
-        <AnchorPane layoutX="629.0" layoutY="68.0" prefHeight="611.0" prefWidth="351.0" styleClass="box" stylesheets="@../styles/HomepageMenuCSS.css">
+        <Button fx:id="menuBtn" layoutX="900.0" layoutY="18.0" mnemonicParsing="false" onAction="#menuOpen" opacity="0.28" prefHeight="50.0" prefWidth="59.0" />
+        <AnchorPane fx:id="sidebar" layoutX="629.0" layoutY="68.0" prefHeight="611.0" prefWidth="351.0" styleClass="box" stylesheets="@../styles/HomepageMenuCSS.css" visible="false">
             <children>
                 <Button layoutX="60.0" layoutY="78.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="233.0" stylesheets="@../styles/HomepageMenuCSS.css" text="About">
                     <font>
@@ -74,5 +74,6 @@
                 </Button>
             </children>
         </AnchorPane>
+      <Button fx:id="menuCloseBtn" layoutX="900.0" layoutY="18.0" mnemonicParsing="false" onAction="#menuClose" opacity="0.28" prefHeight="50.0" prefWidth="59.0" visible="false" />
     </children>
 </AnchorPane>
