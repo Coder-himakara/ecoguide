@@ -1,4 +1,5 @@
-package  com.ecosupport.ecoguide;
+
+package com.ecosupport.ecoguide;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -6,7 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-public class Custemer_feedbackController implements Initializable {
+public class Plant_homeController implements Initializable {
 
     @FXML
     private ResourceBundle resources;
@@ -15,22 +16,7 @@ public class Custemer_feedbackController implements Initializable {
     private URL location;
 
     @FXML
-    void goToAnimal(ActionEvent event) {
-
-    }
-
-    @FXML
-    void goToHome(ActionEvent event) {
-
-    }
-
-    @FXML
-    void goToPlant(ActionEvent event) {
-
-    }
-
-    @FXML
-    void saveData(ActionEvent event) {
+    void viewData(ActionEvent event) {
 
     }
 

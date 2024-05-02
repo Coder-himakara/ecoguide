@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="680.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8.0.171">
+            prefHeight="680.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.ecosupport.ecoguide.Animal_homeController">
     <children>
         <BorderPane prefHeight="680.0" prefWidth="980.0">
             <center>
