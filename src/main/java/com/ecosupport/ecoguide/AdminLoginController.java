@@ -36,6 +36,21 @@ public class AdminLoginController {
     private Button signup_btn;
 
     @FXML
+    private Button admin_btn;
+
+    @FXML
+    private Button menuBtn;
+
+    @FXML
+    private AnchorPane sidebar;
+
+    @FXML
+    private Button menuCloseBtn;
+
+    @FXML
+    private Button homeBtn;
+
+    @FXML
     void admin_login(ActionEvent event){
         PreparedStatement statement;
         ResultSet result;
@@ -61,7 +76,7 @@ public class AdminLoginController {
                         Stage sign_in_stage = new Stage();
                         Parent root = FXMLLoader.load(getClass().getResource("AdminHomeDashboard.fxml"));
                         Scene scene = new Scene(root);
-                        scene.getStylesheets().add("/styles/AdminHomeDashboard.css");
+                        //scene.getStylesheets().add("/styles/AdminHomeDashboard.css");
                         sign_in_stage.setScene(scene);
                         Stage stage = (Stage) loginBtn.getScene().getWindow();
                         stage.close();
@@ -102,4 +117,49 @@ public class AdminLoginController {
         sign_in_stage.show();
     }
 
+    @FXML
+    void administrator(ActionEvent event) {
+        try {
+            Stage sign_in_stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("AdminLogin.fxml"));
+            Scene scene = new Scene(root);
+            //scene.getStylesheets().add("/styles/HomepageMenuCSS.css");
+            sign_in_stage.setScene(scene);
+            Stage stage = (Stage) admin_btn.getScene().getWindow();
+            stage.close();
+            sign_in_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AdminLoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    void menuOpen(ActionEvent event) {
+        sidebar.setVisible(true);
+        menuCloseBtn.setVisible(true);
+        menuBtn.setVisible(false);
+    }
+
+    @FXML
+    void menuClose(ActionEvent event) {
+        sidebar.setVisible(false);
+        menuCloseBtn.setVisible(false);
+        menuBtn.setVisible(true);
+    }
+
+    @FXML
+    void backToHome(ActionEvent event) {
+        try {
+            Stage sign_in_stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("HomepageWithMenu.fxml"));
+            Scene scene = new Scene(root);
+            //scene.getStylesheets().add("/styles/HomepageMenuCSS.css");
+            sign_in_stage.setScene(scene);
+            Stage stage = (Stage) homeBtn.getScene().getWindow();
+            stage.close();
+            sign_in_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AdminLoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
