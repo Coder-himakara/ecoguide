@@ -8,15 +8,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -42,9 +42,6 @@ public class Animal_user_viewController implements Initializable {
     private AnchorPane mapImageView;
     @FXML
     private ImageView pointerImageView;
-
-    @FXML
-    private ImageView animal_image;
 
     /**
      * Initializes the controller class.
@@ -72,11 +69,6 @@ public class Animal_user_viewController implements Initializable {
         setAnimalData(attribute);
         //String s = Integer.toString(animal_id_selected);
         //animal_name.setText(s);
-        try {
-            retrieveImage(attribute);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public void setAnimalData(int animal_id) {
@@ -121,27 +113,18 @@ public class Animal_user_viewController implements Initializable {
         }
     }
 
-    private void retrieveImage(int animal_id) throws IOException {
-        try (Connection connection = DbConfig.getConnection()) {
-            String selectQuery = "SELECT image_data FROM `animal_images` WHERE animal_pid = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
-            preparedStatement.setInt(1, animal_id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                // Get the image data from the database
-                Blob blob = resultSet.getBlob("image_data");
-                byte[] imageBytes = blob.getBytes(1, (int) blob.length());
-
-                // Create an Image object from the byte array
-                Image image = new Image(new ByteArrayInputStream(imageBytes));
-
-                // Display the image in the ImageView
-                animal_image.setImage(image);
-            } else {
-                System.out.println("No image found in the database.");
+    public void getImage(int animal_id) {
+        PreparedStatement statement;
+        String query = "SELECT image_data FROM `animal_images` WHERE animal_id = ?";
+        try {
+            try {
+                statement = DbConfig.getConnection().prepareStatement(query);
+            } catch (SQLException e) {
+                System.out.println("Database connection error: " + e.getMessage());
+                return;
             }
-
-
+            statement.setInt(1, animal_id);
+            ResultSet resultSet = statement.executeQuery();
         } catch (SQLException e) {
             System.out.println(e);
         }

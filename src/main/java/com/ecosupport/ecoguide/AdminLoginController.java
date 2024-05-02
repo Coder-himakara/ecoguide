@@ -37,9 +37,11 @@ public class AdminLoginController {
 
     @FXML
 
+
     private TextField admin_id;
 
     private Button admin_btn;
+
 
     @FXML
     private Button menuBtn;
@@ -59,18 +61,15 @@ public class AdminLoginController {
         PreparedStatement statement;
         ResultSet result;
         Alert alert;
-        String id = admin_id.getText();
-        String username = uName.getText();
-        String pass_word = password.getText();
-
-        String query = "SELECT * FROM `new_admin` WHERE id_no= ? and username = ? and password = ?";
+        String Username = uName.getText();
+        String Password = password.getText();
+        String query = "SELECT * FROM new_admin WHERE username = ? and password = ?";
         try{
             statement = DbConfig.getConnection().prepareStatement(query);
-            statement.setString(1, id);
-            statement.setString(2, username);
-            statement.setString(3, pass_word);
+            statement.setString(1, uName.getText());
+            statement.setString(2, password.getText());
             result = statement.executeQuery();
-            if (admin_id.getText().isEmpty() || uName.getText().isEmpty() || password.getText().isEmpty()) {
+            if(uName.getText().isEmpty() || password.getText().isEmpty()){
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
@@ -97,15 +96,14 @@ public class AdminLoginController {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
-                    alert.setContentText("Wrong Admin ID/ Username/ Password");
+                    alert.setContentText("Wrong Username/Password");
                     alert.showAndWait();
-                    admin_id.setText("");
                     uName.setText("");
                     password.setText("");
                 }
             }
         }catch(Exception e){
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
