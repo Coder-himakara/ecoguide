@@ -2,12 +2,20 @@ package com.ecosupport.ecoguide;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Signup_PageController {
     @FXML
@@ -30,6 +38,21 @@ public class Signup_PageController {
 
     @FXML
     private Button signupBtn;
+
+    @FXML
+    private Button admin_btn;
+
+    @FXML
+    private Button menuBtn;
+
+    @FXML
+    private AnchorPane sidebar;
+
+    @FXML
+    private Button menuCloseBtn;
+
+    @FXML
+    private Button homeBtn;
 
     @FXML
     private void handleSignup(ActionEvent event) {
@@ -132,5 +155,51 @@ public class Signup_PageController {
             return 1;
         else
             return 0;
+    }
+
+    @FXML
+    void administrator(ActionEvent event) {
+        try {
+            Stage sign_in_stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("AdminLogin.fxml"));
+            Scene scene = new Scene(root);
+            //scene.getStylesheets().add("/styles/HomepageMenuCSS.css");
+            sign_in_stage.setScene(scene);
+            Stage stage = (Stage) admin_btn.getScene().getWindow();
+            stage.close();
+            sign_in_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Signup_PageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    void menuOpen(ActionEvent event) {
+        sidebar.setVisible(true);
+        menuCloseBtn.setVisible(true);
+        menuBtn.setVisible(false);
+    }
+
+    @FXML
+    void menuClose(ActionEvent event) {
+        sidebar.setVisible(false);
+        menuCloseBtn.setVisible(false);
+        menuBtn.setVisible(true);
+    }
+
+    @FXML
+    void backToHome(ActionEvent event) {
+        try {
+            Stage sign_in_stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("HomepageWithMenu.fxml"));
+            Scene scene = new Scene(root);
+            //scene.getStylesheets().add("/styles/HomepageMenuCSS.css");
+            sign_in_stage.setScene(scene);
+            Stage stage = (Stage) homeBtn.getScene().getWindow();
+            stage.close();
+            sign_in_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Signup_PageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
