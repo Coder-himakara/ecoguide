@@ -12,7 +12,9 @@
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
 
+
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecosupport.ecoguide.AdminHomeDashboardController">
+
     <top>
         <AnchorPane prefHeight="75.0" prefWidth="980.0" BorderPane.alignment="CENTER">
             <children>
@@ -66,28 +68,36 @@
                                 </Label>
                             </children>
                         </AnchorPane>
+
                         <Button fx:id="add_animal_btn" alignment="TOP_RIGHT" layoutX="31.0" layoutY="219.0" mnemonicParsing="false" onAction="#add_new_animal" prefHeight="47.0" prefWidth="192.0" styleClass="AddButtons" stylesheets="@../styles/AdminHomeDashboard.css" text="Add New Animal" textAlignment="RIGHT">
+
                             <font>
                                 <Font name="System Bold" size="16.0" />
                             </font>
                         </Button>
+
                         <Button alignment="TOP_RIGHT" layoutX="264.0" layoutY="219.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="187.0" styleClass="AddButtons" stylesheets="@../styles/AdminHomeDashboard.css" text="Add New Plant">
+
                             <font>
                                 <Font name="System Bold" size="16.0" />
                             </font>
                         </Button>
+
                         <Button alignment="TOP_RIGHT" layoutX="505.0" layoutY="219.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="175.0" styleClass="AddButtons" stylesheets="@../styles/AdminHomeDashboard.css" text="View Map">
+
                             <font>
                                 <Font name="System Bold" size="16.0" />
                             </font>
                         </Button>
                         <AnchorPane layoutY="332.0" prefHeight="821.0" prefWidth="742.0" styleClass="TableView" stylesheets="@../styles/AdminHomeDashboard.css">
                             <children>
+
                         <ImageView fitHeight="821.0" fitWidth="744.0" pickOnBounds="true">
                            <image>
                               <Image url="@images/9cee4cd681e5bee4161780f6556a3b21.jpg" />
                            </image>
                         </ImageView>
+
                                 <TableView fx:id="animal_table" layoutX="29.0" layoutY="181.0" onMouseClicked="#select_animal" prefHeight="200.0" prefWidth="489.0" styleClass="Table" stylesheets="@../styles/AdminHomeDashboard.css">
                                     <columns>
                                         <TableColumn fx:id="col_animal_id" prefWidth="102.0" text="Animal ID" />
@@ -97,17 +107,23 @@
                                 </TableView>
                                 <AnchorPane layoutX="541.0" layoutY="184.0" prefHeight="195.0" prefWidth="176.0" styleClass="GreenBox" stylesheets="@../styles/AdminHomeDashboard.css">
                                     <children>
+
                                         <Button alignment="TOP_RIGHT" layoutX="22.0" layoutY="74.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Update">
+
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
                                         </Button>
+
                                         <Button fx:id="animal_view_btn" alignment="TOP_RIGHT" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#view_animal" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="View">
+
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
                                         </Button>
+
                                         <Button alignment="TOP_RIGHT" layoutX="22.0" layoutY="134.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Delete">
+
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
@@ -129,6 +145,8 @@
                               </ImageView>
                                     </children>
                                 </AnchorPane>
+
+
                                 <TableView layoutX="29.0" layoutY="547.0" prefHeight="200.0" prefWidth="493.0" styleClass="Table" stylesheets="@../styles/AdminHomeDashboard.css">
                                     <columns>
                                         <TableColumn fx:id="col_plant_id" prefWidth="108.0" text="Plant ID" />
@@ -138,17 +156,23 @@
                                 </TableView>
                                 <AnchorPane layoutX="546.0" layoutY="550.0" prefHeight="195.0" prefWidth="176.0" styleClass="GreenBox" stylesheets="@../styles/AdminHomeDashboard.css">
                                     <children>
+
                                         <Button alignment="TOP_RIGHT" layoutX="22.0" layoutY="74.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Update">
+
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
                                         </Button>
+
                                         <Button alignment="TOP_RIGHT" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="View">
+
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
                                         </Button>
+=
                                         <Button alignment="TOP_RIGHT" layoutX="22.0" layoutY="134.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Delete">
+
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
@@ -205,15 +229,19 @@
     <left>
         <AnchorPane prefHeight="605.0" prefWidth="220.0" BorderPane.alignment="CENTER">
             <children>
+
                 <AnchorPane prefHeight="189.0" prefWidth="220.0" styleClass="profile" stylesheets="@../styles/AdminHomeDashboard.css" AnchorPane.topAnchor="0.0">
                     <children>
                         <Ellipse fill="WHITE" layoutX="110.0" layoutY="69.0" radiusX="69.0" radiusY="60.0" stroke="BLACK" strokeType="INSIDE" />
                         <Label layoutX="56.0" layoutY="54.0" text="Image Here">
+
                             <font>
                                 <Font size="21.0" />
                             </font>
                         </Label>
+
                         <AnchorPane layoutX="38.0" layoutY="142.0" prefHeight="33.0" prefWidth="144.0" styleClass="box" stylesheets="@../styles/AdminHomeDashboard.css">
+
                             <children>
                                 <Label layoutX="27.0" layoutY="1.0" text="Name Here">
                                     <font>
@@ -226,11 +254,14 @@
                 </AnchorPane>
                 <AnchorPane layoutY="189.0" prefHeight="419.0" prefWidth="220.0" style="-fx-background-color: #000000;">
                     <children>
+
                         <Button fx:id="homeBtn" layoutX="16.0" layoutY="25.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="40.0" prefWidth="188.0" styleClass="SystemButton" text="Home">
+
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
                         </Button>
+
                       <AnchorPane layoutX="20.0" layoutY="261.0" prefHeight="133.0" prefWidth="180.0" styleClass="TimeAndDate" stylesheets="@../styles/AdminHomeDashboard.css">
                           <children>
                               <AnchorPane layoutX="10.0" layoutY="20.0" prefHeight="40.0" prefWidth="160.0" styleClass="box" stylesheets="@../styles/AdminHomeDashboard.css">
@@ -288,6 +319,7 @@
                         <Image url="@images/log-out-outline-removebg-preview.png" />
                      </image>
                   </ImageView>
+
                     </children>
                 </AnchorPane>
             </children>
