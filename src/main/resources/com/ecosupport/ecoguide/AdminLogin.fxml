@@ -51,51 +51,5 @@
                 <Font name="System Bold" size="22.0" />
             </font>
         </Button>
-      <Button fx:id="menuBtn" layoutX="875.0" layoutY="22.0" mnemonicParsing="false" onAction="#menuOpen" opacity="0.28" prefHeight="50.0" prefWidth="59.0" />
-      <AnchorPane fx:id="sidebar" layoutX="639.0" layoutY="78.0" prefHeight="609.0" prefWidth="303.0" styleClass="box" stylesheets="@../styles/HomepageMenuCSS.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="71.0">
-         <children>
-            <Button layoutX="28.0" layoutY="425.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="253.0" stylesheets="@../styles/HomepageMenuCSS.css" text="About" AnchorPane.bottomAnchor="110.0" AnchorPane.rightAnchor="26.0">
-               <font>
-                  <Font name="Arial Black" size="17.0" />
-               </font>
-            </Button>
-            <Button layoutX="28.0" layoutY="305.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="253.0" stylesheets="@../styles/HomepageMenuCSS.css" text="Feedback">
-               <font>
-                  <Font name="Arial Black" size="17.0" />
-               </font>
-            </Button>
-            <Button fx:id="admin_btn" layoutX="28.0" layoutY="191.0" mnemonicParsing="false" onAction="#administrator" prefHeight="74.0" prefWidth="253.0" stylesheets="@../styles/HomepageMenuCSS.css" text="Administrator">
-               <font>
-                  <Font name="Arial Black" size="17.0" />
-               </font>
-            </Button>
-            <Button fx:id="homeBtn" layoutX="28.0" layoutY="74.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="74.0" prefWidth="253.0" stylesheets="@../styles/HomepageMenuCSS.css" text="Home Page">
-               <font>
-                  <Font name="Arial Black" size="17.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="41.0" fitWidth="47.0" layoutX="57.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/alert-circle-outline-removebg-preview.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="41.0" fitWidth="47.0" layoutX="50.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/message-square-outline.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="41.0" fitWidth="47.0" layoutX="50.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/settings-2-outline-removebg-preview.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="41.0" fitWidth="47.0" layoutX="50.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/home-removebg-preview.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <Button fx:id="menuCloseBtn" layoutX="875.0" layoutY="22.0" mnemonicParsing="false" onAction="#menuClose" opacity="0.28" prefHeight="50.0" prefWidth="59.0" visible="false" />
     </children>
 </AnchorPane>

@@ -36,6 +36,9 @@ public class AdminHomeDashboardController implements Initializable {
     private Button add_animal_btn;
     @FXML
     private Button profile_update_btn;
+
+    @FXML
+    private Button logout_btn;
     @FXML
     private TableView<Modeltable_animals> animal_table;
     @FXML
@@ -46,10 +49,6 @@ public class AdminHomeDashboardController implements Initializable {
     private TableColumn<Modeltable_animals, String> col_animal_sname;
     @FXML
     private Button animal_view_btn;
-    @FXML
-    private Button homeBtn;
-    @FXML
-    private Button LogoutBtn;
     @FXML
     private TableColumn<?, ?> col_plant_id;
 
@@ -163,30 +162,14 @@ public class AdminHomeDashboardController implements Initializable {
     }
 
     @FXML
-    void backToHome(ActionEvent event) {
-        try {
-            Stage sign_in_stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("HomepageWithMenu.fxml"));
-            Scene scene = new Scene(root);
-            //scene.getStylesheets().add("/styles/HomepageMenuCSS.css");
-            sign_in_stage.setScene(scene);
-            Stage stage = (Stage) homeBtn.getScene().getWindow();
-            stage.close();
-            sign_in_stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(AdminHomeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @FXML
-    void logout(ActionEvent event) {
+    public void admin_logout(ActionEvent event) {
         try {
             Stage sign_in_stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("AdminLogin.fxml"));
             Scene scene = new Scene(root);
-            //scene.getStylesheets().add("/styles/HomepageMenuCSS.css");
+            // scene.getStylesheets().add("/styles/admin_login.css");
             sign_in_stage.setScene(scene);
-            Stage stage = (Stage) LogoutBtn.getScene().getWindow();
+            Stage stage = (Stage) logout_btn.getScene().getWindow();
             stage.close();
             sign_in_stage.show();
         } catch (IOException ex) {
