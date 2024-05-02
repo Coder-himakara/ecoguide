@@ -36,6 +36,7 @@ public class AdminLoginController {
     private Button signup_btn;
 
     @FXML
+
     private Button admin_btn;
 
     @FXML
@@ -50,20 +51,27 @@ public class AdminLoginController {
     @FXML
     private Button homeBtn;
 
+    private TextField admin_id;
+
+
+
     @FXML
     void admin_login(ActionEvent event){
         PreparedStatement statement;
         ResultSet result;
         Alert alert;
-        String Username = uName.getText();
-        String Password = password.getText();
-        String query = "SELECT * FROM new_admin WHERE username = ? and password = ?";
+        String id = admin_id.getText();
+        String username = uName.getText();
+        String pass_word = password.getText();
+
+        String query = "SELECT * FROM `new_admin` WHERE id_no= ? and username = ? and password = ?";
         try{
             statement = DbConfig.getConnection().prepareStatement(query);
-            statement.setString(1, uName.getText());
-            statement.setString(2, password.getText());
+            statement.setString(1, id);
+            statement.setString(2, username);
+            statement.setString(3, pass_word);
             result = statement.executeQuery();
-            if(uName.getText().isEmpty() || password.getText().isEmpty()){
+            if (admin_id.getText().isEmpty() || uName.getText().isEmpty() || password.getText().isEmpty()) {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
@@ -90,14 +98,15 @@ public class AdminLoginController {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
-                    alert.setContentText("Wrong Username/Password");
+                    alert.setContentText("Wrong Admin ID/ Username/ Password");
                     alert.showAndWait();
+                    admin_id.setText("");
                     uName.setText("");
                     password.setText("");
                 }
             }
         }catch(Exception e){
-            e.printStackTrace();
+            System.out.println(e);
         }
     }
 
