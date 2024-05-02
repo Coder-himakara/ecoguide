@@ -163,6 +163,7 @@ public class AdminHomeDashboardController implements Initializable {
     }
 
     @FXML
+
     void backToHome(ActionEvent event) {
         try {
             Stage sign_in_stage = new Stage();
@@ -178,6 +179,31 @@ public class AdminHomeDashboardController implements Initializable {
         }
     }
 
+
+    @FXML
+    void logout(ActionEvent event) {
+        try {
+            Stage sign_in_stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("AdminLogin.fxml"));
+            Scene scene = new Scene(root);
+            //scene.getStylesheets().add("/styles/HomepageMenuCSS.css");
+            sign_in_stage.setScene(scene);
+            Stage stage = (Stage) LogoutBtn.getScene().getWindow();
+            stage.close();
+            sign_in_stage.show();
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.OK);
+            alert.setHeaderText("No selection");
+            alert.setContentText("Select an animal to update the data?");
+            Optional<ButtonType> result = alert.showAndWait();
+            result.ifPresent(res -> {
+                if (res == ButtonType.OK) {
+
+                    System.out.println("OK pressed");
+                }
+            });
+
     @FXML
     void logout(ActionEvent event) {
         try {
@@ -191,6 +217,8 @@ public class AdminHomeDashboardController implements Initializable {
             sign_in_stage.show();
         } catch (IOException ex) {
             Logger.getLogger(AdminHomeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+
+
         }
     }
 }

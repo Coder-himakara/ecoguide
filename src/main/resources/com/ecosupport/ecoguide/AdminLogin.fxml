@@ -51,6 +51,18 @@
                 <Font name="System Bold" size="22.0" />
             </font>
         </Button>
+
+
+        <TextField fx:id="admin_id" layoutX="422.0" layoutY="222.0" prefHeight="31.0" prefWidth="253.0"
+                   promptText="Enter  Admin ID" styleClass="textfield" stylesheets="@../styles/AdminLogin.css"/>
+        <Text layoutX="249.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin ID"
+              textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="24.0"/>
+            </font>
+        </Text>
+
+
       <Button fx:id="menuBtn" layoutX="875.0" layoutY="22.0" mnemonicParsing="false" onAction="#menuOpen" opacity="0.28" prefHeight="50.0" prefWidth="59.0" />
       <AnchorPane fx:id="sidebar" layoutX="639.0" layoutY="78.0" prefHeight="609.0" prefWidth="303.0" styleClass="box" stylesheets="@../styles/HomepageMenuCSS.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="71.0">
          <children>
@@ -97,5 +109,6 @@
          </children>
       </AnchorPane>
       <Button fx:id="menuCloseBtn" layoutX="875.0" layoutY="22.0" mnemonicParsing="false" onAction="#menuClose" opacity="0.28" prefHeight="50.0" prefWidth="59.0" visible="false" />
+
     </children>
 </AnchorPane>

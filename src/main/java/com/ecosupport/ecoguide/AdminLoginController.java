@@ -36,7 +36,12 @@ public class AdminLoginController {
     private Button signup_btn;
 
     @FXML
+
+
+    private TextField admin_id;
+
     private Button admin_btn;
+
 
     @FXML
     private Button menuBtn;
@@ -49,6 +54,7 @@ public class AdminLoginController {
 
     @FXML
     private Button homeBtn;
+
 
     @FXML
     void admin_login(ActionEvent event){
