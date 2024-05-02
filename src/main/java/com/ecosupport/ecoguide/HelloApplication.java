@@ -9,6 +9,13 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 public class HelloApplication extends Application {
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminLogin.fxml")));
@@ -17,13 +24,6 @@ public class HelloApplication extends Application {
         //scene.getStylesheets().add("/com/ecosupport/styles/HomepageMenuCSS.css");
         stage.setScene(scene);
         stage.show();
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
     }
 
 }

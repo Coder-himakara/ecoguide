@@ -2,14 +2,17 @@ package com.ecosupport.ecoguide;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ResourceBundle;
 
-public class Signup_PageController {
+public class Signup_PageController implements Initializable {
     @FXML
     private TextField adminId;
 
@@ -44,22 +47,20 @@ public class Signup_PageController {
         int fields = fields_empty(ID, FirstName, LastName, Email, Username, Password);
         int check = check_approve(ID);
 
-        if(fields == 1){
+        if (fields == 1) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Message");
             alert.setHeaderText(null);
             alert.setContentText("Please fill all blank fields");
             alert.showAndWait();
-        }
-        else if(check == 1){
+        } else if (check == 1) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Message");
             alert.setHeaderText(null);
             alert.setContentText("Access Denied");
             alert.showAndWait();
-        }
-        else{
-            String query = "INSERT INTO `new_admin`(`admin_id`,`first_name`,`last_name`,`email`,`username`,`password`)"+ "VALUES(?,?,?,?,?,?)";
+        } else {
+            String query = "INSERT INTO `new_admin`(`admin_id`,`first_name`,`last_name`,`email`,`username`,`password`)" + "VALUES(?,?,?,?,?,?)";
             try {
 
                 statement = DbConfig.getConnection().prepareStatement(query);
@@ -112,12 +113,12 @@ public class Signup_PageController {
         }
     }
 
-    public int check_approve(String id){
+    public int check_approve(String id) {
         PreparedStatement statement;
         int flag = 0;
         // SQL query to check if admin id exists in the admin_pid column in approved_admin table
         String query = "SELECT COUNT(*) AS count FROM approved_admin WHERE admin_pid = ?";
-        try{
+        try {
             statement = DbConfig.getConnection().prepareStatement(query);
             statement.setString(1, id);
             ResultSet rs = statement.executeQuery();
@@ -125,12 +126,17 @@ public class Signup_PageController {
             int count = rs.getInt("count");
             if (count > 0)
                 flag = 1;
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        if(flag == 0)
+        if (flag == 0)
             return 1;
         else
             return 0;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }

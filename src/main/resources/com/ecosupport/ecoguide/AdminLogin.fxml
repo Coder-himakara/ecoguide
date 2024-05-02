@@ -7,48 +7,59 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
-<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecosupport.ecoguide.AdminLoginController">
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="680.0" prefWidth="980.0"
+            xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.ecosupport.ecoguide.AdminLoginController">
     <children>
         <ImageView fitHeight="683.0" fitWidth="980.0" pickOnBounds="true">
             <image>
-                <Image url="@images/AdminLogin_background.jpg" />
+                <Image url="@images/AdminLogin_background.jpg"/>
             </image>
         </ImageView>
-        <ImageView fitHeight="51.0" fitWidth="939.0" layoutX="47.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="51.0" fitWidth="939.0" layoutX="47.0" layoutY="21.0" pickOnBounds="true"
+                   preserveRatio="true">
             <image>
-                <Image url="@images/Nav%20bar.png" />
+                <Image url="@images/Nav%20bar.png"/>
             </image>
         </ImageView>
-        <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#c7cfd7" height="506.0" layoutX="205.0" layoutY="104.0" opacity="0.32" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="555.0" />
-        <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#31832f" height="51.0" layoutX="300.0" layoutY="123.0" opacity="0.84" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="332.0" />
-        <Text layoutX="300.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login as Admin" textAlignment="CENTER" wrappingWidth="331.99999563395977">
+        <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#c7cfd7" height="506.0" layoutX="205.0" layoutY="104.0"
+                   opacity="0.32" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="555.0"/>
+        <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#31832f" height="51.0" layoutX="300.0" layoutY="123.0"
+                   opacity="0.84" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="332.0"/>
+        <Text layoutX="300.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login as Admin"
+              textAlignment="CENTER" wrappingWidth="331.99999563395977">
             <font>
-                <Font name="System Bold" size="35.0" />
+                <Font name="System Bold" size="35.0"/>
             </font>
         </Text>
-        <Text layoutX="247.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name" textAlignment="CENTER">
+        <Text layoutX="247.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name"
+              textAlignment="CENTER">
             <font>
-                <Font name="System Bold" size="24.0" />
+                <Font name="System Bold" size="24.0"/>
             </font>
         </Text>
         <Text layoutX="247.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
             <font>
-                <Font name="System Bold" size="24.0" />
+                <Font name="System Bold" size="24.0"/>
             </font>
         </Text>
-        <TextField fx:id="uName" layoutX="421.0" layoutY="238.0" prefHeight="31.0" prefWidth="253.0" promptText="User Name" styleClass="textfield" stylesheets="@../styles/AdminLogin.css" />
-        <PasswordField fx:id="password" layoutX="421.0" layoutY="313.0" prefHeight="31.0" prefWidth="253.0" promptText="Password" styleClass="textfield" stylesheets="@../styles/AdminLogin.css" />
-        <Button fx:id="loginBtn" defaultButton="true" layoutX="430.0" layoutY="410.0" mnemonicParsing="false" onAction="#admin_login" prefHeight="6.0" prefWidth="107.0" styleClass="loginBtn" stylesheets="@../styles/AdminLogin.css" text="Login" textAlignment="CENTER" textOverrun="CLIP">
+        <TextField fx:id="uName" layoutX="421.0" layoutY="238.0" prefHeight="31.0" prefWidth="253.0"
+                   promptText="User Name" styleClass="textfield" stylesheets="@../styles/AdminLogin.css"/>
+        <PasswordField fx:id="password" layoutX="421.0" layoutY="313.0" prefHeight="31.0" prefWidth="253.0"
+                       promptText="Password" styleClass="textfield" stylesheets="@../styles/AdminLogin.css"/>
+        <Button fx:id="loginBtn" defaultButton="true" layoutX="430.0" layoutY="410.0" mnemonicParsing="false"
+                onAction="#admin_login" prefHeight="6.0" prefWidth="107.0" styleClass="loginBtn"
+                stylesheets="@../styles/AdminLogin.css" text="Login" textAlignment="CENTER" textOverrun="CLIP">
             <font>
-                <Font name="System Bold" size="19.0" />
+                <Font name="System Bold" size="19.0"/>
             </font>
         </Button>
-        <Button fx:id="signup_btn" layoutX="413.0" layoutY="499.0" mnemonicParsing="false" onAction="#admin_signup" prefHeight="61.0" prefWidth="142.0" styleClass="loginBtn" stylesheets="@../styles/AdminLogin.css" text="Register" textAlignment="CENTER">
+        <Button fx:id="signup_btn" layoutX="413.0" layoutY="499.0" mnemonicParsing="false" onAction="#admin_signup"
+                prefHeight="61.0" prefWidth="142.0" styleClass="loginBtn" stylesheets="@../styles/AdminLogin.css"
+                text="Register" textAlignment="CENTER">
             <font>
-                <Font name="System Bold" size="22.0" />
+                <Font name="System Bold" size="22.0"/>
             </font>
         </Button>
     </children>

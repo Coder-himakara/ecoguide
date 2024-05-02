@@ -3,6 +3,7 @@ package com.ecosupport.ecoguide;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -13,12 +14,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class AdminLoginController {
+public class AdminLoginController implements Initializable {
 
     @FXML
     private AnchorPane main;
@@ -36,27 +39,26 @@ public class AdminLoginController {
     private Button signup_btn;
 
     @FXML
-    void admin_login(ActionEvent event){
+    void admin_login(ActionEvent event) {
         PreparedStatement statement;
         ResultSet result;
         Alert alert;
         String Username = uName.getText();
         String Password = password.getText();
         String query = "SELECT * FROM new_admin WHERE username = ? and password = ?";
-        try{
+        try {
             statement = DbConfig.getConnection().prepareStatement(query);
             statement.setString(1, uName.getText());
             statement.setString(2, password.getText());
             result = statement.executeQuery();
-            if(uName.getText().isEmpty() || password.getText().isEmpty()){
+            if (uName.getText().isEmpty() || password.getText().isEmpty()) {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all blank fields");
                 alert.showAndWait();
-            }
-            else{
-                if(result.next()){
+            } else {
+                if (result.next()) {
                     try {
                         Stage sign_in_stage = new Stage();
                         Parent root = FXMLLoader.load(getClass().getResource("AdminHomeDashboard.fxml"));
@@ -70,8 +72,7 @@ public class AdminLoginController {
                         Logger.getLogger(AdminLoginController.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
-                }
-                else{
+                } else {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
@@ -81,7 +82,7 @@ public class AdminLoginController {
                     password.setText("");
                 }
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -102,4 +103,8 @@ public class AdminLoginController {
         sign_in_stage.show();
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }
