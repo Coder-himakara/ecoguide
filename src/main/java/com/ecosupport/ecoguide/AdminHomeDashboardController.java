@@ -34,10 +34,6 @@ public class AdminHomeDashboardController implements Initializable {
     int selected_id = 0;
     @FXML
     private Button add_animal_btn;
-
-    @FXML
-    private Button update_btn;
-
     @FXML
     private Button profile_update_btn;
     @FXML
@@ -142,7 +138,7 @@ public class AdminHomeDashboardController implements Initializable {
             sign_in_stage.show();
         } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.OK);
-            alert.setHeaderText("No Selection");
+            alert.setHeaderText("Are you sure?");
             alert.setContentText("Select an animal to view");
             Optional<ButtonType> result = alert.showAndWait();
             result.ifPresent(res -> {
@@ -195,45 +191,6 @@ public class AdminHomeDashboardController implements Initializable {
             sign_in_stage.show();
         } catch (IOException ex) {
             Logger.getLogger(AdminHomeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-
-    @FXML
-    void goto_updatePage(ActionEvent event) {
-        if (selected_id != 0) {
-            Stage sign_in_stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_animal_update.fxml"));
-            Parent root = null;
-            try {
-                root = loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-            // Get the controller of the Admin_animal_update.fxml
-            Admin_Animal_UpdateController controller = loader.getController();
-
-            // Pass the selected variable to the controller
-            controller.setSelectedAttribute(selected_id);
-
-            Scene scene = new Scene(root);
-
-            sign_in_stage.setScene(scene);
-            Stage stage = (Stage) update_btn.getScene().getWindow();
-            stage.close();
-            sign_in_stage.show();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.OK);
-            alert.setHeaderText("No selection");
-            alert.setContentText("Select an animal to update the data?");
-            Optional<ButtonType> result = alert.showAndWait();
-            result.ifPresent(res -> {
-                if (res == ButtonType.OK) {
-
-                    System.out.println("OK pressed");
-                }
-            });
         }
     }
 }
