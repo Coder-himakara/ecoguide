@@ -22,7 +22,7 @@ public class Homepage1ControllerwithMenu {
     private Button plantBtn1;
 
     @FXML
-    private Button login_btn;
+    private Button admin_btn;
 
     @FXML
     private Button menuBtn;
@@ -34,14 +34,14 @@ public class Homepage1ControllerwithMenu {
     private Button menuCloseBtn;
 
     @FXML
-    void admin_login(ActionEvent event) {
+    void administrator(ActionEvent event) {
         try {
             Stage sign_in_stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("AdminLogin.fxml"));
             Scene scene = new Scene(root);
             //scene.getStylesheets().add("/styles/HomepageMenuCSS.css");
             sign_in_stage.setScene(scene);
-            Stage stage = (Stage) login_btn.getScene().getWindow();
+            Stage stage = (Stage) admin_btn.getScene().getWindow();
             stage.close();
             sign_in_stage.show();
         } catch (IOException ex) {
