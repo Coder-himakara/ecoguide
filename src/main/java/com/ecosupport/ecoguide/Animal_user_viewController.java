@@ -123,7 +123,7 @@ public class Animal_user_viewController implements Initializable {
 
     private void retrieveImage(int animal_id) throws IOException {
         try (Connection connection = DbConfig.getConnection()) {
-            String selectQuery = "SELECT image_data FROM `animal_images` WHERE animal_pid = ?";
+            String selectQuery = "SELECT image_data FROM `animal_images` WHERE animal_fid = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
             preparedStatement.setInt(1, animal_id);
             ResultSet resultSet = preparedStatement.executeQuery();

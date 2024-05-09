@@ -11,21 +11,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class Admin_Animal_AddController implements Initializable {
+public class Admin_Animal_AddController extends Animal_super_controller implements Initializable {
     @FXML
     private ToggleGroup active_time;
     @FXML
@@ -38,9 +34,7 @@ public class Admin_Animal_AddController implements Initializable {
     private TextField a_name;
     @FXML
     private TextField a_science_name;
-    @FXML
-    private ChoiceBox<String> con_status;
-    private String[] conversation = {"Endangered", "Critically Endangered", "Vulnerable", "Extinct", "Near threatened", "Not Evaluated", "None"};
+
     @FXML
     private TextField population;
     @FXML
@@ -58,20 +52,11 @@ public class Admin_Animal_AddController implements Initializable {
     @FXML
     private Button add_img;
 
-    private File selectedFile;
-    @FXML
-    private AnchorPane mapImageView;
-    @FXML
-    private ImageView pointerImageView;
-
-    private double pointerX;
-    private double pointerY;
-    private double offsetX;
-    private double offsetY;
     @FXML
     private Button reset_btn;
     @FXML
     private Button back_btn;
+    int primaryKeyValue = -1;
 
     /**
      * Initializes the controller class.
@@ -91,7 +76,7 @@ public class Admin_Animal_AddController implements Initializable {
     private void add_animal(ActionEvent event) {
 
         PreparedStatement statement;
-        //ResultSet queryResult;
+        ResultSet resultSet = null;
         Image a_image = animal_photo.getImage();
 
         String name = a_name.getText();
@@ -123,11 +108,13 @@ public class Admin_Animal_AddController implements Initializable {
             String query = "INSERT INTO `animals`(`name`,`scientific_name`,`status`,`population`,`diet`,`active`,`intro`,`x_position`,`y_position`)"
                     + "VALUES(?,?,?,?,?,?,?,?,?)";
             int pop_size = Integer.parseInt(pop);
-            saveImageToDatabase(selectedFile);
-            Point2D finalCoordinates = getPointerFinalCoordinates();//map pointer coordinates
-            try {
 
-                statement = DbConfig.getConnection().prepareStatement(query);
+            Point2D finalCoordinates = getPointerFinalCoordinates(); // Assuming this method gets pointer coordinates
+
+            try {
+                Connection connection = DbConfig.getConnection(); // Assuming DbConfig.getConnection() returns a valid database connection
+                statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+
                 statement.setString(1, name);
                 statement.setString(2, science_name);
                 statement.setString(3, status);
@@ -138,19 +125,32 @@ public class Admin_Animal_AddController implements Initializable {
                 statement.setDouble(8, finalCoordinates.getX());
                 statement.setDouble(9, finalCoordinates.getY());
 
-                if (statement.executeUpdate() != 0) {
-                    error_label.setText("Done");
-                    a_name.setText("");
-                    a_science_name.setText("");
-                    con_status.setValue(null);
-                    population.setText("");
-                    diet.setText("");
-                    active_time.getUserData();
-                    intro.setText("");
-                    animal_photo.setImage(null);
-                    pointerImageView.setVisible(false);
+                int rowsAffected = statement.executeUpdate();
+
+                if (rowsAffected != 0) {
+                    ResultSet generatedKeys = statement.getGeneratedKeys();
+                    if (generatedKeys.next()) {
+                        primaryKeyValue = generatedKeys.getInt(1);
+                        saveImageToDatabase(selectedFile);// Assuming the primary key is an integer
+                        error_label.setText("Done");
+
+                        // Reset form fields
+                        a_name.setText("");
+                        a_science_name.setText("");
+                        con_status.setValue(null);
+                        population.setText("");
+                        diet.setText("");
+                        active_time.getUserData();
+                        intro.setText("");
+                        animal_photo.setImage(null);
+                        pointerImageView.setVisible(false);
+
+                        // Now you have the primary key (primaryKey) for the inserted row
+                    } else {
+                        error_label.setText("Failed to retrieve primary key");
+                    }
                 } else {
-                    error_label.setText("Somthing Went Wrong");
+                    error_label.setText("Something went wrong");
                     a_name.setText("");
                     a_science_name.setText("");
                     con_status.setValue(null);
@@ -161,10 +161,10 @@ public class Admin_Animal_AddController implements Initializable {
                     animal_photo.setImage(null);
                     pointerImageView.setVisible(false);
                 }
-
             } catch (Exception e) {
                 System.out.println(e);
             }
+
         }
     }
 
@@ -178,28 +178,6 @@ public class Admin_Animal_AddController implements Initializable {
         }
     }
 
-    //below method is to trigger the event to chose an image of the animal from file explorer
-    @FXML
-    private void chooseImage(ActionEvent event) {
-        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose Image File");
-        selectedFile = fileChooser.showOpenDialog(stage);
-
-        if (selectedFile != null) {
-            try {
-                Image image = new Image(new FileInputStream(selectedFile));
-                animal_photo.setImage(image);
-                // You can now save this image to the database
-                // For demonstration purposes, let's assume you have a method saveImageToDatabase()
-                //saveImageToDatabase(selectedFile);
-            } catch (IOException e) {
-                System.out.println(e);
-            }
-        } else {
-            System.out.println("Insert an Image");
-        }
-    }
 
     //below method is to store the added animal image in the database
     private void saveImageToDatabase(File imageFile) {
@@ -211,11 +189,12 @@ public class Admin_Animal_AddController implements Initializable {
 
         try (Connection connection = DbConfig.getConnection()) {
             String name = a_name.getText();
-            String insertQuery = "INSERT INTO `animal_images` (`image_data`,`animal_name`) VALUES (?,?)";
+            String insertQuery = "INSERT INTO `animal_images` (`image_data`,`animal_name`,`animal_fid`) VALUES (?,?,?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
                 FileInputStream fis = new FileInputStream(imageFile);
                 preparedStatement.setBinaryStream(1, fis, (int) imageFile.length());
                 preparedStatement.setString(2, name);
+                preparedStatement.setInt(3, primaryKeyValue);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException | IOException e) {
@@ -223,57 +202,10 @@ public class Admin_Animal_AddController implements Initializable {
         }
     }
 
-    @FXML
-    private void handlePointerReleased(javafx.scene.input.MouseEvent event) {
-    }
-
-    //Map pointer Dragging Functionality
-    @FXML
-    private void handlePointerDragged(javafx.scene.input.MouseEvent event) {
-        // Calculate the new position of the pointer image based on the mouse drag position and offset
-        double newX = event.getX() - offsetX;
-        double newY = event.getY() - offsetY;
-
-        // Ensure that the pointer image stays within the bounds of the background pane
-        if (newX >= 0 && newX <= mapImageView.getWidth() - pointerImageView.getFitWidth()) {
-            pointerImageView.setLayoutX(newX);
-        }
-        if (newY >= 0 && newY <= mapImageView.getHeight() - pointerImageView.getFitHeight()) {
-            pointerImageView.setLayoutY(newY);
-        }
-    }
-
-    //Map pointer clicking functionality
-    @FXML
-    private void handleMapClick(javafx.scene.input.MouseEvent event) {
-        pointerX = event.getX();
-        pointerY = event.getY();
-        offsetX = pointerImageView.getFitWidth() / 2; // Adjust based on pointer image width
-        offsetY = pointerImageView.getFitHeight() / 2; // Adjust based on pointer image height
-
-        pointerImageView.setLayoutX(pointerX - offsetX);
-        pointerImageView.setLayoutY(pointerY - offsetY);
-        pointerImageView.setVisible(true);
-        //System.out.println("Mouse clicked");
-    }
-
-    @FXML
-    private void handlePointerPressed(javafx.scene.input.MouseEvent event) {
-        offsetX = event.getX() - pointerImageView.getLayoutX();
-        offsetY = event.getY() - pointerImageView.getLayoutY();
-    }
-
-    // Method to get the final coordinates of the pointer image
-    private Point2D getPointerFinalCoordinates() {
-        double x = pointerImageView.getLayoutX() + pointerImageView.getFitWidth() / 2;
-        double y = pointerImageView.getLayoutY() + pointerImageView.getFitHeight() / 2;
-        return new Point2D(x, y);
-    }
 
     // You can call this method to get the final coordinates of the pointer
     private void getFinalPointerCoordinates() {
         Point2D finalCoordinates = getPointerFinalCoordinates();
-
         // Now you have the final coordinates of the pointer
         System.out.println("Pointer final coordinates: " + finalCoordinates);
     }
@@ -308,7 +240,7 @@ public class Admin_Animal_AddController implements Initializable {
         Stage sign_in_stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("AdminHomeDashboard.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/com/ecosupport/styles/admin_animal_add.css");
+        //scene.getStylesheets().add("/com/ecosupport/styles/admin_animal_add.css");
         sign_in_stage.setScene(scene);
         Stage stage = (Stage) back_btn.getScene().getWindow();
         stage.close();
