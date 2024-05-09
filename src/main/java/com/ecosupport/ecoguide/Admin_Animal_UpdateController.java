@@ -72,12 +72,18 @@ public class Admin_Animal_UpdateController extends Animal_super_controller imple
     private Button back_btn;
 
     int selected_id = 0;
-
+    private AtomicReference<String> active_selected = new AtomicReference<>("");
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         con_status.getItems().addAll(conversation);
         mapImageView.setOnMouseClicked(this::handleMapClick);
+
+        active_time.selectedToggleProperty().addListener((ObservableValue<? extends Toggle> ov, Toggle t, Toggle t1) -> {
+            RadioButton selectedRadioButton = (RadioButton) t1.getToggleGroup().getSelectedToggle();
+            String selectedText = selectedRadioButton.getText();
+            active_selected.set(selectedText);
+        });
     }
 
 
@@ -114,6 +120,8 @@ public class Admin_Animal_UpdateController extends Animal_super_controller imple
                 String intro = resultSet.getString("intro");
                 double x_position = resultSet.getDouble("x_position");
                 double y_position = resultSet.getDouble("y_position");
+                pointerX = x_position;
+                pointerY = y_position;
 
                 String pop = Integer.toString(population);
                 // Update labels with retrieved data
@@ -123,6 +131,8 @@ public class Admin_Animal_UpdateController extends Animal_super_controller imple
                 count.setText(pop);
                 foodEats.setText(diet);
                 summary.setText(intro);
+                pointerImageView.setLayoutX(x_position - offsetX);
+                pointerImageView.setLayoutY(y_position - offsetY);
                 String[] activePatterns = {"Active During Day", "Active at Night", "Active During Dawn and Dusk"};
                 RadioButton[] patterns = {pattern_1, pattern_2, pattern_3};
 
@@ -134,8 +144,6 @@ public class Admin_Animal_UpdateController extends Animal_super_controller imple
                 }
                 active_time.selectToggle(patterns[2]);
 
-                pointerImageView.setLayoutX(x_position - offsetX);
-                pointerImageView.setLayoutY(y_position - offsetY);
             } else {
                 // Handle case where no data is found
                 error_label.setText("Animal not found");
@@ -187,14 +195,6 @@ public class Admin_Animal_UpdateController extends Animal_super_controller imple
         alert.setHeaderText("Are you sure?");
         alert.setContentText("Do you want to update the data?");
 
-        AtomicReference<String> active_selected = new AtomicReference<>("");
-        active_time.selectedToggleProperty().addListener((ObservableValue<? extends Toggle> ov, Toggle t, Toggle t1) -> {
-            RadioButton selectedRadioButton = (RadioButton) t1.getToggleGroup().getSelectedToggle();
-            String selectedText = selectedRadioButton.getText();
-            active_selected.set(selectedText);
-            //System.out.println("Selected Radio Button: " + selectedText);
-        });
-
         String sql = "UPDATE animals SET name = ? , scientific_name = ? , status = ? , population = ? , " +
                 "diet = ? , active = ? , intro = ? , x_position = ? , y_position = ?"
                 + "WHERE animal_id = ?";
@@ -228,7 +228,6 @@ public class Admin_Animal_UpdateController extends Animal_super_controller imple
         });
 
     }
-
 
     //Method to update the animal's image in the database method
     private void updateImageInDatabase(File imageFile) {
