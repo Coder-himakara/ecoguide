@@ -26,7 +26,7 @@ public class Animal_homeController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+
     }
 }
 
