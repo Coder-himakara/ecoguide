@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.AutoCompleteTextField?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -67,9 +67,9 @@
                                         </TableView>
                                     </content>
                                 </ScrollPane>
-                                <AutoCompleteTextField id="animal_species" layoutX="126.0" layoutY="813.0" prefHeight="54.0" prefWidth="70.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 5;" />
-                                <AutoCompleteTextField id="endangered_animal_species" layoutX="474.0" layoutY="821.0" prefHeight="54.0" prefWidth="70.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 5;" />
                                 <Button id="animal_view" layoutX="813.0" layoutY="1077.0" mnemonicParsing="false" onAction="#viewAnimalData" prefHeight="47.0" prefWidth="75.0" style="-fx-background-color: green; -fx-font-size: 20;" text="View" />
+                        <Label layoutX="126.0" layoutY="815.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-border-width: 5;" />
+                        <Label layoutX="471.0" layoutY="818.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-border-width: 5;" />
                             </children>
                         </AnchorPane>
                     </content>
