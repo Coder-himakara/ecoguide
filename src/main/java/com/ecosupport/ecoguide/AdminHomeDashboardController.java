@@ -62,15 +62,21 @@ public class AdminHomeDashboardController implements Initializable {
 
     //private TableColumn<?, ?> col_plant_id;
 
+    private String adminId;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        adminId = AppState.getInstance().getAdminId();
         updateTabel();
+
     }
 
+    public void setAdminId(String adminId) {
+        this.adminId = adminId;
+    }
     public void updateTabel() {
 
         col_animal_id.setCellValueFactory(data -> data.getValue().idProperty().asObject());
@@ -107,7 +113,11 @@ public class AdminHomeDashboardController implements Initializable {
     @FXML
     private void admin_profile_update(ActionEvent event) throws IOException {
         Stage sign_in_stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("Admin_profile_update.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_profile_update.fxml"));
+        Parent root = loader.load();
+        Admin_profile_updateController controller = loader.getController();
+        controller.setAdminId(adminId);
+
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/admin_animal_add.css");
         sign_in_stage.setScene(scene);
