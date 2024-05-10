@@ -35,7 +35,7 @@
             </font>
         </Text>
         <TextArea id="feedback" layoutX="440.0" layoutY="399.0" prefHeight="140.0" prefWidth="265.0" promptText="Enter your feedback" />
-        <Button id="home" layoutX="837.0" layoutY="20.0" mnemonicParsing="false" onAction="#goToHome" style="-fx-border-color: green;" text="Home">
+        <Button id="home" fx:id="home" layoutX="837.0" layoutY="20.0" mnemonicParsing="false" onAction="#goToHome" style="-fx-border-color: green;" text="Home">
             <font>
                 <Font size="18.0" />
             </font>
@@ -43,7 +43,7 @@
                 <Cursor fx:constant="MOVE" />
             </cursor>
         </Button>
-        <Button id="animal" layoutX="726.0" layoutY="20.0" mnemonicParsing="false" onAction="#goToAnimal" style="-fx-border-color: green;" text="Animal">
+        <Button id="animal" fx:id="animal" layoutX="726.0" layoutY="20.0" mnemonicParsing="false" onAction="#goToAnimal" style="-fx-border-color: green;" text="Animal">
             <font>
                 <Font size="18.0" />
             </font>
@@ -51,7 +51,7 @@
                 <Cursor fx:constant="MOVE" />
             </cursor>
         </Button>
-        <Button id="plant" layoutX="625.0" layoutY="20.0" mnemonicParsing="false" onAction="#goToPlant" style="-fx-border-color: green;" text="Plant">
+        <Button id="plant" fx:id="plant" layoutX="625.0" layoutY="20.0" mnemonicParsing="false" onAction="#goToPlant" style="-fx-border-color: green;" text="Plant">
             <font>
                 <Font size="18.0" />
             </font>

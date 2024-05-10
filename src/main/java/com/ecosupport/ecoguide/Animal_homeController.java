@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 public class Animal_homeController implements Initializable {
 
@@ -13,6 +15,19 @@ public class Animal_homeController implements Initializable {
 
     @FXML
     private URL location;
+
+
+    @FXML
+    private TableView<Modeltable_animals> table;
+
+    @FXML
+    private TableColumn<Modeltable_animals, String> name;
+
+    @FXML
+    private TableColumn<Modeltable_animals, String> scientific_name;
+
+    @FXML
+    private TableColumn<Modeltable_animals, Integer> population;
 
     @FXML
     void viewAnimalData(ActionEvent event) {
