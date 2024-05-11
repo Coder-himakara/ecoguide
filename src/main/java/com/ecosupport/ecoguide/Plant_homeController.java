@@ -6,6 +6,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 public class Plant_homeController implements Initializable {
 
@@ -15,8 +19,29 @@ public class Plant_homeController implements Initializable {
     @FXML
     private URL location;
 
+
     @FXML
-    void viewData(ActionEvent event) {
+    private TableView<?> plantTable;
+
+    @FXML
+    private TableColumn<?, ?> name;
+
+    @FXML
+    private TableColumn<?, ?> scientific_name;
+
+    @FXML
+    private TableColumn<?, ?> population;
+
+    @FXML
+    private Button showPlant;
+
+    @FXML
+    private Label plant_species;
+
+    @FXML
+    private Label endangered_species;
+
+    public void updateTable(){
 
     }
 
