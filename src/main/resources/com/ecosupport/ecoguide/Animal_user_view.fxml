@@ -48,12 +48,12 @@
                         <Rectangle arcHeight="22.0" arcWidth="18.0" fill="#d3d2bc" height="238.0" layoutX="68.0" layoutY="318.0" opacity="0.64" stroke="BLACK" strokeType="INSIDE" width="833.0" />
                         <Rectangle arcHeight="22.0" arcWidth="18.0" fill="#d3d2bc" height="182.0" layoutX="453.0" layoutY="111.0" opacity="0.64" stroke="BLACK" strokeType="INSIDE" width="434.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="183.0" layoutX="68.0" layoutY="111.0" opacity="0.18" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="316.0" />
-                        <Label layoutX="550.0" layoutY="448.0" text="Activity Pattern" textFill="#654d4d">
+                        <Label layoutX="534.0" layoutY="418.0" text="Activity Pattern" textFill="#654d4d">
                             <font>
                                 <Font name="Calibri Bold Italic" size="21.0" />
                             </font>
                         </Label>
-                        <Label layoutX="553.0" layoutY="363.0" text="Diet" textFill="#654d4d">
+                        <Label layoutX="566.0" layoutY="351.0" text="Diet" textFill="#654d4d">
                             <font>
                                 <Font name="Calibri Bold Italic" size="21.0" />
                             </font>
@@ -65,7 +65,7 @@
                         </Label>
                         <Label layoutX="95.0" layoutY="407.0" prefHeight="47.0" prefWidth="194.0" text="Conservation Status" textFill="#654d4d">
                             <font>
-                                <Font name="Calibri Bold Italic" size="21.0" />
+                                <Font name="Calibri Bold Italic" size="20.0" />
                             </font>
                         </Label>
                         <Label layoutX="95.0" layoutY="350.0" text="Scientific Name" textFill="#654d4d">
@@ -78,13 +78,31 @@
                                 <Font name="Arial Black" size="26.0" />
                             </font>
                         </Label>
-                        <Label fx:id="animal_sname" layoutX="298.0" layoutY="347.0" prefHeight="32.0" prefWidth="273.0" />
-                        <Label fx:id="animal_population" layoutX="299.0" layoutY="483.0" prefHeight="29.0" prefWidth="73.0" />
-                        <Label fx:id="animal_status" layoutX="298.0" layoutY="414.0" prefHeight="40.0" prefWidth="203.0" />
-                        <Label fx:id="animal_diet" layoutX="581.0" layoutY="391.0" prefHeight="43.0" prefWidth="306.0" />
-                        <Label fx:id="animal_active" layoutX="581.0" layoutY="480.0" prefHeight="34.0" prefWidth="292.0" />
+                        <Label fx:id="animal_sname" layoutX="272.0" layoutY="349.0" prefHeight="32.0" prefWidth="256.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                        <Label fx:id="animal_population" layoutX="299.0" layoutY="483.0" prefHeight="29.0" prefWidth="73.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                        <Label fx:id="animal_status" layoutX="289.0" layoutY="411.0" prefHeight="40.0" prefWidth="203.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                        <Label fx:id="animal_diet" layoutX="635.0" layoutY="343.0" prefHeight="43.0" prefWidth="200.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                        <Label fx:id="animal_active" layoutX="681.0" layoutY="414.0" prefHeight="34.0" prefWidth="208.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
                         <ImageView fx:id="animal_image" fitHeight="184.0" fitWidth="319.0" layoutX="71.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="animal_inro" alignment="TOP_LEFT" layoutX="458.0" layoutY="119.0" prefHeight="159.0" prefWidth="419.0" />
+                        <Label fx:id="animal_inro" alignment="TOP_LEFT" layoutX="467.0" layoutY="125.0" prefHeight="153.0" prefWidth="406.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
                         <ImageView fitHeight="494.0" fitWidth="886.0" layoutX="45.0" layoutY="621.0" pickOnBounds="true">
                             <image>
                                 <Image url="@images/animal_add/animal_map.jpg" />
