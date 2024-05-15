@@ -9,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecosupport.ecoguide.Animal_homeController">
     <children>
@@ -16,7 +17,7 @@
             <center>
                 <ScrollPane maxWidth="-Infinity" prefHeight="680.0" prefWidth="980.0" BorderPane.alignment="CENTER">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1670.0" prefWidth="980.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1894.0" prefWidth="980.0">
                             <children>
                                 <ImageView fitHeight="680.0" fitWidth="980.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -70,6 +71,12 @@
                                 <Button id="animal_view" layoutX="813.0" layoutY="1077.0" mnemonicParsing="false" onAction="#viewAnimalData" prefHeight="47.0" prefWidth="75.0" style="-fx-background-color: green; -fx-font-size: 20;" text="View" />
                         <Label fx:id="animal_species" layoutX="126.0" layoutY="815.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: green; -fx-border-radius: 8; -fx-border-width: 5; -fx-font-size: 50;" />
                         <Label fx:id="endangered_species" layoutX="471.0" layoutY="818.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: green; -fx-border-radius: 8; -fx-border-width: 5; -fx-font-size: 50;" />
+                        <ImageView fx:id="mapView" fitHeight="543.0" fitWidth="974.0" layoutX="5.0" layoutY="1306.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/animal_add/animal_map.jpg" />
+                           </image>
+                        </ImageView>
+                        <StackPane fx:id="stackpane" layoutX="5.0" layoutY="1306.0" prefHeight="543.0" prefWidth="980.0" />
                             </children>
                         </AnchorPane>
                     </content>
