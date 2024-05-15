@@ -81,11 +81,16 @@ public class AdminLoginController {
             }
             else{
                 if(result.next()){
+                    AppState.getInstance().setAdminId(admin_id.getText());
                     try {
+
                         Stage sign_in_stage = new Stage();
-                        Parent root = FXMLLoader.load(getClass().getResource("AdminHomeDashboard.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminHomeDashboard.fxml"));
+                        Parent root = loader.load();
+                        AdminHomeDashboardController controller = loader.getController();
+                        controller.setAdminId(admin_id.getText());
+
                         Scene scene = new Scene(root);
-                        //scene.getStylesheets().add("/styles/AdminHomeDashboard.css");
                         sign_in_stage.setScene(scene);
                         Stage stage = (Stage) loginBtn.getScene().getWindow();
                         stage.close();

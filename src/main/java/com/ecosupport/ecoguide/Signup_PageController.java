@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -66,6 +68,7 @@ public class Signup_PageController {
         Alert alert;
         int fields = fields_empty(ID, FirstName, LastName, Email, Username, Password);
         int check = check_approve(ID);
+        File imageFile = new File("src\\main\\resources\\com\\ecosupport\\ecoguide\\images\\profile_dp.png");
 
         if(fields == 1){
             alert = new Alert(Alert.AlertType.ERROR);
@@ -82,7 +85,8 @@ public class Signup_PageController {
             alert.showAndWait();
         }
         else{
-            String query = "INSERT INTO `new_admin`(`admin_id`,`first_name`,`last_name`,`email`,`username`,`password`)"+ "VALUES(?,?,?,?,?,?)";
+            String query = "INSERT INTO `new_admin`(`id_no`,`first_name`,`last_name`,`email`,`username`,`password`,`phone_no`,`job_role`,`img_data`)" +
+                    "VALUES(?,?,?,?,?,?,?,?,?)";
             try {
 
                 statement = DbConfig.getConnection().prepareStatement(query);
@@ -92,6 +96,10 @@ public class Signup_PageController {
                 statement.setString(4, Email);
                 statement.setString(5, Username);
                 statement.setString(6, Password);
+                statement.setString(7, null);
+                statement.setString(8, null);
+                FileInputStream fis = new FileInputStream(imageFile);
+                statement.setBinaryStream(9, fis, (int) imageFile.length());
 
                 if (statement.executeUpdate() != 0) {
                     alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -105,6 +113,7 @@ public class Signup_PageController {
                     email.setText("");
                     uName.setText("");
                     password.setText("");
+
                 } else {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Message");

@@ -20,39 +20,35 @@ import java.sql.*;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class Animal_user_viewController implements Initializable {
-
+public class Plant_user_viewController implements Initializable {
     @FXML
-    private Label animal_name;
+    private Label plant_name;
     @FXML
-    private Label animal_sname;
+    private Label plant_sname;
     @FXML
-    private Label animal_population;
+    private Label plant_population;
     @FXML
-    private Label animal_status;
+    private Label plant_status;
     @FXML
-    private Label animal_diet;
+    private Label plant_habitate;
     @FXML
-    private Label animal_active;
+    private Label plant_expansion;
     @FXML
-    private Label animal_inro;
+    private Label plant_root_system;
+    @FXML
+    private Label plant_inro;
     @FXML
     private Button back_btn;
     @FXML
     private AnchorPane mapImageView;
     @FXML
     private ImageView pointerImageView;
-
     @FXML
-    private ImageView animal_image;
+    private ImageView plant_image;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL location, ResourceBundle resources) {
 
-        // TODO
     }
 
     @FXML
@@ -69,7 +65,7 @@ public class Animal_user_viewController implements Initializable {
 
     public void setSelectedAttribute(int attribute) {
         // Use the selected attribute in the interface
-        setAnimalData(attribute);
+        setPlantData(attribute);
         //String s = Integer.toString(animal_id_selected);
         //animal_name.setText(s);
         try {
@@ -79,14 +75,14 @@ public class Animal_user_viewController implements Initializable {
         }
     }
 
-    public void setAnimalData(int animal_id) {
+    public void setPlantData(int plant_id) {
         PreparedStatement statement;
         double offsetX = pointerImageView.getFitWidth() / 2; // Adjust based on pointer image width
         double offsetY = pointerImageView.getFitHeight() / 2; // Adjust based on pointer image height
-        String query = "SELECT * FROM `animals` WHERE animal_id = ?";
+        String query = "SELECT * FROM `plants` WHERE plant_id = ?";
         try {
             statement = DbConfig.getConnection().prepareStatement(query);
-            statement.setInt(1, animal_id);
+            statement.setInt(1, plant_id);
             ResultSet resultSet = statement.executeQuery();
             // Process the result set
             if (resultSet.next()) {
@@ -94,38 +90,40 @@ public class Animal_user_viewController implements Initializable {
                 String scientific_name = resultSet.getString("scientific_name");
                 String status = resultSet.getString("status");
                 int population = resultSet.getInt("population");
-                String diet = resultSet.getString("diet");
-                String active = resultSet.getString("active");
+                String habitate = resultSet.getString("habitate");
+                String expansion = resultSet.getString("expansion");
+                String root_system = resultSet.getString("root_system");
                 String intro = resultSet.getString("intro");
                 double x_position = resultSet.getDouble("x_position");
                 double y_position = resultSet.getDouble("y_position");
 
                 String pop = Integer.toString(population);
                 // Update labels with retrieved data
-                animal_name.setText(name);
-                animal_sname.setText(scientific_name);
-                animal_status.setText(status);
-                animal_population.setText(pop);
-                animal_diet.setText(diet);
-                animal_active.setText(active);
-                animal_inro.setText(intro);
+                plant_name.setText(name);
+                plant_sname.setText(scientific_name);
+                plant_status.setText(status);
+                plant_population.setText(pop);
+                plant_habitate.setText(habitate);
+                plant_expansion.setText(expansion);
+                plant_root_system.setText(root_system);
+                plant_inro.setText(intro);
 
                 pointerImageView.setLayoutX(x_position - offsetX);
                 pointerImageView.setLayoutY(y_position - offsetY);
             } else {
                 // Handle case where no data is found
-                animal_name.setText("Animal not found");
+                plant_name.setText("Plant not found");
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
-    private void retrieveImage(int animal_id) throws IOException {
+    private void retrieveImage(int plant_id) throws IOException {
         try (Connection connection = DbConfig.getConnection()) {
-            String selectQuery = "SELECT image_data FROM `animal_images` WHERE animal_fid = ?";
+            String selectQuery = "SELECT image_data FROM `plant_images` WHERE plant_pid = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
-            preparedStatement.setInt(1, animal_id);
+            preparedStatement.setInt(1, plant_id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 // Get the image data from the database
@@ -136,7 +134,7 @@ public class Animal_user_viewController implements Initializable {
                 Image image = new Image(new ByteArrayInputStream(imageBytes));
 
                 // Display the image in the ImageView
-                animal_image.setImage(image);
+                plant_image.setImage(image);
             } else {
                 System.out.println("No image found in the database.");
             }
