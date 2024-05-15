@@ -74,7 +74,9 @@
                             </font>
                         </Button>
 
-                        <Button alignment="TOP_RIGHT" layoutX="264.0" layoutY="205.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="187.0" styleClass="AddButtons" stylesheets="@../styles/AdminHomeDashboard.css" text="Add New Plant">
+
+                        <Button fx:id="add_plant_btn" alignment="TOP_RIGHT" layoutX="264.0" layoutY="219.0" mnemonicParsing="false" onAction="#add_new_plant" prefHeight="47.0" prefWidth="187.0" styleClass="AddButtons" stylesheets="@../styles/AdminHomeDashboard.css" text="Add New Plant">
+
 
                             <font>
                                 <Font name="System Bold" size="16.0" />
@@ -145,24 +147,24 @@
                                 </AnchorPane>
 
 
-                                <TableView layoutX="29.0" layoutY="547.0" prefHeight="200.0" prefWidth="493.0" styleClass="Table" stylesheets="@../styles/AdminHomeDashboard.css">
+                                <TableView fx:id="plant_table" layoutX="29.0" layoutY="547.0" onMouseClicked="#select_plant" prefHeight="200.0" prefWidth="493.0" styleClass="Table" stylesheets="@../styles/AdminHomeDashboard.css">
                                     <columns>
                                         <TableColumn fx:id="col_plant_id" prefWidth="108.0" text="Plant ID" />
-                                        <TableColumn prefWidth="180.0" text="Name" />
-                                        <TableColumn prefWidth="202.0" text="Scientific Name" />
+                                        <TableColumn fx:id="col_plant_name" prefWidth="180.0" text="Name" />
+                                        <TableColumn fx:id="col_plant_sname" prefWidth="202.0" text="Scientific Name" />
                                     </columns>
                                 </TableView>
                                 <AnchorPane layoutX="546.0" layoutY="550.0" prefHeight="195.0" prefWidth="176.0" styleClass="GreenBox" stylesheets="@../styles/AdminHomeDashboard.css">
                                     <children>
 
-                                        <Button alignment="TOP_RIGHT" layoutX="22.0" layoutY="74.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Update">
+                                        <Button fx:id="update_btn_plant" alignment="TOP_RIGHT" layoutX="22.0" layoutY="74.0" mnemonicParsing="false" onAction="#goto_updatePage_Plant" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Update">
 
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
                                         </Button>
 
-                                        <Button alignment="TOP_RIGHT" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="View">
+                                        <Button fx:id="plant_view_btn" alignment="TOP_RIGHT" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#view_plant" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="View">
 
                                             <font>
                                                 <Font name="System Bold" size="18.0" />

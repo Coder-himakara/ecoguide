@@ -31,4 +31,22 @@ public class DbConfig {
         }
         return list;
     }
+
+    public static ObservableList<Modeltable_plants> getDatausersPlants() throws SQLException {
+        Connection conn = getConnection();
+        ObservableList<Modeltable_plants> list2 = FXCollections.observableArrayList();
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM plants");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                list2.add(new Modeltable_plants(rs.getInt("plant_id"), rs.getString("name"), rs.getString("scientific_name"),
+                        rs.getString("status"), rs.getInt("population"), rs.getString("habitate"), rs.getString("expansion"), rs.getString("root_system"),
+                        rs.getString("intro"), rs.getDouble("x_position"), rs.getDouble("y_position")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list2;
+    }
 }
