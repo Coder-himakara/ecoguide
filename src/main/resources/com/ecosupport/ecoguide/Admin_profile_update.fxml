@@ -145,8 +145,8 @@
                             </children>
                         </AnchorPane>
                         <Button fx:id="add_pic_btn" layoutX="655.0" layoutY="272.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="31.0" prefWidth="139.0" text="Add Your Image" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fffbc" height="166.0" layoutX="629.0" layoutY="87.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-                        <Label fx:id="admin_id" layoutX="297.0" layoutY="160.0" prefHeight="29.0" prefWidth="218.0" textFill="#ff6262">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fffbc" height="177.0" layoutX="593.0" layoutY="76.0" opacity="0.05" stroke="BLACK" strokeType="INSIDE" width="263.0" />
+                        <Label fx:id="admin_id" layoutX="297.0" layoutY="154.0" prefHeight="39.0" prefWidth="218.0" textFill="#ff6262">
                             <font>
                                 <Font name="Arial Black" size="16.0" />
                             </font>
@@ -161,12 +161,12 @@
                                 <Font name="Arial Black" size="16.0" />
                             </font>
                         </Label>
-                        <Label layoutX="297.0" layoutY="324.0" prefHeight="29.0" prefWidth="218.0" text="hello" textFill="#ff6262">
+                        <Label layoutX="301.0" layoutY="324.0" prefHeight="29.0" prefWidth="218.0" text="Not_Set" textFill="#ff6262">
                             <font>
                                 <Font name="Arial Black" size="16.0" />
                             </font>
                         </Label>
-                        <ImageView fx:id="profile_pic" fitHeight="165.0" fitWidth="200.0" layoutX="629.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="profile_pic" fitHeight="174.0" fitWidth="197.0" layoutX="627.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" />
                     </children>
                 </AnchorPane>
             </content>
