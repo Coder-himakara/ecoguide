@@ -23,10 +23,10 @@
         <Button fx:id="menuBtn" layoutX="900.0" layoutY="18.0" mnemonicParsing="false" onAction="#menuOpen" opacity="0.28" prefHeight="50.0" prefWidth="59.0" />
         <AnchorPane layoutX="75.0" layoutY="129.0" prefHeight="445.0" prefWidth="811.0">
             <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="385.0" layoutX="54.0" layoutY="48.0" opacity="0.75" stroke="WHITE" strokeType="INSIDE" width="703.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="479.0" layoutY="1.0" opacity="0.54" stroke="WHITE" strokeType="INSIDE" width="826.0" />
-            <Rectangle arcHeight="22.0" arcWidth="18.0" fill="#ffa91f" height="41.0" layoutX="236.0" layoutY="77.0" opacity="0.26" stroke="BLACK" strokeType="INSIDE" width="327.0" />
-                <Label layoutX="262.0" layoutY="61.0" prefHeight="74.0" prefWidth="303.0" text="User Feedback" textFill="#0e220a">
+            <Rectangle arcHeight="22.0" arcWidth="18.0" fill="WHITE" height="385.0" layoutX="54.0" layoutY="48.0" opacity="0.39" stroke="WHITE" strokeType="INSIDE" width="703.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="479.0" layoutY="1.0" opacity="0.42" stroke="WHITE" strokeType="INSIDE" width="826.0" />
+            <Rectangle arcHeight="22.0" arcWidth="18.0" fill="#ffa91f" height="41.0" layoutX="220.0" layoutY="88.0" opacity="0.26" stroke="BLACK" strokeType="INSIDE" width="327.0" />
+                <Label layoutX="244.0" layoutY="71.0" prefHeight="74.0" prefWidth="303.0" text="User Feedback" textFill="#0e220a">
                     <font>
                         <Font name="Century Schoolbook Bold" size="36.0" />
                     </font>
