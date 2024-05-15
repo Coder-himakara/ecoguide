@@ -1,6 +1,5 @@
 package com.ecosupport.ecoguide;
 
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -172,7 +171,7 @@ public class Admin_Plants_AddController extends Plant_super_controller implement
 
         try (Connection connection = DbConfig.getConnection()) {
             String name = p_name.getText();
-            String insertQuery = "INSERT INTO `plant_images` (`image_data`,`plant_name`,`plant_pid`) VALUES (?,?,?)";
+            String insertQuery = "INSERT INTO `plant_images` (`image_data`,`plant_name`,`plant_fid`) VALUES (?,?,?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
                 FileInputStream fis = new FileInputStream(imageFile);
                 preparedStatement.setBinaryStream(1, fis, (int) imageFile.length());

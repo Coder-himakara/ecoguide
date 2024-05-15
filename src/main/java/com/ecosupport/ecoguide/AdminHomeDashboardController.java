@@ -73,11 +73,6 @@ public class AdminHomeDashboardController implements Initializable {
     @FXML
     private Button LogoutBtn;
 
-
-
-    @FXML
-    private TableColumn<?, ?> col_plant_id;
-
     
     @FXML
     private ImageView profile_pic;

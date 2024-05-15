@@ -30,9 +30,9 @@
         </AnchorPane>
     </top>
     <center>
-        <ScrollPane prefHeight="1154.0" prefWidth="720.0" BorderPane.alignment="CENTER">
+        <ScrollPane prefHeight="1079.0" prefWidth="760.0" BorderPane.alignment="CENTER">
             <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1154.0" prefWidth="740.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1043.0" prefWidth="741.0">
                     <children>
                   <ImageView fitHeight="347.0" fitWidth="742.0" layoutY="-12.0" pickOnBounds="true">
                      <image>
@@ -75,7 +75,7 @@
                         </Button>
 
 
-                        <Button fx:id="add_plant_btn" alignment="TOP_RIGHT" layoutX="264.0" layoutY="219.0" mnemonicParsing="false" onAction="#add_new_plant" prefHeight="47.0" prefWidth="187.0" styleClass="AddButtons" stylesheets="@../styles/AdminHomeDashboard.css" text="Add New Plant">
+                        <Button fx:id="add_plant_btn" alignment="TOP_RIGHT" layoutX="264.0" layoutY="205.0" mnemonicParsing="false" onAction="#add_new_plant" prefHeight="47.0" prefWidth="187.0" styleClass="AddButtons" stylesheets="@../styles/AdminHomeDashboard.css" text="Add New Plant">
 
 
                             <font>
@@ -89,10 +89,10 @@
                                 <Font name="System Bold" size="16.0" />
                             </font>
                         </Button>
-                        <AnchorPane layoutY="332.0" prefHeight="821.0" prefWidth="742.0" styleClass="TableView" stylesheets="@../styles/AdminHomeDashboard.css">
+                        <AnchorPane layoutY="332.0" prefHeight="711.0" prefWidth="744.0" styleClass="TableView" stylesheets="@../styles/AdminHomeDashboard.css">
                             <children>
 
-                        <ImageView fitHeight="821.0" fitWidth="744.0" pickOnBounds="true">
+                        <ImageView fitHeight="710.0" fitWidth="744.0" pickOnBounds="true">
                            <image>
                               <Image url="@images/9cee4cd681e5bee4161780f6556a3b21.jpg" />
                            </image>
@@ -147,14 +147,14 @@
                                 </AnchorPane>
 
 
-                                <TableView fx:id="plant_table" layoutX="29.0" layoutY="547.0" onMouseClicked="#select_plant" prefHeight="200.0" prefWidth="493.0" styleClass="Table" stylesheets="@../styles/AdminHomeDashboard.css">
+                                <TableView fx:id="plant_table" layoutX="29.0" layoutY="435.0" onMouseClicked="#select_plant" prefHeight="200.0" prefWidth="493.0" styleClass="Table" stylesheets="@../styles/AdminHomeDashboard.css">
                                     <columns>
                                         <TableColumn fx:id="col_plant_id" prefWidth="108.0" text="Plant ID" />
                                         <TableColumn fx:id="col_plant_name" prefWidth="180.0" text="Name" />
                                         <TableColumn fx:id="col_plant_sname" prefWidth="202.0" text="Scientific Name" />
                                     </columns>
                                 </TableView>
-                                <AnchorPane layoutX="546.0" layoutY="550.0" prefHeight="195.0" prefWidth="176.0" styleClass="GreenBox" stylesheets="@../styles/AdminHomeDashboard.css">
+                                <AnchorPane layoutX="546.0" layoutY="438.0" prefHeight="195.0" prefWidth="176.0" styleClass="GreenBox" stylesheets="@../styles/AdminHomeDashboard.css">
                                     <children>
 
                                         <Button fx:id="update_btn_plant" alignment="TOP_RIGHT" layoutX="22.0" layoutY="74.0" mnemonicParsing="false" onAction="#goto_updatePage_Plant" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Update">
@@ -199,7 +199,7 @@
                               <Font name="System Bold" size="27.0" />
                            </font>
                         </Label>
-                        <Label layoutX="39.0" layoutY="435.0" text="Plants" textFill="WHITE">
+                        <Label layoutX="39.0" layoutY="323.0" text="Plants" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="27.0" />
                            </font>
