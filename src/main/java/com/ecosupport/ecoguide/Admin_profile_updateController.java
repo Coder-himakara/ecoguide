@@ -6,17 +6,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
+import java.util.Optional;
 import java.util.ResourceBundle;
+
 
 public class Admin_profile_updateController implements Initializable {
 
@@ -61,7 +62,13 @@ public class Admin_profile_updateController implements Initializable {
 
     @FXML
     private Label l_name;
+    @FXML
+    private Button add_pic_btn;
     private String adminId;
+    @FXML
+    private ImageView profile_pic;
+
+    private File selectedFile;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -76,12 +83,49 @@ public class Admin_profile_updateController implements Initializable {
 
     @FXML
     void reset_original(ActionEvent event) {
-
+        setAdmin_data(adminId);
     }
 
     @FXML
-    void update_date(ActionEvent event) {
+    void update_data(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.OK, ButtonType.CANCEL);
+        alert.setHeaderText("Are you sure?");
+        alert.setContentText("Do you want to update the data?");
 
+        String sql;
+        if (selectedFile != null) {
+            sql = "UPDATE `new_admin` SET email = ? , username = ? , phone_no = ? , job_role = ?, img_data = ? "
+                    + "WHERE id_no = ?";
+        } else {
+            sql = "UPDATE `new_admin` SET email = ? , username = ? , phone_no = ? , job_role = ? "
+                    + "WHERE id_no = ?";
+        }
+
+        Optional<ButtonType> result = alert.showAndWait();
+        result.ifPresent(res -> {
+            if (res == ButtonType.OK) {
+                try (Connection conn = DbConfig.getConnection();
+                     PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                    pstmt.setString(1, email.getText());
+                    pstmt.setString(2, user_name.getText());
+                    pstmt.setString(3, phone_no.getText());
+                    pstmt.setString(4, job_role.getText());
+                    if (selectedFile != null) {
+                        FileInputStream fis = new FileInputStream(selectedFile);
+                        pstmt.setBinaryStream(5, fis, (int) selectedFile.length());
+                        pstmt.setString(6, adminId);
+                    } else {
+                        pstmt.setString(5, adminId);
+                    }
+                    pstmt.executeUpdate();
+                } catch (SQLException | FileNotFoundException e) {
+                    System.out.println(e.getMessage());
+                }
+                System.out.println("OK pressed");
+            } else if (res == ButtonType.CANCEL) {
+                System.out.println("Canceled");
+            }
+        });
     }
 
     @FXML
@@ -99,6 +143,11 @@ public class Admin_profile_updateController implements Initializable {
     public void setAdminId(String adminId) {
         this.adminId = adminId;
         setAdmin_data(adminId);
+        try {
+            retrieveImage(adminId);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void setAdmin_data(String adminId) {
@@ -142,5 +191,55 @@ public class Admin_profile_updateController implements Initializable {
         }
 
 
+    }
+
+    @FXML
+    void chooseImage(ActionEvent event) {
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Image File");
+        selectedFile = fileChooser.showOpenDialog(stage);
+
+        if (selectedFile != null) {
+            try {
+                Image image = new Image(new FileInputStream(selectedFile));
+                profile_pic.setImage(image);
+                // You can now save this image to the database
+                // For demonstration purposes, let's assume you have a method saveImageToDatabase()
+                //saveImageToDatabase(selectedFile);
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+        } else {
+            System.out.println("Insert an Image");
+        }
+    }
+
+
+    //Get the admin's image from the database
+    private void retrieveImage(String adminId) throws IOException {
+        try (Connection connection = DbConfig.getConnection()) {
+            String selectQuery = "SELECT img_data FROM `new_admin` WHERE id_no = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
+            preparedStatement.setString(1, adminId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                // Get the image data from the database
+                Blob blob = resultSet.getBlob("img_data");
+                byte[] imageBytes = blob.getBytes(1, (int) blob.length());
+
+                // Create an Image object from the byte array
+                Image image = new Image(new ByteArrayInputStream(imageBytes));
+
+                // Display the image in the ImageView
+                profile_pic.setImage(image);
+            } else {
+                System.out.println("No image found in the database.");
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 }
