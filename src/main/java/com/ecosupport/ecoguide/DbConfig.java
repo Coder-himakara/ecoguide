@@ -11,7 +11,65 @@ public class DbConfig {
     private static final String PASSWORD = "";
 
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/?useSSL=false&serverTimezone=UTC", USERNAME, PASSWORD);
+
+        Statement statement = connection.createStatement();
+
+        // Create the database if it does not exist
+        String sqlCreateDatabase = "CREATE DATABASE IF NOT EXISTS ecoguidedb";
+        statement.execute(sqlCreateDatabase);
+
+        // Use the created database
+        String sqlUseDatabase = "USE ecoguidedb";
+        statement.execute(sqlUseDatabase);
+
+        // Create the tables if they do not exist
+        String sqlCreateAnimalsTable = "CREATE TABLE IF NOT EXISTS animals (" +
+                "animal_id INT PRIMARY KEY, " +
+                "name CHAR(30), " +
+                "scientific_name VARCHAR(50), " +
+                "status CHAR(30), " +
+                "population INT, " +
+                "diet VARCHAR(50), " +
+                "active VARCHAR(50), " +
+                "intro TEXT NULL, " +
+                "x_position DOUBLE, " +
+                "y_position DOUBLE)";
+        statement.execute(sqlCreateAnimalsTable);
+
+        String sqlCreatePlantsTable = "CREATE TABLE IF NOT EXISTS plants (" +
+                "plant_id INT PRIMARY KEY, " +
+                "name CHAR(20), " +
+                "scientific_name VARCHAR(50), " +
+                "status CHAR(20), " +
+                "population INT, " +
+                "habitate VARCHAR(20), " +
+                "expansion VARCHAR(20), " +
+                "root_system VARCHAR(20), " +
+                "intro TEXT NULL, " +
+                "x_position DOUBLE, " +
+                "y_position DOUBLE)";
+        statement.execute(sqlCreatePlantsTable);
+
+        // Add more table creation statements as needed
+
+        String sqlCreatePlantsImageTable = "CREATE TABLE IF NOT EXISTS plant_images (" +
+                "plant_pid INT PRIMARY KEY, " +
+                "plant_name CHAR(30), " +
+                "image_data LONGBLOB NULL, " +
+                "plant_fid INT)";
+
+        statement.execute(sqlCreatePlantsImageTable);
+
+        String sqlCreateAnimalsImageTable = "CREATE TABLE IF NOT EXISTS animal_images (" +
+                "animal_pid INT PRIMARY KEY, " +
+                "animal_name CHAR(30), " +
+                "image_data LONGBLOB NULL, " +
+                "animal_fid INT)";
+
+        statement.execute(sqlCreateAnimalsImageTable);
+
+        return connection;
     }
 
     public static ObservableList<Modeltable_animals> getDatausers() throws SQLException {
