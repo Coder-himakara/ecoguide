@@ -10,14 +10,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -72,16 +73,43 @@ public class AdminHomeDashboardController implements Initializable {
     @FXML
     private Button LogoutBtn;
 
+
+
+    @FXML
+    private TableColumn<?, ?> col_plant_id;
+
+    
+    @FXML
+    private ImageView profile_pic;
+    @FXML
+    private Label my_name;
+    private String adminId;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        adminId = AppState.getInstance().getAdminId();
         updateTabel();
+
         updateTabelPlants();
+
+        retrieveAndSetProfileImage();
+        // Create a Circle object
+        double radius = 72.0; // adjust the radius as needed
+        Circle clip = new Circle(radius, radius, radius);
+
+        // Set the Circle as the clip of the ImageView
+        profile_pic.setClip(clip);
+
+
     }
 
+    public void setAdminId(String adminId) {
+        this.adminId = adminId;
+    }
     public void updateTabel() {
 
         col_animal_id.setCellValueFactory(data -> data.getValue().idProperty().asObject());
@@ -135,7 +163,11 @@ public class AdminHomeDashboardController implements Initializable {
     @FXML
     private void admin_profile_update(ActionEvent event) throws IOException {
         Stage sign_in_stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("Admin_profile_update.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_profile_update.fxml"));
+        Parent root = loader.load();
+        Admin_profile_updateController controller = loader.getController();
+        controller.setAdminId(adminId);
+
         Scene scene = new Scene(root);
         //scene.getStylesheets().add("/styles/admin_animal_add.css");
         sign_in_stage.setScene(scene);
@@ -323,6 +355,7 @@ public class AdminHomeDashboardController implements Initializable {
         }
     }
 
+
     @FXML
     void goto_updatePage_Plant(ActionEvent event) {
         if (selected_id2 != 0) {
@@ -378,6 +411,33 @@ public class AdminHomeDashboardController implements Initializable {
             Logger.getLogger(AdminHomeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    private void retrieveAndSetProfileImage() {
+        try (Connection connection = DbConfig.getConnection()) {
+            String selectQuery = "SELECT `img_data`,`last_name` FROM `new_admin` WHERE id_no = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
+            preparedStatement.setString(1, adminId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                // Get the image data from the database
+                String last_name = resultSet.getString("last_name");
+                Blob blob = resultSet.getBlob("img_data");
+                byte[] imageBytes = blob.getBytes(1, (int) blob.length());
+
+                // Create an Image object from the byte array
+                Image image = new Image(new ByteArrayInputStream(imageBytes));
+                profile_pic.setImage(image);
+                my_name.setText(last_name);
+
+            } else {
+                System.out.println("No image found in the database for this user.");
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+
 }
 
 
