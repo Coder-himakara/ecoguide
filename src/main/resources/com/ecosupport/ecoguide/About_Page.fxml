@@ -9,7 +9,7 @@
     <children>
         <ImageView fitHeight="680.0" fitWidth="980.0" pickOnBounds="true">
             <image>
-                <Image url="@../../../../../../../images/About_image.jpg" />
+                <Image url="@images/About_image.jpg" />
             </image>
         </ImageView>
         <ImageView fitHeight="54.0" fitWidth="968.0" layoutX="22.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
@@ -22,7 +22,7 @@
             <children>
                 <ImageView fitHeight="445.0" fitWidth="803.0" layoutX="4.0" layoutY="-3.0" pickOnBounds="true">
                     <image>
-                        <Image url="@../../../../../../../images/About_image.jpg" />
+                        <Image url="@images/About_image.jpg" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="445.0" fitWidth="797.0" layoutX="7.0" opacity="0.64" pickOnBounds="true">
