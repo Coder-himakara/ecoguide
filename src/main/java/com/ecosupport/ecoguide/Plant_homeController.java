@@ -72,7 +72,11 @@ public class Plant_homeController implements Initializable {
         scientific_name.setCellValueFactory(new PropertyValueFactory<>("scientific_name"));
         population.setCellValueFactory(new PropertyValueFactory<>("population"));
 
-        oblists = DbConfig_Plant.getDataPlants();
+        try {
+            oblists = DbConfig.getDatausersPlants();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         plantTable.setItems(oblists);
     }
