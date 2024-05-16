@@ -1,5 +1,8 @@
 package com.ecosupport.ecoguide;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.property.IntegerProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,11 +17,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -72,8 +78,12 @@ public class AdminHomeDashboardController implements Initializable {
     private Button homeBtn;
     @FXML
     private Button LogoutBtn;
-
-    
+    @FXML
+    private Label animalCountLabel;
+    @FXML
+    private Label plantCountLabel;
+    @FXML
+    private Label timeLabel;
     @FXML
     private ImageView profile_pic;
     @FXML
@@ -98,9 +108,24 @@ public class AdminHomeDashboardController implements Initializable {
 
         // Set the Circle as the clip of the ImageView
         profile_pic.setClip(clip);
+        setAnimalCount();
+        setPlantCount();
 
+        setCurrentTime();
+
+        // Create a Timeline to update the time every second
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> setCurrentTime()));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
 
     }
+
+    private void setCurrentTime() {
+        LocalTime currentTime = LocalTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        timeLabel.setText(currentTime.format(formatter));
+    }
+
 
     public void setAdminId(String adminId) {
         this.adminId = adminId;
@@ -155,6 +180,7 @@ public class AdminHomeDashboardController implements Initializable {
         }
     }
 
+    //Enter Admin Profile Update Page
     @FXML
     private void admin_profile_update(ActionEvent event) throws IOException {
         Stage sign_in_stage = new Stage();
@@ -179,6 +205,7 @@ public class AdminHomeDashboardController implements Initializable {
         //System.out.println("Name is " + selected_id);
     }
 
+    //View Selected Animal Details
     @FXML
     private void view_animal(ActionEvent event) throws IOException {
         if (selected_id != 0) {
@@ -214,6 +241,7 @@ public class AdminHomeDashboardController implements Initializable {
 
     }
 
+    //View Selected Plant Details
     @FXML
     private void view_plant(ActionEvent event) throws IOException {
         if (selected_id2 != 0) {
@@ -426,6 +454,34 @@ public class AdminHomeDashboardController implements Initializable {
 
             } else {
                 System.out.println("No image found in the database for this user.");
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    private void setAnimalCount() {
+        try (Connection connection = DbConfig.getConnection()) {
+            String countQuery = "SELECT COUNT(*) FROM animals";
+            PreparedStatement preparedStatement = connection.prepareStatement(countQuery);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                animalCountLabel.setText(String.valueOf(count));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    private void setPlantCount() {
+        try (Connection connection = DbConfig.getConnection()) {
+            String countQuery = "SELECT COUNT(*) FROM plants";
+            PreparedStatement preparedStatement = connection.prepareStatement(countQuery);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                plantCountLabel.setText(String.valueOf(count));
             }
         } catch (SQLException e) {
             System.out.println(e);
