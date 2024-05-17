@@ -1,20 +1,25 @@
 package com.ecosupport.ecoguide;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -33,6 +38,7 @@ public class Animal_homeController implements Initializable {
     ObservableList<Modeltable_animals> oblist;
     ObservableList<Modeltable_animals> datalist;
     int index = -1;
+    int id = 0 ;
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
@@ -63,9 +69,7 @@ public class Animal_homeController implements Initializable {
     private TableColumn<Modeltable_animals, Integer> population;
 
     @FXML
-    void viewAnimalData(ActionEvent event) {
-
-    }
+    private Button viewData;
 
     @FXML
     public void updateTabel() {
@@ -117,6 +121,63 @@ public class Animal_homeController implements Initializable {
         }
         stackpane.getChildren().add(canvas);
 
+    }
+
+    private static IntegerProperty getIdForRowNumber(ObservableList<Modeltable_animals> dataList, int rowNumber) {
+        if (rowNumber >= 0 && rowNumber <= dataList.size()) {
+            Modeltable_animals rowData = dataList.get(rowNumber); // Row numbers are 1-indexed, so subtract 1
+            return rowData.idProperty(); // Assuming DataModel has a idProperty() method
+        } else {
+            System.out.println("Invalid row number: " + rowNumber);
+            IntegerProperty x = new SimpleIntegerProperty(-1);
+            return x; // Or handle invalid row numbers in some other way
+        }
+    }
+
+    @FXML
+    void viewAnimalData(ActionEvent event) {
+        //plantTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        int index = table.getSelectionModel().getFocusedIndex();
+        int id = getIdForRowNumber(oblist, index).get();
+        //System.out.println("ID for row number " + index + ": " + id);
+        //System.out.println(name.getCellData(index).toString());
+
+
+        if (id != 0) {
+            Stage sign_in_stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Animal_user_view.fxml"));
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            // Get the controller of the Animal_user_view.fxml
+            Animal_user_viewController controller = loader.getController();
+
+            // Pass the selected variable to the controller
+            controller.setSelectedAttribute(id);
+
+            Scene scene = new Scene(root);
+            //scene.getStylesheets().add("/styles/plant_user_view.css");
+
+            sign_in_stage.setScene(scene);
+            Stage stage = (Stage) viewData.getScene().getWindow();
+            stage.close();
+            sign_in_stage.show();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.OK);
+            alert.setHeaderText("No Selection");
+            alert.setContentText("Select an plant to view");
+            Optional<ButtonType> result = alert.showAndWait();
+            result.ifPresent(res -> {
+                if (res == ButtonType.OK) {
+
+                    System.out.println("OK pressed");
+                }
+            });
+        }
     }
 
 

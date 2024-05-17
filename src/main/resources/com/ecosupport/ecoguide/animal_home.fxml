@@ -68,7 +68,7 @@
                                         </TableView>
                                     </content>
                                 </ScrollPane>
-                                <Button id="animal_view" layoutX="813.0" layoutY="1077.0" mnemonicParsing="false" onAction="#viewAnimalData" prefHeight="47.0" prefWidth="75.0" style="-fx-background-color: green; -fx-font-size: 20;" text="View" />
+                                <Button id="animal_view" fx:id="viewData" layoutX="813.0" layoutY="1077.0" mnemonicParsing="false" onAction="#viewAnimalData" prefHeight="47.0" prefWidth="75.0" style="-fx-background-color: green; -fx-font-size: 20;" text="View" />
                         <Label fx:id="animal_species" layoutX="126.0" layoutY="815.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: green; -fx-border-radius: 8; -fx-border-width: 5; -fx-font-size: 50;" />
                         <Label fx:id="endangered_species" layoutX="471.0" layoutY="818.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: green; -fx-border-radius: 8; -fx-border-width: 5; -fx-font-size: 50;" />
                         <ImageView fx:id="mapView" fitHeight="543.0" fitWidth="974.0" layoutX="5.0" layoutY="1306.0" pickOnBounds="true" preserveRatio="true">
