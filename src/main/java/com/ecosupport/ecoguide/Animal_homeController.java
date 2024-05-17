@@ -87,9 +87,7 @@ public class Animal_homeController implements Initializable {
         }
 
         table.setItems(oblist);
-        /*int rowCount = oblist.size();
-        animal_species.setText(Integer.toString(rowCount));
-        */
+
     }
 
     public void mapMarking(){
@@ -180,6 +178,12 @@ public class Animal_homeController implements Initializable {
         }
     }
 
+    public void species(){
+        int rowCount = oblist.size();
+        animal_species.setText(Integer.toString(rowCount));
+
+    }
+
 
     @FXML
     void initialize() {
@@ -191,6 +195,7 @@ public class Animal_homeController implements Initializable {
         //Todo
         updateTabel();
         mapMarking();
+        species();
     }
 }
 

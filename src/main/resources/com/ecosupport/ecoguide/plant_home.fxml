@@ -71,8 +71,8 @@
                                     </content>
                                 </ScrollPane>
                                 <Button id="plant_view" fx:id="showPlant" layoutX="813.0" layoutY="1077.0" mnemonicParsing="false" onAction="#viewData" prefHeight="47.0" prefWidth="75.0" style="-fx-background-color: green; -fx-font-size: 20;" text="View" />
-                        <Label fx:id="plant_species" layoutX="125.0" layoutY="812.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: green; -fx-border-width: 5; -fx-border-radius: 8; -fx-font-size: 50;" />
-                        <Label fx:id="endangered_species" layoutX="468.0" layoutY="812.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: green; -fx-border-width: 5; -fx-border-radius: 8; -fx-font-size: 50;" />
+                        <Label fx:id="plant_species" alignment="CENTER" layoutX="125.0" layoutY="812.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: green; -fx-border-width: 5; -fx-border-radius: 8; -fx-font-size: 50;" />
+                        <Label fx:id="endangered_species" alignment="CENTER" layoutX="468.0" layoutY="812.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: green; -fx-border-width: 5; -fx-border-radius: 8; -fx-font-size: 50;" />
                         <ImageView fx:id="mapView" fitHeight="543.0" fitWidth="974.0" layoutX="14.0" layoutY="1278.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/animal_add/animal_map.jpg" />

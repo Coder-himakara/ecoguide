@@ -175,6 +175,12 @@ public class Plant_homeController implements Initializable {
         }
     }
 
+    public void species(){
+        int rowCount = oblists.size();
+        plant_species.setText(Integer.toString(rowCount));
+        System.out.println(rowCount);
+    }
+
     public void updateTable(){
 
     }
@@ -188,5 +194,6 @@ public class Plant_homeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         update_planttable();
         mapMarking();
+        species();
     }
 }
