@@ -22,19 +22,19 @@
                 <Font size="20.0" />
             </font>
         </Text>
-        <TextField id="feedback_name" layoutX="445.0" layoutY="295.0" prefHeight="33.0" prefWidth="256.0" promptText="Jhone Dave" />
+        <TextField id="feedback_name" fx:id="fb_name" layoutX="445.0" layoutY="295.0" prefHeight="33.0" prefWidth="256.0" promptText="Jhone Dave" />
         <Text layoutX="236.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail">
             <font>
                 <Font size="20.0" />
             </font>
         </Text>
-        <TextField id="feedback_mail" layoutX="445.0" layoutY="340.0" prefHeight="33.0" prefWidth="256.0" promptText="example@gmail,com" />
+        <TextField id="feedback_mail" fx:id="fb_email" layoutX="445.0" layoutY="340.0" prefHeight="33.0" prefWidth="256.0" promptText="example@gmail,com" />
         <Text layoutX="235.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Feedback">
             <font>
                 <Font size="20.0" />
             </font>
         </Text>
-        <TextArea id="feedback" layoutX="440.0" layoutY="399.0" prefHeight="140.0" prefWidth="265.0" promptText="Enter your feedback" />
+        <TextArea id="feedback" fx:id="fb" layoutX="440.0" layoutY="399.0" prefHeight="140.0" prefWidth="265.0" promptText="Enter your feedback" />
         <Button id="home" fx:id="home" layoutX="837.0" layoutY="20.0" mnemonicParsing="false" onAction="#goToHome" style="-fx-border-color: green;" text="Home">
             <font>
                 <Font size="18.0" />
@@ -59,7 +59,7 @@
                 <Cursor fx:constant="MOVE" />
             </cursor>
         </Button>
-        <Button id="send" layoutX="236.0" layoutY="489.0" mnemonicParsing="false" onAction="#saveData" style="-fx-background-color: green;" text="Send" textFill="WHITE">
+        <Button id="send" fx:id="sendData" layoutX="236.0" layoutY="489.0" mnemonicParsing="false" onAction="#saveData" style="-fx-background-color: green;" text="Send" textFill="WHITE">
             <font>
                 <Font size="20.0" />
             </font>
