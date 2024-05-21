@@ -1,4 +1,4 @@
-package com.ecosupport.ecoguide;
+/*package com.ecosupport.ecoguide;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,4 +35,4 @@ public class DbConfig_Plant {
         }
         return list;
     }
-}
+}*/

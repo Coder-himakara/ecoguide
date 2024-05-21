@@ -43,12 +43,12 @@
                         <Font size="14.0" />
                     </font>
                 </Text>
-                <Button fx:id="animalBtn1" layoutX="48.0" layoutY="295.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="90.0" styleClass="mainButton" stylesheets="@../styles/HomepageMenuCSS.css" text="Animal">
+                <Button fx:id="animalBtn1" layoutX="48.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToAnimal" prefHeight="29.0" prefWidth="90.0" styleClass="mainButton" stylesheets="@../styles/HomepageMenuCSS.css" text="Animal">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
-                <Button fx:id="plantBtn1" layoutX="207.0" layoutY="295.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="90.0" styleClass="mainButton" stylesheets="@../styles/HomepageMenuCSS.css" text="Plants">
+                <Button fx:id="plantBtn1" layoutX="207.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToPlant" prefHeight="29.0" prefWidth="90.0" styleClass="mainButton" stylesheets="@../styles/HomepageMenuCSS.css" text="Plants">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>

@@ -3,6 +3,7 @@ package com.ecosupport.ecoguide;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -61,5 +62,41 @@ public class Homepage1ControllerwithMenu {
         sidebar.setVisible(false);
         menuCloseBtn.setVisible(false);
         menuBtn.setVisible(true);
+    }
+
+    @FXML
+    void goToAnimal(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("animal_home.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        Stage primary = new Stage();
+        primary.setScene(scene);
+        primary.show();
+    }
+
+    @FXML
+    void goToPlant(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("plant_home.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        Stage primary = new Stage();
+        primary.setScene(scene);
+        primary.show();
     }
 }
