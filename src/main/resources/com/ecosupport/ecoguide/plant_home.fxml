@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -10,11 +11,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecosupport.ecoguide.Plant_homeController">
     <children>
         <BorderPane prefHeight="680.0" prefWidth="980.0">
-            <center>
+         <bottom>
                 <ScrollPane maxWidth="-Infinity" prefHeight="680.0" prefWidth="980.0" BorderPane.alignment="CENTER">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1884.0" prefWidth="980.0">
@@ -53,9 +56,9 @@
                                     <content>
                                         <TableView fx:id="plantTable" prefHeight="314.0" prefWidth="654.0" style="-fx-border-color: black;">
                                             <columns>
-                                                <TableColumn id="name" fx:id="name" prefWidth="271.0" style="-fx-border-color: black;" text="Name" />
-                                                <TableColumn id="Secientific_name" fx:id="scientific_name" minWidth="0.0" prefWidth="381.0" style="-fx-border-color: black; -fx-text-size: 20;" text="Scientific Name" />
-                                                <TableColumn id="select" fx:id="population" prefWidth="200.0" style="-fx-border-color: black;" text="population" />
+                                                <TableColumn id="name" fx:id="name" prefWidth="271.0" text="Name" />
+                                                <TableColumn id="Secientific_name" fx:id="scientific_name" minWidth="0.0" prefWidth="381.0" style="-fx-text-size: 20;" text="Scientific Name" />
+                                                <TableColumn id="select" fx:id="population" prefWidth="200.0" text="population" />
                                             </columns>
                                             <columnResizePolicy>
                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -64,8 +67,8 @@
                                     </content>
                                 </ScrollPane>
                                 <Button id="plant_view" fx:id="showPlant" layoutX="813.0" layoutY="1077.0" mnemonicParsing="false" onAction="#viewData" prefHeight="47.0" prefWidth="75.0" style="-fx-background-color: green; -fx-font-size: 20;" text="View" />
-                        <Label fx:id="plant_species" layoutX="125.0" layoutY="812.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: green; -fx-border-width: 5; -fx-border-radius: 8; -fx-font-size: 50;" />
-                        <Label fx:id="endangered_species" layoutX="468.0" layoutY="812.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: green; -fx-border-width: 5; -fx-border-radius: 8; -fx-font-size: 50;" />
+                        <Label fx:id="plant_species" alignment="CENTER" layoutX="125.0" layoutY="812.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: green; -fx-border-width: 5; -fx-border-radius: 8; -fx-font-size: 50;" />
+                        <Label fx:id="endangered_species" alignment="CENTER" layoutX="468.0" layoutY="812.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: green; -fx-border-width: 5; -fx-border-radius: 8; -fx-font-size: 50;" />
                         <ImageView fx:id="mapView" fitHeight="543.0" fitWidth="974.0" layoutX="14.0" layoutY="1278.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/animal_add/animal_map.jpg" />
@@ -76,14 +79,106 @@
                         </AnchorPane>
                     </content>
                 </ScrollPane>
-            </center>
-            <top>
-                <ImageView fitHeight="120.0" fitWidth="980.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                    <image>
-                        <Image url="@plant_animal_home_image/Group%2014.png" />
-                    </image>
-                </ImageView>
-            </top>
+         </bottom>
+         <top>
+            <AnchorPane prefHeight="81.0" prefWidth="980.0" BorderPane.alignment="CENTER">
+               <children>
+                      <ImageView fitHeight="120.0" fitWidth="980.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@plant_animal_home_image/Group%2014.png" />
+                          </image>
+                      </ImageView>
+                  <ImageView fitHeight="55.0" fitWidth="57.0" layoutX="845.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@plant_animal_home_image/menu%20bar.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="menu" layoutX="839.0" layoutY="16.0" mnemonicParsing="false" onAction="#showMenu" opacity="0.0" prefHeight="49.0" prefWidth="74.0" style="-fx-background-color: white;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </top>
         </BorderPane>
+      <AnchorPane fx:id="Anchorpane_menu" layoutX="638.0" layoutY="80.0" prefHeight="375.0" prefWidth="330.0" visible="false">
+         <children>
+            <ImageView fitHeight="402.0" fitWidth="330.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@feedback_image/Menu%20slide.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="124.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" textAlignment="CENTER" wrappingWidth="82.00000032782555">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button id="home" fx:id="home" layoutX="42.0" layoutY="30.0" mnemonicParsing="false" onAction="#goToHome" opacity="0.0" prefHeight="41.0" prefWidth="246.0" style="-fx-border-color: green;" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Text layoutX="126.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Animal" textAlignment="CENTER" wrappingWidth="82.00000032782555">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button id="animal" fx:id="animal" layoutX="44.0" layoutY="101.0" mnemonicParsing="false" onAction="#goToAnimal" opacity="0.0" prefHeight="52.0" prefWidth="246.0" style="-fx-border-color: green;" text="Animal">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Text layoutX="123.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Feedback" textAlignment="CENTER" wrappingWidth="110.00000032782555">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button id="plant" fx:id="feedback" layoutX="45.0" layoutY="173.0" mnemonicParsing="false" onAction="#goToFeedback" opacity="0.0" prefHeight="52.0" prefWidth="246.0" style="-fx-border-color: green;" text="feedback">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Text layoutX="126.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About" textAlignment="CENTER" wrappingWidth="82.00000032782555">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button fx:id="about" layoutX="43.0" layoutY="245.0" mnemonicParsing="false" onAction="#goToAbout" opacity="0.0" prefHeight="52.0" prefWidth="246.0" text="About">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="68.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@feedback_image/home_icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="68.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@feedback_image/animal_icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="68.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@plant_animal_home_image/feedback_icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="66.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@feedback_image/about.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
