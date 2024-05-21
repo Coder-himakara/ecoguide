@@ -79,6 +79,8 @@ public class AdminHomeDashboardController implements Initializable {
     @FXML
     private Button LogoutBtn;
     @FXML
+    private Button user_feedback;
+    @FXML
     private Label animalCountLabel;
     @FXML
     private Label plantCountLabel;
@@ -316,6 +318,22 @@ public class AdminHomeDashboardController implements Initializable {
         }
     }
 
+    @FXML
+    void goto_user_feedback(ActionEvent event) {
+        try {
+            Stage sign_in_stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("AdminView_UserFeedback.fxml"));
+            Scene scene = new Scene(root);
+            //scene.getStylesheets().add("/styles/HomepageMenuCSS.css");
+            sign_in_stage.setScene(scene);
+            Stage stage = (Stage) user_feedback.getScene().getWindow();
+
+            stage.close();
+            sign_in_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AdminHomeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @FXML
     void logout(ActionEvent event) {

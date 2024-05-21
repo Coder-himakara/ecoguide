@@ -107,4 +107,20 @@ public class DbConfig {
         }
         return list2;
     }
+
+    public static ObservableList<Modeltable_feedback> getDataFeedback() throws SQLException{
+        Connection conn = getConnection();
+        ObservableList<Modeltable_feedback> list3 = FXCollections.observableArrayList();
+        try{
+            PreparedStatement ps = conn.prepareStatement("select * from feedback");
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                list3.add(new Modeltable_feedback(rs.getInt("feedback_id"),rs.getString("name"),rs.getString("email"), rs.getString("feedback"),rs.getString("read_or_not")));
+            }
+        }catch(Exception ex){
+            System.out.println(" not working");
+        }
+        return list3;
+    }
 }
