@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -25,6 +26,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -70,6 +72,109 @@ public class Plant_homeController implements Initializable {
 
     @FXML
     private StackPane stackpane;
+
+    @FXML
+    private AnchorPane Anchorpane_menu;
+
+    @FXML
+    private Button menu;
+
+    @FXML
+    private Button home;
+
+    @FXML
+    private Button animal;
+
+    @FXML
+    private Button feedback;
+
+    @FXML
+    private Button about;
+
+    int show = 0 ;
+
+    @FXML
+    void goToAbout(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("About_Page.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        Stage primary = new Stage();
+        primary.setScene(scene);
+        primary.show();
+    }
+
+    @FXML
+    void goToAnimal(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("animal_home.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        Stage primary = new Stage();
+        primary.setScene(scene);
+        primary.show();
+    }
+
+    @FXML
+    void goToFeedback(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("Custemer_feedback.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        Stage primary = new Stage();
+        primary.setScene(scene);
+        primary.show();
+    }
+
+    @FXML
+    void goToHome(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("HomepageWithMenu.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        Stage primary = new Stage();
+        primary.setScene(scene);
+        primary.show();
+    }
+
+    @FXML
+    void showMenu(ActionEvent event) {
+        if(show == 0){
+            Anchorpane_menu.setVisible(true);
+            show = 1;
+        }else{
+            Anchorpane_menu.setVisible(false);
+            show = 0;
+        }
+    }
 
     public void update_planttable(){
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -179,10 +284,6 @@ public class Plant_homeController implements Initializable {
         int rowCount = oblists.size();
         plant_species.setText(Integer.toString(rowCount));
         System.out.println(rowCount);
-    }
-
-    public void updateTable(){
-
     }
 
     @FXML
