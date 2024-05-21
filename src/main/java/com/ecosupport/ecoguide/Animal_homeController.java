@@ -23,6 +23,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -70,6 +71,109 @@ public class Animal_homeController implements Initializable {
 
     @FXML
     private Button viewData;
+
+    @FXML
+    private Button menu;
+
+    @FXML
+    private AnchorPane Anchor_pane_menu;
+
+    @FXML
+    private Button home;
+
+    @FXML
+    private Button plant;
+
+    @FXML
+    private Button feedback;
+
+    @FXML
+    private Button about;
+
+    int show = 0;
+
+    @FXML
+    void goToAbout(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("About_Page.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        Stage primary = new Stage();
+        primary.setScene(scene);
+        primary.show();
+    }
+
+    @FXML
+    void goToFeedback(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("Custemer_feedback.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        Stage primary = new Stage();
+        primary.setScene(scene);
+        primary.show();
+    }
+
+    @FXML
+    void goToHome(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("HomepageWithMenu.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        Stage primary = new Stage();
+        primary.setScene(scene);
+        primary.show();
+    }
+
+    @FXML
+    void goToPlant(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("plant_home.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        Stage primary = new Stage();
+        primary.setScene(scene);
+        primary.show();
+    }
+
+    @FXML
+    void showMenu(ActionEvent event) {
+        if(show == 0){
+            Anchor_pane_menu.setVisible(true);
+            show = 1 ;
+        }else {
+            Anchor_pane_menu.setVisible(false);
+            show = 0 ;
+        }
+    }
 
     @FXML
     public void updateTabel() {
