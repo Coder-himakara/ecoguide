@@ -286,10 +286,6 @@ public class Plant_homeController implements Initializable {
         System.out.println(rowCount);
     }
 
-    @FXML
-    void initialize() {
-
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
