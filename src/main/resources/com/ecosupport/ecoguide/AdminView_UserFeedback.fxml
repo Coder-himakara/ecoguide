@@ -35,11 +35,11 @@
                 </Label>
             <TableView fx:id="feedback_table" layoutX="65.0" layoutY="112.0" prefHeight="328.0" prefWidth="703.0">
               <columns>
-                <TableColumn fx:id="feedback_id" prefWidth="103.0" text="ID" />
-                  <TableColumn fx:id="username" prefWidth="120.0" text="User's Name" />
-                  <TableColumn fx:id="email" prefWidth="134.0" text="Email Address" />
-                  <TableColumn fx:id="feedback" prefWidth="204.0" text="Feedback" />
-                <TableColumn fx:id="read_or_not" prefWidth="141.0" text="Read/Not" />
+                <TableColumn fx:id="col_feedback_id" prefWidth="103.0" text="ID" />
+                  <TableColumn fx:id="col_name" prefWidth="120.0" text="User's Name" />
+                  <TableColumn fx:id="col_email" prefWidth="134.0" text="Email Address" />
+                  <TableColumn fx:id="col_feedback" prefWidth="204.0" text="Feedback" />
+                <TableColumn fx:id="col_read_or_not" prefWidth="141.0" text="Read/Not" />
               </columns>
             </TableView>
             </children>
