@@ -11,7 +11,7 @@ import java.util.Objects;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminView_UserFeedback.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Custemer_feedback.fxml")));
 
         Scene scene = new Scene(root);
         //scene.getStylesheets().add("/com/ecosupport/styles/HomepageMenuCSS.css");

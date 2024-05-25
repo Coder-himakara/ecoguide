@@ -163,7 +163,7 @@ public class Custemer_feedbackController implements Initializable {
     private void sendDataToDatabase(String name, String E_mail, String feedback) {
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecoguidedb", "root","")) {
             // SQL query to insert data
-            String query = "INSERT INTO feedback (name, Email, feedback) VALUES (?, ?, ?)";
+            String query = "INSERT INTO feedback (name, email, feedback) VALUES (?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, E_mail);
