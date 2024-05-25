@@ -245,7 +245,7 @@ public class Plant_homeController implements Initializable {
 
         if (id != 0) {
             Stage sign_in_stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Plant_user_view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Separate_plant.fxml"));
             Parent root = null;
             try {
                 root = loader.load();
@@ -254,7 +254,7 @@ public class Plant_homeController implements Initializable {
             }
 
             // Get the controller of the Plant_user_view.fxml
-            Plant_user_viewController controller = loader.getController();
+            Separate_plantController controller = loader.getController();
 
             // Pass the selected variable to the controller
             controller.setSelectedAttribute(id);
