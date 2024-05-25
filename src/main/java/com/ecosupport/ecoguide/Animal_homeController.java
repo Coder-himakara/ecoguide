@@ -247,7 +247,7 @@ public class Animal_homeController implements Initializable {
 
         if (id != 0) {
             Stage sign_in_stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Animal_user_view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Separate_animal.fxml"));
             Parent root = null;
             try {
                 root = loader.load();
@@ -256,7 +256,7 @@ public class Animal_homeController implements Initializable {
             }
 
             // Get the controller of the Animal_user_view.fxml
-            Animal_user_viewController controller = loader.getController();
+            Separate_animalController controller = loader.getController();
 
             // Pass the selected variable to the controller
             controller.setSelectedAttribute(id);
