@@ -48,19 +48,19 @@
             <Image url="@feedback_image/menu%20bar.png" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="menu" layoutX="650.0" layoutY="66.0" prefHeight="375.0" prefWidth="330.0" visible="false">
+      <AnchorPane fx:id="menu" layoutX="610.0" layoutY="68.0" prefHeight="610.0" prefWidth="370.0" style="-fx-background-color: black;" visible="false">
          <children>
-            <ImageView fitHeight="402.0" fitWidth="330.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="610.0" fitWidth="381.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@feedback_image/Menu%20slide.png" />
                </image>
             </ImageView>
-            <Text layoutX="124.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" textAlignment="CENTER" wrappingWidth="82.00000032782555">
+            <Text layoutX="144.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" textAlignment="CENTER" wrappingWidth="82.00000032782555">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-              <Button id="home" fx:id="home" layoutX="42.0" layoutY="30.0" mnemonicParsing="false" onAction="#goToHome" opacity="0.0" prefHeight="41.0" prefWidth="246.0" style="-fx-border-color: green;" wrapText="true">
+              <Button id="home" fx:id="home" layoutX="50.0" layoutY="52.0" mnemonicParsing="false" onAction="#goToHome" opacity="0.0" prefHeight="70.0" prefWidth="270.0" style="-fx-border-color: green;" wrapText="true">
                   <font>
                       <Font name="System Bold" size="23.0" />
                   </font>
@@ -68,12 +68,12 @@
                       <Cursor fx:constant="HAND" />
                   </cursor>
               </Button>
-            <Text layoutX="126.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Animal" textAlignment="CENTER" wrappingWidth="82.00000032782555">
+            <Text layoutX="144.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Animal" textAlignment="CENTER" wrappingWidth="82.00000032782555">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-              <Button id="animal" fx:id="animal" layoutX="44.0" layoutY="101.0" mnemonicParsing="false" onAction="#goToAnimal" opacity="0.0" prefHeight="52.0" prefWidth="246.0" style="-fx-border-color: green;" text="Animal">
+              <Button id="animal" fx:id="animal" layoutX="50.0" layoutY="177.0" mnemonicParsing="false" onAction="#goToAnimal" opacity="0.0" prefHeight="70.0" prefWidth="270.0" style="-fx-border-color: green;" text="Animal">
                   <font>
                       <Font size="18.0" />
                   </font>
@@ -81,12 +81,12 @@
                       <Cursor fx:constant="HAND" />
                   </cursor>
               </Button>
-            <Text layoutX="126.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Plant" textAlignment="CENTER" wrappingWidth="82.00000032782555">
+            <Text layoutX="144.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Plant" textAlignment="CENTER" wrappingWidth="82.00000032782555">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-              <Button id="plant" fx:id="plant" layoutX="44.0" layoutY="172.0" mnemonicParsing="false" onAction="#goToPlant" opacity="0.0" prefHeight="52.0" prefWidth="246.0" style="-fx-border-color: green;" text="Plant">
+              <Button id="plant" fx:id="plant" layoutX="50.0" layoutY="296.0" mnemonicParsing="false" onAction="#goToPlant" opacity="0.0" prefHeight="70.0" prefWidth="270.0" style="-fx-border-color: green;" text="Plant">
                   <font>
                       <Font size="18.0" />
                   </font>
@@ -94,32 +94,32 @@
                       <Cursor fx:constant="HAND" />
                   </cursor>
               </Button>
-            <Text layoutX="126.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About" textAlignment="CENTER" wrappingWidth="82.00000032782555">
+            <Text layoutX="144.0" layoutY="458.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About" textAlignment="CENTER" wrappingWidth="82.00000032782555">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-            <Button fx:id="about" layoutX="43.0" layoutY="245.0" mnemonicParsing="false" onAction="#goToAbout" opacity="0.0" prefHeight="52.0" prefWidth="246.0" text="About">
+            <Button fx:id="about" layoutX="50.0" layoutY="413.0" mnemonicParsing="false" onAction="#goToAbout" opacity="0.0" prefHeight="70.0" prefWidth="270.0" text="About">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="68.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="68.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@feedback_image/home_icon.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="68.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="68.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@feedback_image/animal_icon.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="68.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="68.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@feedback_image/tree_icon.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="66.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="68.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@feedback_image/about.png" />
                </image>
