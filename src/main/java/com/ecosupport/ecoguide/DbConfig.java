@@ -51,8 +51,6 @@ public class DbConfig {
                 "y_position DOUBLE)";
         statement.execute(sqlCreatePlantsTable);
 
-        // Add more table creation statements as needed
-
         String sqlCreatePlantsImageTable = "CREATE TABLE IF NOT EXISTS plant_images (" +
                 "plant_pid INT PRIMARY KEY, " +
                 "plant_name CHAR(30), " +
@@ -68,6 +66,29 @@ public class DbConfig {
                 "animal_fid INT)";
 
         statement.execute(sqlCreateAnimalsImageTable);
+
+        String sqlCreateFeedbackTable = "CREATE TABLE IF NOT EXISTS feedback (" +
+                "feedback_id INT PRIMARY KEY, " +
+                "name VARCHAR(30), " +
+                "email VARCHAR(50), " +
+                "feedback TEXT,"
+                + "read_or_not VARCHAR(5))";
+
+        statement.execute(sqlCreateFeedbackTable);
+
+        String sqlCreateNewAdminTable = "CREATE TABLE IF NOT EXISTS new_admin (" +
+                "id_no  VARCHAR(20) PRIMARY KEY, " +
+                "first_name VARCHAR(30), " +
+                "last_name VARCHAR(30), " +
+                "email VARCHAR(50), " +
+                "username VARCHAR(30), " +
+                "password VARCHAR(30), " +
+                "phone_no VARCHAR(30) NULL, " +
+                "job_role VARCHAR(30) NULL, " +
+                "img_data LONGBLOB NULL)";
+
+
+        statement.execute(sqlCreateNewAdminTable);
 
         return connection;
     }
