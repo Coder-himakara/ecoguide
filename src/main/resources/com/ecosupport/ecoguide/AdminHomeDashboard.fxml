@@ -69,6 +69,11 @@
                                         <Font name="System Bold" size="13.0" />
                                     </font>
                                 </Label>
+                        <Label fx:id="feedbackCountLabel" alignment="CENTER" contentDisplay="RIGHT" layoutX="62.0" layoutY="50.0" prefHeight="30.0" prefWidth="81.0" text="Label" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Bold" size="15.0" />
+                           </font>
+                        </Label>
                             </children>
                         </AnchorPane>
 

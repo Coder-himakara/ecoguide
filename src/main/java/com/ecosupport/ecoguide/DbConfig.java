@@ -112,7 +112,7 @@ public class DbConfig {
         Connection conn = getConnection();
         ObservableList<Modeltable_feedback> list3 = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = conn.prepareStatement("select * from feedback");
+            PreparedStatement ps = conn.prepareStatement("select * from feedback where read_or_not = 'No'");
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()){

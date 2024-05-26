@@ -85,6 +85,8 @@ public class AdminHomeDashboardController implements Initializable {
     @FXML
     private Label plantCountLabel;
     @FXML
+    private Label feedbackCountLabel;
+    @FXML
     private Label timeLabel;
     @FXML
     private ImageView profile_pic;
@@ -112,7 +114,7 @@ public class AdminHomeDashboardController implements Initializable {
         profile_pic.setClip(clip);
         setAnimalCount();
         setPlantCount();
-
+        setFeedbackCount();
         setCurrentTime();
 
         // Create a Timeline to update the time every second
@@ -506,6 +508,19 @@ public class AdminHomeDashboardController implements Initializable {
         }
     }
 
+    private void setFeedbackCount() {
+        try (Connection connection = DbConfig.getConnection()) {
+            String countQuery = "SELECT COUNT(*) FROM feedback where read_or_not='No'";
+            PreparedStatement preparedStatement = connection.prepareStatement(countQuery);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                feedbackCountLabel.setText(String.valueOf(count));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 
 }
 
