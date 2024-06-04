@@ -221,6 +221,13 @@ public class Admin_Plant_UpdateController extends Plant_super_controller impleme
 
     @FXML
     void reset_all(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
+        alert.setHeaderText("Reset Confirmation");
+        alert.setContentText("Are you sure you want to reset all fields?");
 
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.YES) {
+            setPlantData(selected_id2);
+        }
     }
 }
