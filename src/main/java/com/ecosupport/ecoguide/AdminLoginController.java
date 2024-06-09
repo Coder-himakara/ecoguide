@@ -86,20 +86,17 @@ public class AdminLoginController {
                     Stage sign_in_stage = (Stage) loginBtn.getScene().getWindow();
                     // Show the loading screen
                     Handle_Transitions transitions = new Handle_Transitions();//create object of the class Handle_Transitions
-                    transitions.switchSceneWithLoading("AdminHomeDashboard.fxml",sign_in_stage);
+                    transitions.showLoadingScreen(sign_in_stage);
 
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminHomeDashboard.fxml"));
-                        Parent root = loader.load();
-                        AdminHomeDashboardController controller = loader.getController();
-                        controller.setAdminId(admin_id.getText());
+                    // Load the actual scene with data
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminHomeDashboard.fxml"));
+                    Parent root = loader.load();
+                    AdminHomeDashboardController controller = loader.getController();
+                    controller.setAdminId(admin_id.getText());
+                    Scene scene = new Scene(root);
 
-                        Scene scene = new Scene(root);
-                        sign_in_stage.setScene(scene);
-                        sign_in_stage.show();
-                    } catch (IOException ex) {
-                        Logger.getLogger(AdminLoginController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    // Switch to the actual scene after the loading screen
+                    transitions.switchSceneWithLoading(scene, sign_in_stage);
 
                 }
                 else{

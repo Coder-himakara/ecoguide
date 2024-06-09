@@ -22,43 +22,27 @@ public class Handle_Transitions {
         }
     }
 
-    public void switchSceneWithLoading(String fxmlFile, Stage primaryStage) {
-
-        if (fxmlFile == null) {
-            System.out.println("fxmlFile is null");
+    public void switchSceneWithLoading(Scene newScene, Stage primaryStage) {
+        if (newScene == null) {
+            System.out.println("newScene is null");
             return;
         }
         if (primaryStage == null) {
             System.out.println("primaryStage is null");
             return;
         }
-        showLoadingScreen(primaryStage);
 
-        // Get the controller of the loading screen
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("LoadingScreen.fxml"));
-        try {
-            Parent loadingRoot = loader.load();
-            LoadingScreenController loadingController = loader.getController();
-
-            Scene loadingScene = new Scene(loadingRoot);
-            primaryStage.setScene(loadingScene);
-
-            // Simulate loading
-            new Thread(() -> {
-                try {
-                    Thread.sleep(2000); // Simulate loading time
-                    FXMLLoader newLoader = new FXMLLoader(getClass().getResource(fxmlFile));
-                    Parent newRoot = newLoader.load();
-                    Platform.runLater(() -> {
-                        primaryStage.setScene(new Scene(newRoot));
-                    });
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }).start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // Simulate loading
+        new Thread(() -> {
+            try {
+                Thread.sleep(2000); // Simulate loading time
+                Platform.runLater(() -> {
+                    primaryStage.setScene(newScene);
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 }
 

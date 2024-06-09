@@ -187,18 +187,22 @@ public class AdminHomeDashboardController implements Initializable {
     //Enter Admin Profile Update Page
     @FXML
     private void admin_profile_update(ActionEvent event) throws IOException {
-        Stage sign_in_stage = new Stage();
+        // Initialize stage
+        Stage sign_in_stage = (Stage) profile_update_btn.getScene().getWindow();
+
+        // Show the loading screen
+        Handle_Transitions transitions = new Handle_Transitions();
+        transitions.showLoadingScreen(sign_in_stage);
+
+        // Load the actual scene with data
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_profile_update.fxml"));
         Parent root = loader.load();
         Admin_profile_updateController controller = loader.getController();
-        controller.setAdminId(adminId);
-
+        controller.setAdminId(this.adminId);
         Scene scene = new Scene(root);
-        //scene.getStylesheets().add("/styles/admin_animal_add.css");
-        sign_in_stage.setScene(scene);
-        Stage stage = (Stage) profile_update_btn.getScene().getWindow();
-        stage.close();
-        sign_in_stage.show();
+
+        // Switch to the actual scene after the loading screen
+        transitions.switchSceneWithLoading(scene, sign_in_stage);
     }
 
 
