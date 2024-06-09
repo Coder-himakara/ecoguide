@@ -82,9 +82,13 @@ public class AdminLoginController {
             else{
                 if(result.next()){
                     AppState.getInstance().setAdminId(admin_id.getText());
-                    try {
+                    // Initialize stage
+                    Stage sign_in_stage = (Stage) loginBtn.getScene().getWindow();
+                    // Show the loading screen
+                    Handle_Transitions transitions = new Handle_Transitions();//create object of the class Handle_Transitions
+                    transitions.switchSceneWithLoading("AdminHomeDashboard.fxml",sign_in_stage);
 
-                        Stage sign_in_stage = new Stage();
+                    try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminHomeDashboard.fxml"));
                         Parent root = loader.load();
                         AdminHomeDashboardController controller = loader.getController();
@@ -92,8 +96,6 @@ public class AdminLoginController {
 
                         Scene scene = new Scene(root);
                         sign_in_stage.setScene(scene);
-                        Stage stage = (Stage) loginBtn.getScene().getWindow();
-                        stage.close();
                         sign_in_stage.show();
                     } catch (IOException ex) {
                         Logger.getLogger(AdminLoginController.class.getName()).log(Level.SEVERE, null, ex);
