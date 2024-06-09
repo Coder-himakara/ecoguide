@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,15 +25,10 @@
                             <children>
                                 <ImageView fitHeight="709.0" fitWidth="980.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@plant_animal_home_image/Group%2015_.png" />
+                                        <Image url="@images/plant_home.jpg" />
                                     </image>
                                 </ImageView>
-                                <ImageView fitHeight="157.0" fitWidth="877.0" layoutX="56.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@plant_animal_home_image/Welcome%20para_.png" />
-                                    </image>
-                                </ImageView>
-                                <ImageView fitHeight="259.0" fitWidth="920.0" layoutX="30.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="259.0" fitWidth="920.0" layoutX="20.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@plant_animal_home_image/Guideline%20list.png" />
                                     </image>
@@ -75,6 +71,40 @@
                            </image>
                         </ImageView>
                         <StackPane fx:id="stackpane" layoutX="14.0" layoutY="1278.0" prefHeight="542.0" prefWidth="964.0" />
+                        <Label fx:id="gate" layoutX="713.0" layoutY="193.0" text="Botanical Wonders&quot;" textFill="WHITE">
+                           <font>
+                              <Font name="Bernard MT Condensed" size="26.0" />
+                           </font>
+                           <effect>
+                              <Reflection bottomOpacity="0.06" fraction="0.59" topOpacity="0.21" />
+                           </effect>
+                        </Label>
+                        <Label layoutX="64.0" layoutY="131.0" text="Plant Home" textFill="WHITE">
+                           <font>
+                              <Font name="Rockwell Bold" size="64.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="gate1" layoutX="695.0" layoutY="121.0" text="&quot;Discover the " textFill="WHITE">
+                           <font>
+                              <Font name="Bernard MT Condensed" size="26.0" />
+                           </font>
+                           <effect>
+                              <Reflection fraction="0.54" topOpacity="0.18" />
+                           </effect>
+                        </Label>
+                        <Label fx:id="gate2" layoutX="664.0" layoutY="154.0" text="Enchanting World of" textFill="WHITE">
+                           <font>
+                              <Font name="Bernard MT Condensed" size="26.0" />
+                           </font>
+                           <effect>
+                              <Reflection fraction="0.54" topOpacity="0.18" />
+                           </effect>
+                        </Label>
+                        <Label layoutX="103.0" layoutY="59.0" text="Welcome to" textFill="WHITE">
+                           <font>
+                              <Font name="Rockwell Bold" size="64.0" />
+                           </font>
+                        </Label>
                             </children>
                         </AnchorPane>
                     </content>
