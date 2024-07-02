@@ -187,18 +187,22 @@ public class AdminHomeDashboardController implements Initializable {
     //Enter Admin Profile Update Page
     @FXML
     private void admin_profile_update(ActionEvent event) throws IOException {
-        Stage sign_in_stage = new Stage();
+        // Initialize stage
+        Stage sign_in_stage = (Stage) profile_update_btn.getScene().getWindow();
+
+        // Show the loading screen
+        Handle_Transitions transitions = new Handle_Transitions();
+        transitions.showLoadingScreen(sign_in_stage);
+
+        // Load the actual scene with data
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_profile_update.fxml"));
         Parent root = loader.load();
         Admin_profile_updateController controller = loader.getController();
-        controller.setAdminId(adminId);
-
+        controller.setAdminId(this.adminId);
         Scene scene = new Scene(root);
-        //scene.getStylesheets().add("/styles/admin_animal_add.css");
-        sign_in_stage.setScene(scene);
-        Stage stage = (Stage) profile_update_btn.getScene().getWindow();
-        stage.close();
-        sign_in_stage.show();
+
+        // Switch to the actual scene after the loading screen
+        transitions.switchSceneWithLoading(scene, sign_in_stage);
     }
 
 
@@ -305,36 +309,47 @@ public class AdminHomeDashboardController implements Initializable {
 
     @FXML
     void backToHome(ActionEvent event) {
-        try {
-            Stage sign_in_stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("HomepageWithMenu.fxml"));
-            Scene scene = new Scene(root);
-            //scene.getStylesheets().add("/styles/HomepageMenuCSS.css");
-            sign_in_stage.setScene(scene);
-            Stage stage = (Stage) homeBtn.getScene().getWindow();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Go back to Home");
+        alert.setContentText("Are you sure you want to go back to the home page?");
 
-            stage.close();
-            sign_in_stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(AdminHomeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            try {
+                Stage sign_in_stage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("HomepageWithMenu.fxml"));
+                Scene scene = new Scene(root);
+                sign_in_stage.setScene(scene);
+                Stage stage = (Stage) homeBtn.getScene().getWindow();
+                stage.close();
+                sign_in_stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(AdminHomeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            // User chose CANCEL or closed the dialog
+            alert.close();
         }
     }
 
     @FXML
-    void goto_user_feedback(ActionEvent event) {
-        try {
-            Stage sign_in_stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("AdminView_UserFeedback.fxml"));
-            Scene scene = new Scene(root);
-            //scene.getStylesheets().add("/styles/HomepageMenuCSS.css");
-            sign_in_stage.setScene(scene);
-            Stage stage = (Stage) user_feedback.getScene().getWindow();
+    void goto_user_feedback(ActionEvent event) throws IOException {
+        // Initialize stage
+        Stage sign_in_stage = (Stage) user_feedback.getScene().getWindow();
+        // Show the loading screen
+        Handle_Transitions transitions = new Handle_Transitions();//create object of the class Handle_Transitions
+        transitions.showLoadingScreen(sign_in_stage);
 
-            stage.close();
-            sign_in_stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(AdminHomeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // Load the actual scene with data
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminView_UserFeedback.fxml"));
+        Parent root = loader.load();
+        AdminView_UserFeedback controller = loader.getController();
+        Scene scene = new Scene(root);
+
+        // Switch to the actual scene after the loading screen
+        transitions.switchSceneWithLoading(scene, sign_in_stage);
+//
     }
 
     @FXML

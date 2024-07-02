@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="580.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecosupport.ecoguide.LoadingScreenController">
+   <children>
+      <ImageView fitHeight="580.0" fitWidth="880.0" pickOnBounds="true">
+         <image>
+            <Image url="@images/loadScreenBG.jpg" />
+         </image>
+      </ImageView>
+      <ProgressBar layoutX="610.0" layoutY="514.0" prefHeight="21.0" prefWidth="200.0" progress="0.0" />
+      <Label layoutX="611.0" layoutY="478.0" text="Loading..." textFill="#eeebeb">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Label>
+      <Text fill="#fff6f6" layoutX="416.0" layoutY="65.0" stroke="#f5e8e8" strokeType="OUTSIDE" strokeWidth="0.0" text="“In every walk with nature, one receives far more than he seeks.” - John Muir" textAlignment="CENTER" wrappingWidth="382.6708984375">
+         <font>
+            <Font name="Britannic Bold" size="41.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

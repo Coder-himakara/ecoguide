@@ -78,12 +78,49 @@ public class Admin_profile_updateController implements Initializable {
 
     @FXML
     void password_update(ActionEvent event) {
+        if (!new_pass.getText().equals(retype_pass.getText())) {
+            // Show an error message if the passwords do not match
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Password Mismatch");
+            alert.setContentText("New password and retype password do not match.");
+            alert.showAndWait();
+            return;
+        }
 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.OK, ButtonType.CANCEL);
+        alert.setHeaderText("Are you sure?");
+        alert.setContentText("Do you want to update the password?");
+
+        String sql = "UPDATE `new_admin` SET password = ? WHERE id_no = ?";
+
+        Optional<ButtonType> result = alert.showAndWait();
+        result.ifPresent(res -> {
+            if (res == ButtonType.OK) {
+                try (Connection conn = DbConfig.getConnection();
+                     PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                    pstmt.setString(1, new_pass.getText());
+                    pstmt.setString(2, adminId);
+                    pstmt.executeUpdate();
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+                System.out.println("OK pressed");
+            } else if (res == ButtonType.CANCEL) {
+                System.out.println("Canceled");
+            }
+        });
     }
 
     @FXML
     void reset_original(ActionEvent event) {
-        setAdmin_data(adminId);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
+        alert.setHeaderText("Reset Confirmation");
+        alert.setContentText("Are you sure you want to reset all fields?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.YES) {
+            setAdmin_data(adminId);
+        }
     }
 
     @FXML
@@ -130,14 +167,20 @@ public class Admin_profile_updateController implements Initializable {
 
     @FXML
     private void return_dashboard(ActionEvent event) throws IOException {
-        Stage sign_in_stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("AdminHomeDashboard.fxml"));
+        // Initialize stage
+        Stage sign_in_stage = (Stage) back_btn.getScene().getWindow();
+        // Show the loading screen
+        Handle_Transitions transitions = new Handle_Transitions();//create object of the class Handle_Transitions
+        transitions.showLoadingScreen(sign_in_stage);
+
+        // Load the actual scene with data
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminHomeDashboard.fxml"));
+        Parent root = loader.load();
+        AdminHomeDashboardController controller = loader.getController();
         Scene scene = new Scene(root);
-        //scene.getStylesheets().add("/styles/admin_animal_add.css");
-        sign_in_stage.setScene(scene);
-        Stage stage = (Stage) back_btn.getScene().getWindow();
-        stage.close();
-        sign_in_stage.show();
+
+        // Switch to the actual scene after the loading screen
+        transitions.switchSceneWithLoading(scene, sign_in_stage);
     }
 
     public void setAdminId(String adminId) {
