@@ -52,7 +52,14 @@ public class Admin_profile_updateController implements Initializable {
     private PasswordField current_pass;
 
     @FXML
+    private TextField show_pswd_text;
+
+    @FXML
     private Button update_pswrd_btn;
+
+    @FXML
+    private ToggleButton show_pswd_btn;
+
 
     @FXML
     private Label admin_id;
@@ -73,8 +80,32 @@ public class Admin_profile_updateController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        show_pswd_text.setVisible(false);
+        show_pswd_text.setManaged(false);
+        show_pswd_text.textProperty().bindBidirectional(current_pass.textProperty());
 
     }
+
+
+    @FXML
+    void show_current_password(ActionEvent event) {
+        if (show_pswd_text.isVisible()) {
+            // Hide the text field and show the password field
+            show_pswd_text.setManaged(false);
+            show_pswd_text.setVisible(false);
+            current_pass.setManaged(true);
+            current_pass.setVisible(true);
+            show_pswd_btn.setText("Show Password");
+        } else {
+            // Show the text field and hide the password field
+            show_pswd_text.setManaged(true);
+            show_pswd_text.setVisible(true);
+            current_pass.setManaged(false);
+            current_pass.setVisible(false);
+            show_pswd_btn.setText("Hide Password");
+        }
+    }
+
 
     @FXML
     void password_update(ActionEvent event) {
@@ -105,6 +136,10 @@ public class Admin_profile_updateController implements Initializable {
                     System.out.println(e.getMessage());
                 }
                 System.out.println("OK pressed");
+                setAdmin_data(adminId);
+                new_pass.setText(null);
+                retype_pass.setText(null);
+
             } else if (res == ButtonType.CANCEL) {
                 System.out.println("Canceled");
             }
@@ -159,6 +194,7 @@ public class Admin_profile_updateController implements Initializable {
                     System.out.println(e.getMessage());
                 }
                 System.out.println("OK pressed");
+                setAdmin_data(adminId);
             } else if (res == ButtonType.CANCEL) {
                 System.out.println("Canceled");
             }
