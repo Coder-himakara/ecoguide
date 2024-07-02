@@ -13,7 +13,9 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomepageWithMenu.fxml")));
+
 
         Scene scene = new Scene(root);
         //scene.getStylesheets().add("/com/ecosupport/styles/HomepageMenuCSS.css");
