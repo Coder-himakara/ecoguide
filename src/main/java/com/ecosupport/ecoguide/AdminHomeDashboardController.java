@@ -23,6 +23,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
@@ -89,6 +90,8 @@ public class AdminHomeDashboardController implements Initializable {
     @FXML
     private Label timeLabel;
     @FXML
+    private Label date_label;
+    @FXML
     private ImageView profile_pic;
     @FXML
     private Label my_name;
@@ -115,6 +118,7 @@ public class AdminHomeDashboardController implements Initializable {
         setAnimalCount();
         setPlantCount();
         setFeedbackCount();
+        setCurrentDate();
         setCurrentTime();
 
         // Create a Timeline to update the time every second
@@ -130,6 +134,11 @@ public class AdminHomeDashboardController implements Initializable {
         timeLabel.setText(currentTime.format(formatter));
     }
 
+    private void setCurrentDate() {
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        date_label.setText(currentDate.format(formatter));
+    }
 
     public void setAdminId(String adminId) {
         this.adminId = adminId;
