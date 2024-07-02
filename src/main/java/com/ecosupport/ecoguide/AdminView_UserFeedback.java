@@ -78,19 +78,22 @@ public class AdminView_UserFeedback implements Initializable
     }
 
     @FXML
-    void Back_to_dashboard(ActionEvent event) {
-        try {
-            Stage sign_in_stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("AdminHomeDashboard.fxml"));
-            Scene scene = new Scene(root);
-            //scene.getStylesheets().add("/styles/HomepageMenuCSS.css");
-            sign_in_stage.setScene(scene);
-            Stage stage = (Stage) admin_btn.getScene().getWindow();
-            stage.close();
-            sign_in_stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(Signup_PageController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    void Back_to_dashboard(ActionEvent event) throws IOException {
+        // Initialize stage
+        Stage sign_in_stage = (Stage) admin_btn.getScene().getWindow();
+        // Show the loading screen
+        Handle_Transitions transitions = new Handle_Transitions();//create object of the class Handle_Transitions
+        transitions.showLoadingScreen(sign_in_stage);
+
+        // Load the actual scene with data
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminHomeDashboard.fxml"));
+        Parent root = loader.load();
+        AdminHomeDashboardController controller = loader.getController();
+        Scene scene = new Scene(root);
+
+        // Switch to the actual scene after the loading screen
+        transitions.switchSceneWithLoading(scene, sign_in_stage);
+
     }
 
     private void storeSelected(IntegerProperty attribute) {
