@@ -123,7 +123,6 @@
                </image>
             </ImageView>
             <Button fx:id="back_btn" layoutX="729.0" layoutY="23.0" mnemonicParsing="false" onAction="#return_dashboard" prefHeight="31.0" prefWidth="180.0" text="Back to Dashboard" />
-            <Label layoutX="285.0" layoutY="28.0" prefHeight="21.0" prefWidth="343.0" text="Logged User:" textFill="#e8dede" />
          </children>
       </AnchorPane>
    </top>
