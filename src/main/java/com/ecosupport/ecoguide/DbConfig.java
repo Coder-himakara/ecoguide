@@ -25,7 +25,7 @@ public class DbConfig {
 
         // Create the tables if they do not exist
         String sqlCreateAnimalsTable = "CREATE TABLE IF NOT EXISTS animals (" +
-                "animal_id INT PRIMARY KEY, " +
+                "animal_id INT PRIMARY KEY AUTO_INCREMENT, " +
                 "name CHAR(30), " +
                 "scientific_name VARCHAR(50), " +
                 "status CHAR(30), " +
@@ -38,7 +38,7 @@ public class DbConfig {
         statement.execute(sqlCreateAnimalsTable);
 
         String sqlCreatePlantsTable = "CREATE TABLE IF NOT EXISTS plants (" +
-                "plant_id INT PRIMARY KEY, " +
+                "plant_id INT PRIMARY KEY AUTO_INCREMENT, " +
                 "name CHAR(20), " +
                 "scientific_name VARCHAR(50), " +
                 "status CHAR(20), " +
@@ -52,7 +52,7 @@ public class DbConfig {
         statement.execute(sqlCreatePlantsTable);
 
         String sqlCreatePlantsImageTable = "CREATE TABLE IF NOT EXISTS plant_images (" +
-                "plant_pid INT PRIMARY KEY, " +
+                "plant_pid INT PRIMARY KEY AUTO_INCREMENT, " +
                 "plant_name CHAR(30), " +
                 "image_data LONGBLOB NULL, " +
                 "plant_fid INT)";
@@ -60,7 +60,7 @@ public class DbConfig {
         statement.execute(sqlCreatePlantsImageTable);
 
         String sqlCreateAnimalsImageTable = "CREATE TABLE IF NOT EXISTS animal_images (" +
-                "animal_pid INT PRIMARY KEY, " +
+                "animal_pid INT PRIMARY KEY AUTO_INCREMENT, " +
                 "animal_name CHAR(30), " +
                 "image_data LONGBLOB NULL, " +
                 "animal_fid INT)";
@@ -68,7 +68,7 @@ public class DbConfig {
         statement.execute(sqlCreateAnimalsImageTable);
 
         String sqlCreateFeedbackTable = "CREATE TABLE IF NOT EXISTS feedback (" +
-                "feedback_id INT PRIMARY KEY, " +
+                "feedback_id INT PRIMARY KEY AUTO_INCREMENT, " +
                 "name VARCHAR(30), " +
                 "email VARCHAR(50), " +
                 "feedback TEXT,"
