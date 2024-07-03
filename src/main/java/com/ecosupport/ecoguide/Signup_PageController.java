@@ -3,6 +3,7 @@ package com.ecosupport.ecoguide;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -55,6 +56,12 @@ public class Signup_PageController {
 
     @FXML
     private Button homeBtn;
+
+    @FXML
+    private Button about;
+
+    @FXML
+    private Button feedback;
 
     @FXML
     private void handleSignup(ActionEvent event) {
@@ -210,5 +217,41 @@ public class Signup_PageController {
         } catch (IOException ex) {
             Logger.getLogger(Signup_PageController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    void goToAbout(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("About_Page.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        Stage primary = new Stage();
+        primary.setScene(scene);
+        primary.show();
+    }
+
+    @FXML
+    void goToFeedback(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("Custemer_feedback.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        Stage primary = new Stage();
+        primary.setScene(scene);
+        primary.show();
     }
 }

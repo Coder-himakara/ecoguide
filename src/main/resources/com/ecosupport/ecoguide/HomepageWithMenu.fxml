@@ -58,12 +58,12 @@
       <Button fx:id="menuCloseBtn" layoutX="900.0" layoutY="18.0" mnemonicParsing="false" onAction="#menuClose" opacity="0.28" prefHeight="50.0" prefWidth="59.0" visible="false" />
       <AnchorPane fx:id="sidebar" layoutX="659.0" layoutY="98.0" prefHeight="609.0" prefWidth="303.0" styleClass="box" stylesheets="@../styles/HomepageMenuCSS.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button layoutX="25.0" layoutY="343.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="253.0" stylesheets="@../styles/HomepageMenuCSS.css" text="About" AnchorPane.bottomAnchor="192.0" AnchorPane.rightAnchor="25.0">
+            <Button fx:id="about" layoutX="25.0" layoutY="343.0" mnemonicParsing="false" onAction="#goToAbout" prefHeight="74.0" prefWidth="253.0" stylesheets="@../styles/HomepageMenuCSS.css" text="About" AnchorPane.bottomAnchor="192.0" AnchorPane.rightAnchor="25.0">
                <font>
                   <Font name="Arial Black" size="17.0" />
                </font>
             </Button>
-            <Button layoutX="25.0" layoutY="191.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="253.0" stylesheets="@../styles/HomepageMenuCSS.css" text="Feedback">
+            <Button fx:id="feedback" layoutX="25.0" layoutY="191.0" mnemonicParsing="false" onAction="#goToFeedback" prefHeight="74.0" prefWidth="253.0" stylesheets="@../styles/HomepageMenuCSS.css" text="Feedback">
                <font>
                   <Font name="Arial Black" size="17.0" />
                </font>

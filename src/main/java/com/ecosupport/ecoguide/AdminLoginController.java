@@ -3,6 +3,7 @@ package com.ecosupport.ecoguide;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -36,10 +37,6 @@ public class AdminLoginController {
     private Button signup_btn;
 
     @FXML
-
-    private Button admin_btn;
-
-    @FXML
     private Button menuBtn;
 
     @FXML
@@ -54,6 +51,11 @@ public class AdminLoginController {
     @FXML
     private TextField admin_id;
 
+    @FXML
+    private Button about;
+
+    @FXML
+    private Button feedback;
 
 
     @FXML
@@ -132,19 +134,39 @@ public class AdminLoginController {
     }
 
     @FXML
-    void administrator(ActionEvent event) {
+    void goToAbout(ActionEvent event) {
+        Parent root = null;
         try {
-            Stage sign_in_stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("AdminLogin.fxml"));
-            Scene scene = new Scene(root);
-            //scene.getStylesheets().add("/styles/HomepageMenuCSS.css");
-            sign_in_stage.setScene(scene);
-            Stage stage = (Stage) admin_btn.getScene().getWindow();
-            stage.close();
-            sign_in_stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(AdminLoginController.class.getName()).log(Level.SEVERE, null, ex);
+            root = FXMLLoader.load(getClass().getResource("About_Page.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        Stage primary = new Stage();
+        primary.setScene(scene);
+        primary.show();
+    }
+
+    @FXML
+    void goToFeedback(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("Custemer_feedback.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        Stage primary = new Stage();
+        primary.setScene(scene);
+        primary.show();
     }
 
     @FXML

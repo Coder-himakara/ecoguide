@@ -72,7 +72,7 @@ public class DbConfig {
                 "name VARCHAR(30), " +
                 "email VARCHAR(50), " +
                 "feedback TEXT,"
-                + "read_or_not VARCHAR(5))";
+                + "read_or_not VARCHAR(5) DEFAULT 'No')";
 
         statement.execute(sqlCreateFeedbackTable);
 
