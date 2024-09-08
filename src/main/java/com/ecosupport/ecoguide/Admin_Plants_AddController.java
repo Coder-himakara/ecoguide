@@ -226,6 +226,7 @@ public class Admin_Plants_AddController extends Plant_super_controller implement
         sign_in_stage.setScene(scene);
         Stage stage = (Stage) back_btn.getScene().getWindow();
         stage.close();
+        sign_in_stage.setResizable(false);
         sign_in_stage.show();
     }
 }

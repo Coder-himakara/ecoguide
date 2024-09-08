@@ -130,6 +130,7 @@ public class AdminLoginController {
         sign_in_stage.setScene(scene);
         Stage stage = (Stage) signup_btn.getScene().getWindow();
         stage.close();
+        sign_in_stage.setResizable(false);
         sign_in_stage.show();
     }
 
@@ -148,6 +149,7 @@ public class AdminLoginController {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 
@@ -166,6 +168,7 @@ public class AdminLoginController {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 
@@ -193,6 +196,7 @@ public class AdminLoginController {
             sign_in_stage.setScene(scene);
             Stage stage = (Stage) homeBtn.getScene().getWindow();
             stage.close();
+            sign_in_stage.setResizable(false);
             sign_in_stage.show();
         } catch (IOException ex) {
             Logger.getLogger(AdminLoginController.class.getName()).log(Level.SEVERE, null, ex);

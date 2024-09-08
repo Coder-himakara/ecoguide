@@ -115,7 +115,7 @@
                         </ImageView>
                         <AnchorPane fx:id="mapImageView" layoutX="45.0" layoutY="731.0" onMouseClicked="#handleMapClick" onMouseDragged="#handlePointerDragged" onMousePressed="#handlePointerPressed" onMouseReleased="#handlePointerReleased" prefHeight="491.0" prefWidth="883.0">
                             <children>
-                                <ImageView fx:id="pointerImageView" fitHeight="61.0" fitWidth="62.0" layoutX="808.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fx:id="pointerImageView" fitHeight="53.0" fitWidth="57.0" layoutX="808.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@images/animal_add/pointer_icon.png" />
                                     </image>

@@ -108,6 +108,7 @@ public class Plant_homeController implements Initializable {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 
@@ -126,6 +127,7 @@ public class Plant_homeController implements Initializable {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 
@@ -144,6 +146,7 @@ public class Plant_homeController implements Initializable {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 
@@ -162,6 +165,7 @@ public class Plant_homeController implements Initializable {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 

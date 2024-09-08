@@ -50,6 +50,7 @@ public class Homepage1ControllerwithMenu {
             sign_in_stage.setScene(scene);
             Stage stage = (Stage) admin_btn.getScene().getWindow();
             stage.close();
+            sign_in_stage.setResizable(false); // Disable resizing
             sign_in_stage.show();
         } catch (IOException ex) {
             Logger.getLogger(Homepage1ControllerwithMenu.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,6 +72,7 @@ public class Homepage1ControllerwithMenu {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 
@@ -89,6 +91,7 @@ public class Homepage1ControllerwithMenu {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 
@@ -121,6 +124,7 @@ public class Homepage1ControllerwithMenu {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 
@@ -139,6 +143,7 @@ public class Homepage1ControllerwithMenu {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 }

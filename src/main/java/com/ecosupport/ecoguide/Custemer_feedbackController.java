@@ -74,6 +74,7 @@ public class Custemer_feedbackController implements Initializable {
             // Create a new stage for the new scene
             Stage primary = new Stage();
             primary.setScene(scene);
+            primary.setResizable(false);
             primary.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -96,6 +97,7 @@ public class Custemer_feedbackController implements Initializable {
             // Create a new stage for the new scene
             Stage primary = new Stage();
             primary.setScene(scene);
+            primary.setResizable(false);
             primary.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -117,6 +119,7 @@ public class Custemer_feedbackController implements Initializable {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 
@@ -135,6 +138,7 @@ public class Custemer_feedbackController implements Initializable {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 

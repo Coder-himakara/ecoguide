@@ -11,17 +11,17 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecosupport.ecoguide.AdminHomeDashboardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecosupport.ecoguide.AdminHomeDashboardController">
 
     <top>
         <AnchorPane prefHeight="75.0" prefWidth="980.0" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fitHeight="75.0" fitWidth="980.0" pickOnBounds="true">
+                <ImageView fitHeight="75.0" fitWidth="1010.0" pickOnBounds="true">
                     <image>
                         <Image url="@images/AdminDashboardNavBar.png" />
                     </image>
                 </ImageView>
-            <Label layoutX="420.0" layoutY="21.0" prefHeight="34.0" prefWidth="180.0" text="WELCOME" textFill="#ebebeb">
+            <Label alignment="CENTER" layoutX="433.0" layoutY="21.0" prefHeight="34.0" prefWidth="162.0" text="WELCOME" textFill="#ebebeb">
                <font>
                   <Font name="Bell MT Bold" size="27.0" />
                </font>
@@ -32,9 +32,9 @@
     <center>
         <ScrollPane prefHeight="1079.0" prefWidth="760.0" BorderPane.alignment="CENTER">
             <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1043.0" prefWidth="741.0">
+                <AnchorPane minWidth="0.0" prefHeight="1043.0" prefWidth="741.0">
                     <children>
-                  <ImageView fitHeight="347.0" fitWidth="742.0" layoutY="-12.0" pickOnBounds="true">
+                  <ImageView fitHeight="347.0" fitWidth="793.0" layoutX="-5.0" layoutY="-12.0" pickOnBounds="true">
                      <image>
                         <Image url="@images/Dashboard.jpg" />
                      </image>
@@ -102,7 +102,7 @@
                         <AnchorPane layoutY="332.0" prefHeight="711.0" prefWidth="744.0" styleClass="TableView" stylesheets="@../styles/AdminHomeDashboard.css">
                             <children>
 
-                        <ImageView fitHeight="710.0" fitWidth="744.0" pickOnBounds="true">
+                        <ImageView fitHeight="710.0" fitWidth="777.0" pickOnBounds="true">
                            <image>
                               <Image url="@images/9cee4cd681e5bee4161780f6556a3b21.jpg" />
                            </image>
@@ -115,40 +115,40 @@
                                         <TableColumn fx:id="col_animal_sname" prefWidth="209.0" text="Scientific Name" />
                                     </columns>
                                 </TableView>
-                                <AnchorPane layoutX="541.0" layoutY="65.0" prefHeight="195.0" prefWidth="176.0" styleClass="GreenBox" stylesheets="@../styles/AdminHomeDashboard.css">
+                                <AnchorPane layoutX="546.0" layoutY="70.0" prefHeight="195.0" prefWidth="176.0" styleClass="GreenBox" stylesheets="@../styles/AdminHomeDashboard.css">
                                     <children>
 
-                                        <Button fx:id="update_btn" alignment="TOP_RIGHT" layoutX="22.0" layoutY="74.0" mnemonicParsing="false" onAction="#goto_updatePage" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Update">
+                                        <Button fx:id="update_btn" alignment="BASELINE_CENTER" layoutX="24.0" layoutY="74.0" mnemonicParsing="false" onAction="#goto_updatePage" prefHeight="46.0" prefWidth="140.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Update">
 
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
                                         </Button>
 
-                                        <Button fx:id="animal_view_btn" alignment="TOP_RIGHT" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#view_animal" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="View">
+                                        <Button fx:id="animal_view_btn" alignment="BASELINE_CENTER" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" onAction="#view_animal" prefHeight="46.0" prefWidth="140.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="View">
 
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
                                         </Button>
 
-                                        <Button alignment="TOP_RIGHT" layoutX="22.0" layoutY="134.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Delete">
+                                        <Button alignment="BASELINE_CENTER" layoutX="24.0" layoutY="134.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="140.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Delete">
 
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
                                         </Button>
-                              <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="44.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="31.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="31.0">
                                  <image>
                                     <Image url="@images/eye-removebg-preview.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="44.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="31.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="31.0">
                                  <image>
                                     <Image url="@images/refresh-removebg-preview.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="44.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="31.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="31.0">
                                  <image>
                                     <Image url="@images/trash-2-removebg-preview.png" />
                                  </image>
@@ -167,37 +167,37 @@
                                 <AnchorPane layoutX="546.0" layoutY="438.0" prefHeight="195.0" prefWidth="176.0" styleClass="GreenBox" stylesheets="@../styles/AdminHomeDashboard.css">
                                     <children>
 
-                                        <Button fx:id="update_btn_plant" alignment="TOP_RIGHT" layoutX="22.0" layoutY="74.0" mnemonicParsing="false" onAction="#goto_updatePage_Plant" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Update">
+                                        <Button fx:id="update_btn_plant" layoutX="24.0" layoutY="74.0" mnemonicParsing="false" onAction="#goto_updatePage_Plant" prefHeight="46.0" prefWidth="140.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Update">
 
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
                                         </Button>
 
-                                        <Button fx:id="plant_view_btn" alignment="TOP_RIGHT" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#view_plant" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="View">
+                                        <Button fx:id="plant_view_btn" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" onAction="#view_plant" prefHeight="46.0" prefWidth="140.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="View">
 
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
                                         </Button>
 
-                                        <Button alignment="TOP_RIGHT" layoutX="22.0" layoutY="134.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="135.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Delete">
+                                        <Button layoutX="24.0" layoutY="134.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="140.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Delete">
 
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
                                         </Button>
-                              <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="44.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="30.0" fitWidth="27.0" layoutX="30.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@images/eye-removebg-preview.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="44.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="30.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@images/refresh-removebg-preview.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="44.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="30.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@images/trash-2-removebg-preview.png" />
                                  </image>
@@ -247,108 +247,101 @@
 
                 <AnchorPane prefHeight="206.0" prefWidth="220.0" styleClass="profile" stylesheets="@../styles/AdminHomeDashboard.css" AnchorPane.topAnchor="0.0">
                     <children>
-
-                        <AnchorPane layoutX="38.0" layoutY="155.0" prefHeight="33.0" prefWidth="157.0" stylesheets="@../styles/AdminHomeDashboard.css">
-
-                            <children>
-                              <ImageView fx:id="profile_pic" fitHeight="147.0" fitWidth="176.0" layoutX="-3.0" layoutY="-154.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="my_name" layoutX="24.0" prefHeight="32.0" prefWidth="131.0" text="Label" textFill="WHITE">
-                           <font>
-                              <Font name="Arial Bold" size="19.0" />
-                           </font>
-                        </Label>
-                            </children>
-                        </AnchorPane>
+                        <ImageView fx:id="profile_pic" fitHeight="147.0" fitWidth="177.0" layoutX="29.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
                     </children>
                 </AnchorPane>
-                <AnchorPane layoutY="189.0" prefHeight="419.0" prefWidth="220.0" style="-fx-background-color: #000000;">
+                <AnchorPane layoutY="189.0" prefHeight="437.0" prefWidth="220.0" style="-fx-background-color: #000000;">
                     <children>
-
-                                                <Button fx:id="homeBtn" layoutX="16.0" layoutY="25.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="40.0" prefWidth="188.0" styleClass="SystemButton" text="Home">
-
-                                                    <font>
-                                <Font name="System Bold" size="14.0" />
-                            </font>
+                  <AnchorPane layoutX="1.0" layoutY="14.0" prefHeight="264.0" prefWidth="219.0">
+                     <children>
+      
+                                                      <Button fx:id="homeBtn" alignment="CENTER" layoutX="15.0" layoutY="7.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="40.0" prefWidth="188.0" styleClass="SystemButton" text="Home">
+      
+                                                          <font>
+                                      <Font name="System Bold" size="14.0" />
+                                  </font>
+                              </Button>
+                        <Button fx:id="profile_update_btn" alignment="CENTER" layoutX="15.0" layoutY="71.0" mnemonicParsing="false" onAction="#admin_profile_update" prefHeight="40.0" prefWidth="188.0" styleClass="SystemButton" text="Profile Setting">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
                         </Button>
+                        <Button fx:id="user_feedback" alignment="CENTER" layoutX="15.0" layoutY="132.0" mnemonicParsing="false" onAction="#goto_user_feedback" prefHeight="40.0" prefWidth="188.0" styleClass="SystemButton" text="User Feedback">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="LogoutBtn" alignment="CENTER" layoutX="15.0" layoutY="197.0" mnemonicParsing="false" onAction="#logout" prefHeight="40.0" prefWidth="188.0" styleClass="SystemButton" text="Log Out">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" x="8.0">
+                           <image>
+                              <Image url="@images/home-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="14.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" x="8.0">
+                           <image>
+                              <Image url="@images/settings-2-outline-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="14.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true" x="8.0">
+                           <image>
+                              <Image url="@images/message-square-outline.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="14.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true" x="8.0">
+                           <image>
+                              <Image url="@images/log-out-outline-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
 
-                                              <AnchorPane layoutX="20.0" layoutY="261.0" prefHeight="133.0" prefWidth="180.0" styleClass="TimeAndDate" stylesheets="@../styles/AdminHomeDashboard.css">
+                                              <AnchorPane layoutX="20.0" layoutY="282.0" prefHeight="133.0" prefWidth="180.0" styleClass="TimeAndDate" stylesheets="@../styles/AdminHomeDashboard.css">
                           <children>
-                              <AnchorPane layoutX="10.0" layoutY="22.0" prefHeight="40.0" prefWidth="160.0" stylesheets="@../styles/AdminHomeDashboard.css">
+                              <AnchorPane layoutX="10.0" prefHeight="69.0" prefWidth="160.0" stylesheets="@../styles/AdminHomeDashboard.css">
                                   <children>
-                                      <Label layoutX="17.0" layoutY="10.0" prefHeight="20.0" prefWidth="127.0" text="TIME OF THE DAY" textFill="#8039c7">
-                                          <font>
-                                              <Font name="System Bold" size="14.0" />
-                                          </font>
-                                      </Label>
-                              <Label fx:id="timeLabel" alignment="CENTER" layoutX="5.0" layoutY="7.0" prefHeight="33.0" prefWidth="136.0" text="11.23.23" textFill="#fffd75">
+                              <Label prefHeight="28.0" prefWidth="84.0" text="Time:" textFill="#f5f5f5">
+                                 <font>
+                                    <Font name="Arial Black" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="timeLabel" alignment="CENTER" layoutX="10.0" layoutY="25.0" prefHeight="33.0" prefWidth="136.0" text="11.23.23" textFill="#fffd75">
                                  <font>
                                     <Font name="Gill Sans MT Bold" size="24.0" />
                                  </font>
                               </Label>
                                   </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="10.0" layoutY="75.0" prefHeight="40.0" prefWidth="160.0" stylesheets="@../styles/AdminHomeDashboard.css">
+                              <AnchorPane layoutX="10.0" layoutY="60.0" prefHeight="71.0" prefWidth="160.0" stylesheets="@../styles/AdminHomeDashboard.css">
                                   <children>
-                                      <Label fx:id="date_label" alignment="CENTER" layoutX="3.0" layoutY="10.0" prefHeight="48.0" prefWidth="145.0" text="2/7/2024" textAlignment="CENTER" textFill="#fcf949">
+                              <Label prefHeight="21.0" prefWidth="86.0" text="Date:" textFill="#f5f5f5">
+                                 <font>
+                                    <Font name="Arial Black" size="15.0" />
+                                 </font>
+                              </Label>
+                                      <Label fx:id="date_label" alignment="CENTER" layoutX="3.0" layoutY="23.0" prefHeight="48.0" prefWidth="145.0" text="2/7/2024" textAlignment="CENTER" textFill="#fcf949">
                                           <font>
                                               <Font name="Gill Sans MT Bold" size="24.0" />
                                           </font>
                                       </Label>
                                   </children>
                               </AnchorPane>
-                        <Label layoutX="36.0" layoutY="66.0" prefHeight="21.0" prefWidth="86.0" text="Date:" textFill="#f5f5f5">
-                           <font>
-                              <Font name="Arial Black" size="19.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="35.0" layoutY="2.0" prefHeight="28.0" prefWidth="84.0" text="Time:" textFill="#f5f5f5">
-                           <font>
-                              <Font name="Arial Black" size="19.0" />
-                           </font>
-                        </Label>
                           </children>
                       </AnchorPane>
-                  <Button fx:id="profile_update_btn" layoutX="16.0" layoutY="74.0" mnemonicParsing="false" onAction="#admin_profile_update" prefHeight="40.0" prefWidth="188.0" styleClass="SystemButton" text="Profile Setting">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="user_feedback" layoutX="16.0" layoutY="127.0" mnemonicParsing="false" onAction="#goto_user_feedback" prefHeight="40.0" prefWidth="188.0" styleClass="SystemButton" text="User Feedback">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="LogoutBtn" layoutX="16.0" layoutY="181.0" mnemonicParsing="false" onAction="#logout" prefHeight="40.0" prefWidth="188.0" styleClass="SystemButton" text="Log Out">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-                  <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="26.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/home-removebg-preview.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="26.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/settings-2-outline-removebg-preview.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="26.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/message-square-outline.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="26.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/log-out-outline-removebg-preview.png" />
-                     </image>
-                  </ImageView>
 
                                             </children>
                 </AnchorPane>
-            <Label fx:id="my_name1" layoutX="26.0" layoutY="155.0" prefHeight="32.0" prefWidth="38.0" text="I'm" textFill="WHITE">
+            <Label fx:id="my_name" layoutX="76.0" layoutY="160.0" prefHeight="32.0" prefWidth="87.0" text="Label" textFill="WHITE">
                <font>
-                  <Font name="Arial Bold" size="19.0" />
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="my_name1" layoutX="18.0" layoutY="160.0" prefHeight="32.0" prefWidth="71.0" text="Admin:" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
                </font>
             </Label>
             </children>

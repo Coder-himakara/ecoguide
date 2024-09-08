@@ -1,13 +1,13 @@
-.animal_bg{
-    -fx-background-image:url(images/Homepage1 Backgroun photo.png);
+.animal_bg {
+    -fx-background-image: url('images/Homepage1 Background photo.png');
     -fx-background-size: contain;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
 }
-#txtfileds{
-    -fx-text-fill:greenyellow;  
+#txtfields {
+    -fx-text-fill: greenyellow;
 }
 
-#mapbg{
-    -fx-opacity: 80 ; 
+#mapbg {
+    -fx-opacity: 0.8;
 }

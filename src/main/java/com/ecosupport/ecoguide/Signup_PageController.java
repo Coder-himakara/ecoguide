@@ -183,6 +183,7 @@ public class Signup_PageController {
             sign_in_stage.setScene(scene);
             Stage stage = (Stage) admin_btn.getScene().getWindow();
             stage.close();
+            sign_in_stage.setResizable(false);
             sign_in_stage.show();
         } catch (IOException ex) {
             Logger.getLogger(Signup_PageController.class.getName()).log(Level.SEVERE, null, ex);
@@ -213,6 +214,7 @@ public class Signup_PageController {
             sign_in_stage.setScene(scene);
             Stage stage = (Stage) homeBtn.getScene().getWindow();
             stage.close();
+            sign_in_stage.setResizable(false);
             sign_in_stage.show();
         } catch (IOException ex) {
             Logger.getLogger(Signup_PageController.class.getName()).log(Level.SEVERE, null, ex);
@@ -234,6 +236,7 @@ public class Signup_PageController {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 
@@ -252,6 +255,7 @@ public class Signup_PageController {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 }

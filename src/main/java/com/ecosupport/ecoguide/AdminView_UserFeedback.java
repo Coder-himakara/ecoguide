@@ -132,6 +132,7 @@ public class AdminView_UserFeedback implements Initializable
             sign_in_stage.setScene(scene);
             Stage stage = (Stage) view_btn.getScene().getWindow();
             stage.close();
+            sign_in_stage.setResizable(false);
             sign_in_stage.show();
         } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.OK);
