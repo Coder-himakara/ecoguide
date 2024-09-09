@@ -23,7 +23,7 @@
                         <Image url="@images/animal_add/nav%20bar%20design.png" />
                     </image>
                 </ImageView>
-                <Button fx:id="back_btn" layoutX="726.0" layoutY="22.0" mnemonicParsing="false" onAction="#return_dashboard" prefHeight="31.0" prefWidth="180.0" text="Back to Dashboard" />
+                <Button fx:id="back_btn" layoutX="726.0" layoutY="22.0" mnemonicParsing="false" onAction="#return_dashboard" prefHeight="31.0" prefWidth="180.0" styleClass="wildlife-button2" stylesheets="@../styles/admin_profile_update.css" text="Back to Dashboard" />
             </children>
         </AnchorPane>
     </top>
@@ -42,8 +42,8 @@
                                 <Image url="@images/admin_update/fields_bg_profile_update.png" />
                             </image>
                         </ImageView>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3aa118" height="53.0" layoutX="84.0" layoutY="58.0" stroke="BLACK" strokeType="INSIDE" width="326.0" />
-                        <Label layoutX="97.0" layoutY="62.0" prefHeight="41.0" prefWidth="274.0" text="Profile Setting" textFill="#fffefe">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0d6829" height="53.0" layoutX="69.0" layoutY="58.0" stroke="BLACK" strokeType="INSIDE" width="265.0" />
+                        <Label layoutX="82.0" layoutY="62.0" prefHeight="41.0" prefWidth="274.0" text="Profile Setting" textFill="#fffefe">
                             <font>
                                 <Font name="Bell MT Bold" size="27.0" />
                             </font>
@@ -92,12 +92,12 @@
                         <TextField fx:id="phone_no" layoutX="247.0" layoutY="528.0" prefHeight="31.0" prefWidth="244.0" />
                         <TextField fx:id="job_role" layoutX="655.0" layoutY="528.0" prefHeight="31.0" prefWidth="243.0" />
                         <TextField fx:id="user_name" layoutX="655.0" layoutY="451.0" prefHeight="31.0" prefWidth="242.0" />
-                        <Button fx:id="reset_btn" layoutX="162.0" layoutY="607.0" mnemonicParsing="false" onAction="#reset_original" prefHeight="45.0" prefWidth="146.0" text="Reset">
+                        <Button fx:id="reset_btn" layoutX="162.0" layoutY="607.0" mnemonicParsing="false" onAction="#reset_original" prefHeight="45.0" prefWidth="146.0" styleClass="wildlife-button" stylesheets="@../styles/admin_profile_update.css" text="Reset">
                             <font>
                                 <Font name="Arial Bold" size="19.0" />
                             </font>
                         </Button>
-                        <Button fx:id="update_btn" layoutX="631.0" layoutY="606.0" mnemonicParsing="false" onAction="#update_data" prefHeight="45.0" prefWidth="146.0" text="Update">
+                        <Button fx:id="update_btn" layoutX="631.0" layoutY="606.0" mnemonicParsing="false" onAction="#update_data" prefHeight="45.0" prefWidth="146.0" styleClass="wildlife-button" stylesheets="@../styles/admin_profile_update.css" text="Update">
                             <font>
                                 <Font name="Arial Bold" size="19.0" />
                             </font>
@@ -121,13 +121,13 @@
                                 </Label>
                                 <PasswordField fx:id="new_pass" layoutX="291.0" layoutY="172.0" prefHeight="31.0" prefWidth="276.0" />
                                 <PasswordField fx:id="retype_pass" layoutX="290.0" layoutY="231.0" prefHeight="31.0" prefWidth="276.0" />
-                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21cc68" height="41.0" layoutX="69.0" layoutY="44.0" opacity="0.82" stroke="BLACK" strokeType="INSIDE" width="256.0" />
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0d6829" height="41.0" layoutX="69.0" layoutY="44.0" opacity="0.82" stroke="BLACK" strokeType="INSIDE" width="256.0" />
                                 <Label layoutX="82.0" layoutY="48.0" prefHeight="36.0" prefWidth="204.0" text="Change Password" textFill="WHITE">
                                     <font>
                                         <Font name="Bell MT Bold" size="24.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="update_pswrd_btn" layoutX="608.0" layoutY="282.0" mnemonicParsing="false" onAction="#password_update" prefHeight="43.0" prefWidth="213.0" text="Update Password">
+                                <Button fx:id="update_pswrd_btn" layoutX="84.0" layoutY="289.0" mnemonicParsing="false" onAction="#password_update" prefHeight="43.0" prefWidth="213.0" styleClass="wildlife-button" stylesheets="@../styles/admin_profile_update.css" text="Update Password">
                                     <font>
                                         <Font name="Arial Bold" size="19.0" />
                                     </font>
@@ -139,10 +139,10 @@
                                 </Label>
                                 <PasswordField fx:id="current_pass" editable="false" layoutX="291.0" layoutY="118.0" prefHeight="31.0" prefWidth="276.0" />
                         <TextField fx:id="show_pswd_text" editable="false" layoutX="291.0" layoutY="118.0" prefHeight="31.0" prefWidth="276.0" />
-                        <ToggleButton fx:id="show_pswd_btn" layoutX="588.0" layoutY="118.0" mnemonicParsing="false" onAction="#show_current_password" text="Show Password" />
+                        <ToggleButton fx:id="show_pswd_btn" layoutX="588.0" layoutY="118.0" mnemonicParsing="false" onAction="#show_current_password" styleClass="wildlife-button" stylesheets="@../styles/admin_profile_update.css" text="Show Password" />
                             </children>
                         </AnchorPane>
-                        <Button fx:id="add_pic_btn" layoutX="655.0" layoutY="245.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="31.0" prefWidth="139.0" text="Add Your Image" />
+                        <Button fx:id="add_pic_btn" layoutX="655.0" layoutY="245.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="31.0" prefWidth="139.0" styleClass="wildlife-button" stylesheets="@../styles/admin_profile_update.css" text="Add Your Image" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fffbc" height="177.0" layoutX="593.0" layoutY="49.0" opacity="0.05" stroke="BLACK" strokeType="INSIDE" width="263.0" />
                         <Label fx:id="admin_id" layoutX="297.0" layoutY="154.0" prefHeight="39.0" prefWidth="218.0" textFill="#ff6262">
                             <font>

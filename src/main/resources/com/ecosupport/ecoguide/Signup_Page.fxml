@@ -66,7 +66,7 @@
             </font>
         </Label>
 
-        <Button fx:id="signupBtn" layoutX="417.0" layoutY="568.0" mnemonicParsing="false" onAction="#handleSignup" prefHeight="50.0" prefWidth="146.0" styleClass="signbutton" stylesheets="@../styles/signupPage.css" text="Signup">
+        <Button fx:id="signupBtn" layoutX="417.0" layoutY="568.0" mnemonicParsing="false" onAction="#handleSignup" prefHeight="50.0" prefWidth="146.0" styleClass="wildlife-button" stylesheets="@../styles/signupPage.css" text="Signup">
 
             <font>
                 <Font name="System Bold" size="23.0" />

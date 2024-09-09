@@ -63,6 +63,26 @@ public class Signup_PageController {
     @FXML
     private Button feedback;
 
+
+    // Add this method to the `Signup_PageController` class
+    private boolean isAdminIdExists(String adminId) {
+        PreparedStatement statement;
+        ResultSet resultSet;
+        boolean exists = false;
+        String query = "SELECT COUNT(*) FROM `new_admin` WHERE `id_no` = ?";
+        try {
+            statement = DbConfig.getConnection().prepareStatement(query);
+            statement.setString(1, adminId);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                exists = resultSet.getInt(1) > 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return exists;
+    }
+    // Update the `handleSignup` method in the `Signup_PageController` class
     @FXML
     private void handleSignup(ActionEvent event) {
         PreparedStatement statement;
@@ -77,25 +97,28 @@ public class Signup_PageController {
         int check = check_approve(ID);
         File imageFile = new File("src\\main\\resources\\com\\ecosupport\\ecoguide\\images\\profile_dp.png");
 
-        if(fields == 1){
+        if (fields == 1) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Message");
             alert.setHeaderText(null);
             alert.setContentText("Please fill all blank fields");
             alert.showAndWait();
-        }
-        else if(check == 1){
+        } else if (check == 1) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Message");
             alert.setHeaderText(null);
             alert.setContentText("Access Denied");
             alert.showAndWait();
-        }
-        else{
+        } else if (isAdminIdExists(ID)) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Admin ID already exists");
+            alert.showAndWait();
+        } else {
             String query = "INSERT INTO `new_admin`(`id_no`,`first_name`,`last_name`,`email`,`username`,`password`,`phone_no`,`job_role`,`img_data`)" +
                     "VALUES(?,?,?,?,?,?,?,?,?)";
             try {
-
                 statement = DbConfig.getConnection().prepareStatement(query);
                 statement.setString(1, ID);
                 statement.setString(2, FirstName);
@@ -120,12 +143,11 @@ public class Signup_PageController {
                     email.setText("");
                     uName.setText("");
                     password.setText("");
-
                 } else {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
-                    alert.setContentText("Some thing went wrong");
+                    alert.setContentText("Something went wrong");
                     alert.showAndWait();
                     adminId.setText("");
                     fName.setText("");
@@ -134,7 +156,6 @@ public class Signup_PageController {
                     uName.setText("");
                     password.setText("");
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }

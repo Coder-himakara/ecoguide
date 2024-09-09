@@ -1,0 +1,28 @@
+.time-date-box {
+    -fx-background-color: linear-gradient(#4682B4, #87CEEB); /* Steel Blue to Sky Blue gradient */
+    -fx-background-radius: 15px;
+    -fx-padding: 20px;
+    -fx-border-color: #2E8B57; /* Sea Green border */
+    -fx-border-radius: 15px;
+    -fx-border-width: 3px;
+}
+
+.time-label {
+    -fx-text-fill: #E0FFFF; /* Light Cyan for text */
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 3, 0, 1, 1); /* Soft shadow for depth */
+}
+
+.date-label {
+    -fx-text-fill: #E0FFFF; /* Light Cyan for text */
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 3, 0, 1, 1); /* Soft shadow for depth */
+}
+
+.label-title {
+    -fx-text-fill: #FFFFFF; /* White for title text */
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}

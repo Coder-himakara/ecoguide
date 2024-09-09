@@ -1,0 +1,58 @@
+.table-view {
+    -fx-background-color: #FAF3E0; /* Soft Beige */
+    -fx-border-color: #4F7942; /* Fern Green */
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 10;
+}
+
+.table-view .column-header {
+    -fx-background-color: #a0d23e; /* Olive Green */
+    -fx-text-fill: #FFFFFF; /* White */
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.table-view .table-row-cell:even {
+    -fx-background-color: #E8F5E9; /* Light Green */
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #F1F8E9; /* Light Beige-Green */
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #A5D6A7; /* Mint Green on hover */
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #7cee81; /* Deeper Green on selection */
+    -fx-text-fill: #FFFFFF; /* White text */
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #4B5320; /* Dark Olive Green text */
+    -fx-font-size: 13px;
+    -fx-padding: 3px;
+}
+
+.scroll-bar:horizontal .increment-button,
+.scroll-bar:vertical .increment-button,
+.scroll-bar:horizontal .decrement-button,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color: #4CAF50; /* Forest Green buttons */
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #8FBC8F; /* Moss Green thumb */
+    -fx-background-radius: 5px;
+}
+
+.scroll-bar .track {
+    -fx-background-color: #FAF3E0; /* Soft Beige track */
+}
+
+.table-view:focused {
+    -fx-border-color: #388E3C; /* Dark Green focus ring */
+    -fx-border-width: 2px;
+}
