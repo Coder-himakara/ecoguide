@@ -6,10 +6,12 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="680.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecosupport.ecoguide.Admin_Plants_AddController">
@@ -23,6 +25,14 @@
                         <Image url="@images/animal_add/animal_add_bg.png" />
                      </image>
                   </ImageView>
+                  <ImageView fitHeight="655.0" fitWidth="980.0" layoutY="59.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@images/plant_add/Plants.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust brightness="-0.45" contrast="-0.02" hue="0.2" saturation="-0.28" />
+                     </effect>
+                  </ImageView>
                   <ImageView fitHeight="76.0" fitWidth="345.0" layoutX="308.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/plant_add/add_plant_topic.png" />
@@ -30,11 +40,7 @@
                   </ImageView>
                   <AnchorPane layoutX="-2.0" layoutY="70.0" prefHeight="494.0" prefWidth="965.0">
                      <children>
-                        <ImageView fitHeight="573.0" fitWidth="890.0" layoutX="44.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@images/plant_add/Plants.png" />
-                           </image>
-                        </ImageView>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dde4eb" height="517.0" layoutX="25.0" layoutY="6.0" opacity="0.13" stroke="BLACK" strokeType="INSIDE" width="920.0" />
                         <Label layoutX="68.0" layoutY="281.0" prefHeight="21.0" prefWidth="155.0" text="Name" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="19.0" />
@@ -67,7 +73,7 @@
                         <ChoiceBox fx:id="con_status" layoutX="253.0" layoutY="415.0" prefHeight="31.0" prefWidth="224.0" />
                         <Label fx:id="error_label" layoutX="314.0" layoutY="14.0" prefHeight="33.0" prefWidth="350.0" textFill="#e13737" />
                         <ImageView fx:id="plant_photo" fitHeight="179.0" fitWidth="284.0" layoutX="67.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button fx:id="add_img" layoutX="60.0" layoutY="191.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="31.0" prefWidth="111.0" text="Add Image" />
+                        <Button fx:id="add_img" layoutX="60.0" layoutY="191.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="31.0" prefWidth="111.0" styleClass="wildlife-button" stylesheets="@../styles/admin_plant_add.css" text="Add Image" />
                         <Label layoutX="519.0" layoutY="281.0" prefHeight="21.0" prefWidth="155.0" text="Habitate" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="19.0" />
@@ -88,27 +94,27 @@
                         <ChoiceBox fx:id="root_status" layoutX="641.0" layoutY="415.0" prefHeight="31.0" prefWidth="224.0" />
                      </children>
                   </AnchorPane>
-                  <ImageView fitHeight="585.0" fitWidth="980.0" layoutY="713.0" pickOnBounds="true">
+                  <ImageView fitHeight="585.0" fitWidth="980.0" layoutY="704.0" pickOnBounds="true">
                      <image>
                         <Image url="@images/animal_add/mapbg.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="reset_btn" layoutX="93.0" layoutY="1237.0" mnemonicParsing="false" onAction="#reset_all" prefHeight="47.0" prefWidth="145.0" text="Reset" />
+                  <Button fx:id="reset_btn" layoutX="93.0" layoutY="1237.0" mnemonicParsing="false" onAction="#reset_all" prefHeight="47.0" prefWidth="145.0" styleClass="wildlife-button" stylesheets="@../styles/admin_plant_add.css" text="Reset" />
                   <ImageView fitHeight="494.0" fitWidth="886.0" layoutX="45.0" layoutY="731.0" pickOnBounds="true">
                      <image>
                         <Image url="@images/animal_add/animal_map.jpg" />
                      </image>
                   </ImageView>
-                  <AnchorPane fx:id="mapImageView" layoutX="55.0" layoutY="744.0" onMouseClicked="#handleMapClick" onMouseDragged="#handlePointerDragged" onMousePressed="#handlePointerPressed" onMouseReleased="#handlePointerReleased" prefHeight="491.0" prefWidth="883.0">
+                  <AnchorPane fx:id="mapImageView" layoutX="45.0" layoutY="731.0" onMouseClicked="#handleMapClick" onMouseDragged="#handlePointerDragged" onMousePressed="#handlePointerPressed" onMouseReleased="#handlePointerReleased" prefHeight="491.0" prefWidth="883.0">
                      <children>
-                        <ImageView fx:id="pointerImageView" fitHeight="61.0" fitWidth="62.0" layoutX="808.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="pointerImageView" fitHeight="53.0" fitWidth="57.0" layoutX="808.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/animal_add/pointer_icon.png" />
                            </image>
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <Button fx:id="submit_btn" layoutX="690.0" layoutY="1235.0" mnemonicParsing="false" onAction="#add_plant" prefHeight="49.0" prefWidth="145.0" text="Submit" />
+                  <Button fx:id="submit_btn" layoutX="690.0" layoutY="1235.0" mnemonicParsing="false" onAction="#add_plant" prefHeight="49.0" prefWidth="145.0" styleClass="wildlife-button" stylesheets="@../styles/admin_plant_add.css" text="Submit" />
                </children>
             </AnchorPane>
          </content>
@@ -122,7 +128,7 @@
                   <Image url="@images/animal_add/nav%20bar%20design.png" />
                </image>
             </ImageView>
-            <Button fx:id="back_btn" layoutX="729.0" layoutY="23.0" mnemonicParsing="false" onAction="#return_dashboard" prefHeight="31.0" prefWidth="180.0" text="Back to Dashboard" />
+            <Button fx:id="back_btn" layoutX="729.0" layoutY="23.0" mnemonicParsing="false" onAction="#return_dashboard" prefHeight="31.0" prefWidth="180.0" styleClass="wildlife-button2" stylesheets="@../styles/admin_plant_add.css" text="Back to Dashboard" />
          </children>
       </AnchorPane>
    </top>

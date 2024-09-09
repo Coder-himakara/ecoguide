@@ -1,17 +1,3 @@
-.animal_bg {
-    -fx-background-image: url('images/Homepage1 Background photo.png');
-    -fx-background-size: contain;
-    -fx-background-position: center;
-    -fx-background-repeat: no-repeat;
-}
-#txtfields {
-    -fx-text-fill: greenyellow;
-}
-
-#mapbg {
-    -fx-opacity: 0.8;
-}
-
 .wildlife-button {
     -fx-background-color: #4CAF50; /* Forest Green */
     -fx-text-fill: #FFFFFF; /* White Text */

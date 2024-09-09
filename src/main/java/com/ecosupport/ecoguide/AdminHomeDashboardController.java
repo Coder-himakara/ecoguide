@@ -110,11 +110,12 @@ public class AdminHomeDashboardController implements Initializable {
 
         retrieveAndSetProfileImage();
         // Create a Circle object
-        double radius = 72.0; // adjust the radius as needed
-        Circle clip = new Circle(radius, radius, radius);
+        //double radius = 72.0; // adjust the radius as needed
+        //Circle clip = new Circle(radius, radius, radius);
 
         // Set the Circle as the clip of the ImageView
-        profile_pic.setClip(clip);
+        //profile_pic.setClip(clip);
+
         setAnimalCount();
         setPlantCount();
         setFeedbackCount();
@@ -481,7 +482,7 @@ public class AdminHomeDashboardController implements Initializable {
 
     private void retrieveAndSetProfileImage() {
         try (Connection connection = DbConfig.getConnection()) {
-            String selectQuery = "SELECT `img_data`,`last_name` FROM `new_admin` WHERE id_no = ?";
+            String selectQuery = "SELECT `img_data`, `last_name` FROM `new_admin` WHERE id_no = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
             preparedStatement.setString(1, adminId);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -489,15 +490,35 @@ public class AdminHomeDashboardController implements Initializable {
                 // Get the image data from the database
                 String last_name = resultSet.getString("last_name");
                 Blob blob = resultSet.getBlob("img_data");
-                byte[] imageBytes = blob.getBytes(1, (int) blob.length());
+                if (blob != null) {
+                    byte[] imageBytes = blob.getBytes(1, (int) blob.length());
 
-                // Create an Image object from the byte array
-                Image image = new Image(new ByteArrayInputStream(imageBytes));
-                profile_pic.setImage(image);
+                    // Create an Image object from the byte array
+                    Image image = new Image(new ByteArrayInputStream(imageBytes));
+
+                    double radius = 72.0;  // You can change this to your desired circle radius
+
+                    // Set the larger dimension of the ImageView to fill the circle
+                    // Use the max of the image's width/height to fill the circle
+                    double scaleFactor = Math.max(image.getWidth(), image.getHeight()) / (radius * 2);
+
+                    profile_pic.setFitWidth(image.getWidth() / scaleFactor);  // Scale to cover the circle
+                    profile_pic.setFitHeight(image.getHeight() / scaleFactor);
+
+                    // Create a Circle for clipping the image
+                    Circle clip = new Circle(radius, radius, radius);  // CenterX, CenterY, Radius
+
+                    // Set the Circle as the clip for the ImageView
+                    profile_pic.setClip(clip);
+
+                    // Set the image to the ImageView
+                    profile_pic.setImage(image);
+                } else {
+                    System.out.println("No image found in the database for this user.");
+                }
                 my_name.setText(last_name);
-
             } else {
-                System.out.println("No image found in the database for this user.");
+                System.out.println("No data found for this user.");
             }
         } catch (SQLException e) {
             System.out.println(e);

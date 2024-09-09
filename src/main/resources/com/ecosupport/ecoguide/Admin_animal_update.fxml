@@ -93,7 +93,7 @@
                                 <ChoiceBox fx:id="con_status" layoutX="251.0" layoutY="421.0" prefHeight="31.0" prefWidth="224.0" />
                                 <Label fx:id="error_label" layoutX="314.0" layoutY="14.0" prefHeight="33.0" prefWidth="350.0" textFill="#e13737" />
                                 <ImageView fx:id="animal_photo" fitHeight="200.0" fitWidth="311.0" layoutX="59.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
-                                <Button fx:id="update_img" layoutX="59.0" layoutY="237.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="31.0" prefWidth="129.0" text="Update Image" />
+                                <Button fx:id="update_img" layoutX="59.0" layoutY="237.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="31.0" prefWidth="129.0" styleClass="wildlife-button" stylesheets="@../styles/admin_animal_add.css" text="Update Image" />
                             </children>
                         </AnchorPane>
                         <ImageView fitHeight="585.0" fitWidth="980.0" layoutY="713.0" pickOnBounds="true">
@@ -102,7 +102,7 @@
                             </image>
 
                         </ImageView>
-                        <Button fx:id="reset_btn" layoutX="93.0" layoutY="1237.0" mnemonicParsing="false" onAction="#reset_all" prefHeight="47.0" prefWidth="145.0" text="Reset" />
+                        <Button fx:id="reset_btn" layoutX="93.0" layoutY="1237.0" mnemonicParsing="false" onAction="#reset_all" prefHeight="47.0" prefWidth="145.0" styleClass="wildlife-button" stylesheets="@../styles/admin_animal_add.css" text="Reset" />
                         <ImageView fitHeight="494.0" fitWidth="886.0" layoutX="45.0" layoutY="731.0" pickOnBounds="true">
                             <image>
                                 <Image url="@images/animal_add/animal_map.jpg" />
@@ -117,7 +117,7 @@
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <Button fx:id="update_btn" layoutX="690.0" layoutY="1235.0" mnemonicParsing="false" onAction="#update_animal_data" prefHeight="49.0" prefWidth="145.0" text="Update" />
+                        <Button fx:id="update_btn" layoutX="690.0" layoutY="1235.0" mnemonicParsing="false" onAction="#update_animal_data" prefHeight="49.0" prefWidth="145.0" styleClass="wildlife-button" stylesheets="@../styles/admin_animal_add.css" text="Update" />
                         <Label layoutX="305.0" layoutY="14.0" prefHeight="21.0" prefWidth="317.0" text="Update  Animal Details" textFill="#71ffc4">
                             <font>
                                 <Font name="Bell MT Bold" size="30.0" />
@@ -136,7 +136,7 @@
                         <Image url="@images/animal_add/nav%20bar%20design.png" />
                     </image>
                 </ImageView>
-                <Button fx:id="back_btn" layoutX="729.0" layoutY="23.0" mnemonicParsing="false" onAction="#return_dashboard" prefHeight="31.0" prefWidth="180.0" text="Back to Dashboard" />
+                <Button fx:id="back_btn" layoutX="729.0" layoutY="23.0" mnemonicParsing="false" onAction="#return_dashboard" prefHeight="31.0" prefWidth="180.0" styleClass="wildlife-button2" stylesheets="@../styles/admin_animal_add.css" text="Back to Dashboard" />
             </children>
         </AnchorPane>
     </top>

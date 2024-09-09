@@ -244,6 +244,7 @@ public class Admin_Animal_AddController extends Animal_super_controller implemen
         sign_in_stage.setScene(scene);
         Stage stage = (Stage) back_btn.getScene().getWindow();
         stage.close();
+        sign_in_stage.setResizable(false);
         sign_in_stage.show();
     }
 

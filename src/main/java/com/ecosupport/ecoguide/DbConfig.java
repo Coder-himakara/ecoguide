@@ -55,7 +55,8 @@ public class DbConfig {
                 "plant_pid INT PRIMARY KEY AUTO_INCREMENT, " +
                 "plant_name CHAR(30), " +
                 "image_data LONGBLOB NULL, " +
-                "plant_fid INT)";
+                "plant_fid INT," +
+                "FOREIGN KEY (plant_fid) REFERENCES plants(plant_id))";
 
         statement.execute(sqlCreatePlantsImageTable);
 
@@ -63,7 +64,8 @@ public class DbConfig {
                 "animal_pid INT PRIMARY KEY AUTO_INCREMENT, " +
                 "animal_name CHAR(30), " +
                 "image_data LONGBLOB NULL, " +
-                "animal_fid INT)";
+                "animal_fid INT," +
+                "FOREIGN KEY (animal_fid) REFERENCES animals(animal_id))";
 
         statement.execute(sqlCreateAnimalsImageTable);
 

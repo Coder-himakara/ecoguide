@@ -23,3 +23,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-radius: 25px;
     -fx-border-radius: 25px;
 }
+.wildlife-button {
+    -fx-background-color: #4CAF50; /* Forest Green */
+    -fx-text-fill: #FFFFFF; /* White Text */
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-border-color: #2E7D32; /* Dark Green */
+    -fx-border-width: 2px;
+}
+.wildlife-button:hover {
+    -fx-background-color: #388E3C; /* Darker Green */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 1);
+}
+.wildlife-button:pressed {
+    -fx-background-color: #2E7D32; /* Even Darker Green */
+    -fx-translate-y: 2px; /* Slight Y-axis movement */
+}

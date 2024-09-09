@@ -20,6 +20,7 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(root);
         //scene.getStylesheets().add("/com/ecosupport/styles/HomepageMenuCSS.css");
         stage.setScene(scene);
+        stage.setResizable(false); // Disable resizing
         stage.show();
     }
 

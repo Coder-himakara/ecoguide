@@ -260,6 +260,7 @@ public class Admin_Animal_UpdateController extends Animal_super_controller imple
         sign_in_stage.setScene(scene);
         Stage stage = (Stage) back_btn.getScene().getWindow();
         stage.close();
+        sign_in_stage.setResizable(false);
         sign_in_stage.show();
     }
 

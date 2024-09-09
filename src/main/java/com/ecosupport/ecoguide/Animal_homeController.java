@@ -107,6 +107,7 @@ public class Animal_homeController implements Initializable {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 
@@ -125,6 +126,7 @@ public class Animal_homeController implements Initializable {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 
@@ -143,6 +145,7 @@ public class Animal_homeController implements Initializable {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 
@@ -161,6 +164,7 @@ public class Animal_homeController implements Initializable {
 
         Stage primary = new Stage();
         primary.setScene(scene);
+        primary.setResizable(false);
         primary.show();
     }
 
@@ -267,6 +271,7 @@ public class Animal_homeController implements Initializable {
             sign_in_stage.setScene(scene);
             Stage stage = (Stage) viewData.getScene().getWindow();
             stage.close();
+            sign_in_stage.setResizable(false);
             sign_in_stage.show();
         } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.OK);
