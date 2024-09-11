@@ -33,7 +33,7 @@
                         <Font name="Century Schoolbook Bold" size="36.0" />
                     </font>
                 </Label>
-            <TableView fx:id="feedback_table" layoutX="79.0" layoutY="82.0" onMouseClicked="#select_feedback" prefHeight="328.0" prefWidth="703.0">
+            <TableView fx:id="feedback_table" layoutX="79.0" layoutY="82.0" onMouseClicked="#select_feedback" prefHeight="328.0" prefWidth="703.0" stylesheets="@../styles/table_view_style.css">
               <columns>
                 <TableColumn fx:id="col_feedback_id" prefWidth="103.0" text="ID" />
                   <TableColumn fx:id="col_name" prefWidth="120.0" text="User's Name" />
