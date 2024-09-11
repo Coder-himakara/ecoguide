@@ -55,7 +55,7 @@
                                 </ImageView>
                                 <ScrollPane layoutX="78.0" layoutY="931.0">
                                     <content>
-                                        <TableView fx:id="table" prefHeight="314.0" prefWidth="654.0" style="-fx-border-color: black;">
+                                        <TableView fx:id="table" prefHeight="314.0" prefWidth="654.0" style="-fx-border-color: black;" stylesheets="@../styles/table_view_style.css">
                                             <columns>
                                                 <TableColumn id="name" fx:id="name" prefWidth="271.0" text="Name" />
                                                 <TableColumn id="Secientific_name" fx:id="scientific_name" minWidth="0.0" prefWidth="381.0" style="-fx-text-size: 20;" text="Scientific Name" />
@@ -67,7 +67,7 @@
                                         </TableView>
                                     </content>
                                 </ScrollPane>
-                                <Button id="animal_view" fx:id="viewData" layoutX="813.0" layoutY="1077.0" mnemonicParsing="false" onAction="#viewAnimalData" prefHeight="47.0" prefWidth="75.0" style="-fx-background-color: green; -fx-font-size: 20;" text="View" />
+                                <Button id="animal_view" fx:id="viewData" layoutX="813.0" layoutY="1077.0" mnemonicParsing="false" onAction="#viewAnimalData" prefHeight="47.0" prefWidth="75.0" styleClass="wildlife-button" stylesheets="@../styles/animal_home.css" text="View" />
                         <Label fx:id="animal_species" alignment="CENTER" layoutX="126.0" layoutY="815.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: green; -fx-border-radius: 8; -fx-border-width: 5; -fx-font-size: 50;" textAlignment="CENTER" />
                         <Label fx:id="endangered_species" alignment="CENTER" layoutX="471.0" layoutY="818.0" prefHeight="48.0" prefWidth="73.0" style="-fx-border-color: green; -fx-border-radius: 8; -fx-border-width: 5; -fx-font-size: 50;" textAlignment="CENTER" />
                         <ImageView fx:id="mapView" fitHeight="543.0" fitWidth="974.0" layoutX="5.0" layoutY="1306.0" pickOnBounds="true" preserveRatio="true">
