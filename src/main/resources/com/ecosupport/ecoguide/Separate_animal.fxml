@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecosupport.ecoguide.Separate_animalController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecosupport.ecoguide.Separate_animalController">
    <top>
       <AnchorPane prefHeight="74.0" prefWidth="980.0" BorderPane.alignment="CENTER">
          <children>
@@ -31,9 +31,9 @@
    <center>
       <ScrollPane prefHeight="603.0" prefWidth="980.0" BorderPane.alignment="CENTER">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1144.0" prefWidth="979.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1144.0" prefWidth="979.0" style="-fx-background-color: black;">
                <children>
-                  <ImageView fitHeight="607.0" fitWidth="980.0" layoutX="2.0" layoutY="15.0" pickOnBounds="true">
+                  <ImageView fitHeight="622.0" fitWidth="986.0" layoutX="-4.0" pickOnBounds="true">
                      <image>
                         <Image url="@images/Animal_Details_Background.png" />
                      </image>
