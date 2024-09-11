@@ -21,7 +21,7 @@
                   <Image url="@images/animal_add/nav%20bar%20design.png" />
                </image>
             </ImageView>
-            <Button fx:id="back_btn" layoutX="770.0" layoutY="16.0" mnemonicParsing="false" onAction="#back_to_plant" prefHeight="23.0" prefWidth="123.0" text="Back">
+            <Button fx:id="back_btn" layoutX="791.0" layoutY="21.0" mnemonicParsing="false" onAction="#back_to_plant" prefHeight="23.0" prefWidth="123.0" styleClass="wildlife-button2" stylesheets="@../styles/plant_home.css" text="Back">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font></Button>
