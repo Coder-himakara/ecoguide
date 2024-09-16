@@ -34,7 +34,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-color: #cfe2f3;
     -fx-border-width: 4px 4px 4px 4px;
 }
-
+.TableDeleteBtn{
+    -fx-background-color: #fa1204;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-border-color: #cfe2f3;
+    -fx-border-width: 4px 4px 4px 4px;
+}
 .SystemButton{
     -fx-background-color:#D9D9D9;
     -fx-background-radius: 25px;

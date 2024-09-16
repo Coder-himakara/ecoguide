@@ -48,7 +48,12 @@ public class AdminHomeDashboardController implements Initializable {
     @FXML
     private Button update_btn;
     @FXML
+    private Button delete_animal;
+
+    @FXML
     private Button update_btn_plant;
+    @FXML
+    private Button delete_plant;
     @FXML
     private Button profile_update_btn;
     @FXML
@@ -109,13 +114,6 @@ public class AdminHomeDashboardController implements Initializable {
         updateTabelPlants();
 
         retrieveAndSetProfileImage();
-        // Create a Circle object
-        //double radius = 72.0; // adjust the radius as needed
-        //Circle clip = new Circle(radius, radius, radius);
-
-        // Set the Circle as the clip of the ImageView
-        //profile_pic.setClip(clip);
-
         setAnimalCount();
         setPlantCount();
         setFeedbackCount();
@@ -567,6 +565,97 @@ public class AdminHomeDashboardController implements Initializable {
         }
     }
 
+
+
+    @FXML
+    void remove_animal(ActionEvent event) {
+        Modeltable_animals selectedAnimal = animal_table.getSelectionModel().getSelectedItem();
+        if (selectedAnimal != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Delete Animal");
+            alert.setContentText("Are you sure you want to delete this animal?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                deleteAnimal(selectedAnimal.idProperty().get());
+                updateTabel(); // Refresh the table
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("No Selection");
+            alert.setContentText("Please select an animal to delete.");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    void remove_plant(ActionEvent event) {
+        Modeltable_plants selectedPlant = plant_table.getSelectionModel().getSelectedItem();
+        if (selectedPlant != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Delete Plant");
+            alert.setContentText("Are you sure you want to delete this plant?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                deletePlant(selectedPlant.idProperty().get());
+                updateTabelPlants(); // Refresh the table
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("No Selection");
+            alert.setContentText("Please select a plant to delete.");
+            alert.showAndWait();
+        }
+    }
+
+
+    private void deleteAnimal(int animalId) {
+        String deleteQuery = "DELETE FROM animals WHERE animal_id = ?";
+        String insertQuery = "INSERT INTO removed_animals SELECT * FROM animals WHERE animal_id = ?";
+        try (Connection connection = DbConfig.getConnection()) {
+            // Insert the record into removed_animal table
+            try (PreparedStatement insertStatement = connection.prepareStatement(insertQuery)) {
+                insertStatement.setInt(1, animalId);
+                insertStatement.executeUpdate();
+            }
+
+            // Delete the record from animals table
+            try (PreparedStatement deleteStatement = connection.prepareStatement(deleteQuery)) {
+                deleteStatement.setInt(1, animalId);
+                deleteStatement.executeUpdate();
+            }
+            setAnimalCount();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void deletePlant(int plantId) {
+        String deleteQuery = "DELETE FROM plants WHERE plant_id = ?";
+        String insertQuery = "INSERT INTO removed_plants SELECT * FROM plants WHERE plant_id = ?";
+        try (Connection connection = DbConfig.getConnection()) {
+            // Insert the record into removed_plants table
+            try (PreparedStatement insertStatement = connection.prepareStatement(insertQuery)) {
+                insertStatement.setInt(1, plantId);
+                insertStatement.executeUpdate();
+            }
+
+            // Delete the record from plants table
+            try (PreparedStatement deleteStatement = connection.prepareStatement(deleteQuery)) {
+                deleteStatement.setInt(1, plantId);
+                deleteStatement.executeUpdate();
+            }
+            setPlantCount();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 

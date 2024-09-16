@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecosupport.ecoguide.AdminHomeDashboardController">
@@ -46,41 +47,44 @@
                         <ColorAdjust brightness="-0.2" contrast="-0.03" hue="0.07" saturation="-0.07" />
                      </effect>
                   </ImageView>
-                        <AnchorPane layoutX="25.0" layoutY="69.0" prefHeight="100.0" prefWidth="205.0" styleClass="box" stylesheets="@../styles/AdminHomeDashboard.css">
+                        <AnchorPane layoutX="25.0" layoutY="69.0" prefHeight="100.0" prefWidth="205.0" styleClass="GreenBox" stylesheets="@../styles/AdminHomeDashboard.css">
                             <children>
                                 <Label layoutX="39.0" layoutY="26.0" text="Total Animal Species" textAlignment="CENTER">
                                     <font>
                                         <Font name="System Bold" size="13.0" />
                                     </font>
                                 </Label>
-                        <Label fx:id="animalCountLabel" alignment="CENTER" contentDisplay="RIGHT" layoutX="60.0" layoutY="53.0" prefHeight="30.0" prefWidth="81.0" text="Label" textAlignment="CENTER">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="34.0" layoutX="56.0" layoutY="48.0" opacity="0.49" stroke="BLACK" strokeType="INSIDE" width="88.0" />
+                        <Label fx:id="animalCountLabel" alignment="CENTER" contentDisplay="RIGHT" layoutX="60.0" layoutY="50.0" prefHeight="30.0" prefWidth="81.0" text="Label" textAlignment="CENTER">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="280.0" layoutY="69.0" prefHeight="100.0" prefWidth="205.0" styleClass="box" stylesheets="@../styles/AdminHomeDashboard.css">
+                        <AnchorPane layoutX="280.0" layoutY="69.0" prefHeight="100.0" prefWidth="205.0" styleClass="GreenBox" stylesheets="@../styles/AdminHomeDashboard.css">
                             <children>
-                                <Label layoutX="45.0" layoutY="24.0" text="Total Plant Species">
+                                <Label layoutX="46.0" layoutY="24.0" text="Total Plant Species">
                                     <font>
                                         <Font name="System Bold" size="13.0" />
                                     </font>
                                 </Label>
-                        <Label fx:id="plantCountLabel" alignment="CENTER" contentDisplay="RIGHT" layoutX="58.0" layoutY="50.0" prefHeight="30.0" prefWidth="81.0" text="Label" textAlignment="CENTER">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="34.0" layoutX="55.0" layoutY="48.0" opacity="0.49" stroke="BLACK" strokeType="INSIDE" width="88.0" />
+                        <Label fx:id="plantCountLabel" alignment="CENTER" contentDisplay="RIGHT" layoutX="59.0" layoutY="50.0" prefHeight="30.0" prefWidth="81.0" text="Label" textAlignment="CENTER">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="535.0" layoutY="69.0" prefHeight="100.0" prefWidth="205.0" styleClass="box" stylesheets="@../styles/AdminHomeDashboard.css">
+                        <AnchorPane layoutX="535.0" layoutY="69.0" prefHeight="100.0" prefWidth="205.0" styleClass="GreenBox" stylesheets="@../styles/AdminHomeDashboard.css">
                             <children>
                                 <Label layoutX="55.0" layoutY="25.0" prefHeight="15.0" prefWidth="95.0" text="New Feedbacks">
                                     <font>
                                         <Font name="System Bold" size="13.0" />
                                     </font>
                                 </Label>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="34.0" layoutX="58.0" layoutY="48.0" opacity="0.49" stroke="BLACK" strokeType="INSIDE" width="88.0" />
                         <Label fx:id="feedbackCountLabel" alignment="CENTER" contentDisplay="RIGHT" layoutX="62.0" layoutY="50.0" prefHeight="30.0" prefWidth="81.0" text="Label" textAlignment="CENTER">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
@@ -148,7 +152,7 @@
                                             </font>
                                         </Button>
 
-                                        <Button alignment="BASELINE_CENTER" layoutX="24.0" layoutY="134.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="140.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Delete">
+                                        <Button fx:id="delete_animal" alignment="BASELINE_CENTER" layoutX="24.0" layoutY="134.0" mnemonicParsing="false" onAction="#remove_animal" prefHeight="46.0" prefWidth="140.0" styleClass="TableDeleteBtn" stylesheets="@../styles/AdminHomeDashboard.css" text="Delete">
 
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
@@ -201,7 +205,7 @@
                                             </font>
                                         </Button>
 
-                                        <Button layoutX="24.0" layoutY="134.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="140.0" styleClass="TableButton" stylesheets="@../styles/AdminHomeDashboard.css" text="Delete">
+                                        <Button fx:id="delete_plant" layoutX="24.0" layoutY="134.0" mnemonicParsing="false" onAction="#remove_plant" prefHeight="46.0" prefWidth="140.0" styleClass="TableDeleteBtn" stylesheets="@../styles/AdminHomeDashboard.css" text="Delete">
 
                                             <font>
                                                 <Font name="System Bold" size="18.0" />

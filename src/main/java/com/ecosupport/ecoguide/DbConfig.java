@@ -92,6 +92,35 @@ public class DbConfig {
 
         statement.execute(sqlCreateNewAdminTable);
 
+        String sqlCreateDeleteAnimalsTable = "CREATE TABLE IF NOT EXISTS removed_animals (" +
+                "plant_id INT PRIMARY KEY, " +
+                "name CHAR(20), " +
+                "scientific_name VARCHAR(50), " +
+                "status CHAR(20), " +
+                "population INT, " +
+                "habitate VARCHAR(20), " +
+                "expansion VARCHAR(20), " +
+                "root_system VARCHAR(20), " +
+                "intro TEXT NULL, " +
+                "x_position DOUBLE, " +
+                "y_position DOUBLE)";
+        statement.execute(sqlCreateDeleteAnimalsTable);
+
+
+        String sqlCreateDeletePlantsTable = "CREATE TABLE IF NOT EXISTS removed_plants (" +
+                "plant_id INT PRIMARY KEY, " +
+                "name CHAR(20), " +
+                "scientific_name VARCHAR(50), " +
+                "status CHAR(20), " +
+                "population INT, " +
+                "habitate VARCHAR(20), " +
+                "expansion VARCHAR(20), " +
+                "root_system VARCHAR(20), " +
+                "intro TEXT NULL, " +
+                "x_position DOUBLE, " +
+                "y_position DOUBLE)";
+        statement.execute(sqlCreateDeletePlantsTable);
+
         return connection;
     }
 
