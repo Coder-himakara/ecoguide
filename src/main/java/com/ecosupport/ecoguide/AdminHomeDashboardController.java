@@ -81,6 +81,9 @@ public class AdminHomeDashboardController implements Initializable {
     @FXML
     private Button add_plant_btn;
     @FXML
+    private Button view_map;
+
+    @FXML
     private Button homeBtn;
     @FXML
     private Button LogoutBtn;
@@ -654,6 +657,23 @@ public class AdminHomeDashboardController implements Initializable {
             setPlantCount();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void go_to_map(ActionEvent event) {
+        try {
+            Stage sign_in_stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("admin_map.fxml"));
+            Scene scene = new Scene(root);
+            //scene.getStylesheets().add("/com/ecosupport/styles/admin_animal_add.css");
+            sign_in_stage.setScene(scene);
+            Stage stage = (Stage) view_map.getScene().getWindow();
+            stage.close();
+            sign_in_stage.setResizable(false);
+            sign_in_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AdminHomeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
