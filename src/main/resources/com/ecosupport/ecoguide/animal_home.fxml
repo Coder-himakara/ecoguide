@@ -55,7 +55,7 @@
                                 <Button id="animal_view" fx:id="viewData" layoutX="800.0" layoutY="1063.0" mnemonicParsing="false" onAction="#viewAnimalData" prefHeight="47.0" prefWidth="92.0" styleClass="wildlife-button" stylesheets="@../styles/animal_home.css" text="View" />
                         <ImageView fx:id="mapView" fitHeight="543.0" fitWidth="974.0" layoutX="5.0" layoutY="1306.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/animal_add/animal_map.jpg" />
+                              <Image url="@images/map_grid/animal_map.jpg" />
                            </image>
                         </ImageView>
                         <StackPane fx:id="stackpane" layoutX="5.0" layoutY="1306.0" prefHeight="543.0" prefWidth="980.0" />

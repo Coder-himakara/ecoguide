@@ -32,7 +32,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class AdminHomeDashboardController implements Initializable {
-
     ObservableList<Modeltable_animals> oblist;
     ObservableList<Modeltable_animals> datalist;
     ObservableList<Modeltable_plants> oblist2;
@@ -49,7 +48,6 @@ public class AdminHomeDashboardController implements Initializable {
     private Button update_btn;
     @FXML
     private Button delete_animal;
-
     @FXML
     private Button update_btn_plant;
     @FXML
@@ -82,7 +80,6 @@ public class AdminHomeDashboardController implements Initializable {
     private Button add_plant_btn;
     @FXML
     private Button view_map;
-
     @FXML
     private Button homeBtn;
     @FXML
@@ -113,21 +110,17 @@ public class AdminHomeDashboardController implements Initializable {
         // TODO
         adminId = AppState.getInstance().getAdminId();
         updateTabel();
-
         updateTabelPlants();
-
         retrieveAndSetProfileImage();
         setAnimalCount();
         setPlantCount();
         setFeedbackCount();
         setCurrentDate();
         setCurrentTime();
-
         // Create a Timeline to update the time every second
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> setCurrentTime()));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
-
     }
 
     private void setCurrentTime() {
@@ -135,7 +128,6 @@ public class AdminHomeDashboardController implements Initializable {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         timeLabel.setText(currentTime.format(formatter));
     }
-
     private void setCurrentDate() {
         LocalDate currentDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -145,54 +137,32 @@ public class AdminHomeDashboardController implements Initializable {
     public void setAdminId(String adminId) {
         this.adminId = adminId;
     }
+
+    //Update animal table
     public void updateTabel() {
-
         col_animal_id.setCellValueFactory(data -> data.getValue().idProperty().asObject());
-
         col_animal_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         col_animal_sname.setCellValueFactory(new PropertyValueFactory<>("scientific_name"));
-
         try {
             oblist = DbConfig.getDatausers();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
         animal_table.setItems(oblist);
 
     }
 
     public void updateTabelPlants() {
-
         col_plant_id.setCellValueFactory(data -> data.getValue().idProperty().asObject());
-
         col_plant_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         col_plant_sname.setCellValueFactory(new PropertyValueFactory<>("scientific_name"));
-
         try {
             oblist2 = DbConfig.getDatausersPlants();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
         plant_table.setItems(oblist2);
 
-    }
-
-    @FXML
-    private void add_new_animal(ActionEvent event) {
-        try {
-            Stage sign_in_stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("Admin_Animal_Add.fxml"));
-            Scene scene = new Scene(root);
-            //scene.getStylesheets().add("/styles/admin_animal_add.css");
-            sign_in_stage.setScene(scene);
-            Stage stage = (Stage) add_animal_btn.getScene().getWindow();
-            stage.close();
-            sign_in_stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(AdminHomeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     //Enter Admin Profile Update Page
@@ -200,22 +170,18 @@ public class AdminHomeDashboardController implements Initializable {
     private void admin_profile_update(ActionEvent event) throws IOException {
         // Initialize stage
         Stage sign_in_stage = (Stage) profile_update_btn.getScene().getWindow();
-
         // Show the loading screen
         Handle_Transitions transitions = new Handle_Transitions();
         transitions.showLoadingScreen(sign_in_stage);
-
         // Load the actual scene with data
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_profile_update.fxml"));
         Parent root = loader.load();
         Admin_profile_updateController controller = loader.getController();
         controller.setAdminId(this.adminId);
         Scene scene = new Scene(root);
-
         // Switch to the actual scene after the loading screen
         transitions.switchSceneWithLoading(scene, sign_in_stage);
     }
-
 
     private void storeSelected(IntegerProperty attribute) {
         // Do something with the attribute
@@ -231,16 +197,11 @@ public class AdminHomeDashboardController implements Initializable {
             Stage sign_in_stage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Animal_user_view.fxml"));
             Parent root = loader.load();
-
-            // Get the controller of the Animal_user_view.fxml
             Animal_user_viewController controller = loader.getController();
-
             // Pass the selected variable to the controller
             controller.setSelectedAttribute(selected_id);
-
             Scene scene = new Scene(root);
             //scene.getStylesheets().add("/styles/animal_user_view.css");
-
             sign_in_stage.setScene(scene);
             Stage stage = (Stage) animal_view_btn.getScene().getWindow();
             stage.close();
@@ -252,12 +213,10 @@ public class AdminHomeDashboardController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             result.ifPresent(res -> {
                 if (res == ButtonType.OK) {
-
                     System.out.println("OK pressed");
                 }
             });
         }
-
     }
 
     //View Selected Plant Details
@@ -267,16 +226,11 @@ public class AdminHomeDashboardController implements Initializable {
             Stage sign_in_stage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Plant_user_view.fxml"));
             Parent root = loader.load();
-
-            // Get the controller of the Plant_user_view.fxml
             Plant_user_viewController controller = loader.getController();
-
             // Pass the selected variable to the controller
             controller.setSelectedAttribute(selected_id2);
-
             Scene scene = new Scene(root);
             //scene.getStylesheets().add("/styles/plant_user_view.css");
-
             sign_in_stage.setScene(scene);
             Stage stage = (Stage) plant_view_btn.getScene().getWindow();
             stage.close();
@@ -288,12 +242,10 @@ public class AdminHomeDashboardController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             result.ifPresent(res -> {
                 if (res == ButtonType.OK) {
-
                     System.out.println("OK pressed");
                 }
             });
         }
-
     }
 
     public void select_animal(javafx.scene.input.MouseEvent mouseEvent) {
@@ -301,8 +253,6 @@ public class AdminHomeDashboardController implements Initializable {
         if (selectedObject != null) {
             // Retrieve the desired attribute from the selected object
             IntegerProperty attribute1 = selectedObject.idProperty();
-
-            // Call another method with the attribute
             storeSelected(attribute1);
         }
     }
@@ -312,8 +262,6 @@ public class AdminHomeDashboardController implements Initializable {
         if (selectedObject != null) {
             // Retrieve the desired attribute from the selected object
             IntegerProperty attribute2 = selectedObject.idProperty();
-
-            // Call another method with the attribute
             storeSelected(attribute2);
         }
     }
@@ -324,7 +272,6 @@ public class AdminHomeDashboardController implements Initializable {
         alert.setTitle("Confirmation");
         alert.setHeaderText("Go back to Home");
         alert.setContentText("Are you sure you want to go back to the home page?");
-
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             try {
@@ -343,7 +290,6 @@ public class AdminHomeDashboardController implements Initializable {
             alert.close();
         }
     }
-
     @FXML
     void goto_user_feedback(ActionEvent event) throws IOException {
         // Initialize stage
@@ -351,18 +297,15 @@ public class AdminHomeDashboardController implements Initializable {
         // Show the loading screen
         Handle_Transitions transitions = new Handle_Transitions();//create object of the class Handle_Transitions
         transitions.showLoadingScreen(sign_in_stage);
-
         // Load the actual scene with data
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminView_UserFeedback.fxml"));
         Parent root = loader.load();
         AdminView_UserFeedback controller = loader.getController();
         Scene scene = new Scene(root);
-
         // Switch to the actual scene after the loading screen
         transitions.switchSceneWithLoading(scene, sign_in_stage);
-//
-    }
 
+    }
     @FXML
     void logout(ActionEvent event) {
         try {
@@ -381,10 +324,10 @@ public class AdminHomeDashboardController implements Initializable {
             }
         } catch (IOException ex) {
             Logger.getLogger(AdminHomeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-
         }
     }
 
+    // Update page of selected animal
     @FXML
     void goto_updatePage(ActionEvent event) {
         if (selected_id != 0) {
@@ -396,15 +339,10 @@ public class AdminHomeDashboardController implements Initializable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-            // Get the controller of the Admin_animal_update.fxml
             Admin_Animal_UpdateController controller = loader.getController();
-
             // Pass the selected variable to the controller
             controller.setSelectedAttribute(selected_id);
-
             Scene scene = new Scene(root);
-
             sign_in_stage.setScene(scene);
             Stage stage = (Stage) update_btn.getScene().getWindow();
             stage.close();
@@ -416,15 +354,11 @@ public class AdminHomeDashboardController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             result.ifPresent(res -> {
                 if (res == ButtonType.OK) {
-
                     System.out.println("OK pressed");
                 }
-            });
-
-        }
+            });}
     }
-
-
+    // Update page of selected plant
     @FXML
     void goto_updatePage_Plant(ActionEvent event) {
         if (selected_id2 != 0) {
@@ -436,15 +370,9 @@ public class AdminHomeDashboardController implements Initializable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-            // Get the controller of the Admin_animal_update.fxml
             Admin_Plant_UpdateController controller = loader.getController();
-
-            // Pass the selected variable to the controller
             controller.setSelectedAttribute(selected_id2);
-
             Scene scene = new Scene(root);
-
             sign_in_stage.setScene(scene);
             Stage stage = (Stage) update_btn_plant.getScene().getWindow();
             stage.close();
@@ -456,26 +384,44 @@ public class AdminHomeDashboardController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             result.ifPresent(res -> {
                 if (res == ButtonType.OK) {
-
                     System.out.println("OK pressed");
                 }
             });
 
         }
     }
-
-
+    @FXML
+    private void add_new_animal(ActionEvent event) {
+        try {
+            Stage sign_in_stage = (Stage) add_animal_btn.getScene().getWindow();
+            // Show the loading screen
+            Handle_Transitions transitions = new Handle_Transitions();
+            transitions.showLoadingScreen(sign_in_stage);
+            // Load the actual scene with data
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_Animal_Add.fxml"));
+            Parent root = loader.load();
+            Admin_Animal_AddController controller = loader.getController();
+            Scene scene = new Scene(root);
+            // Switch to the actual scene after the loading screen
+            transitions.switchSceneWithLoading(scene, sign_in_stage);
+        } catch (IOException ex) {
+            Logger.getLogger(AdminHomeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     @FXML
     private void add_new_plant(ActionEvent event) {
         try {
-            Stage sign_in_stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("Admin_Plants_Add.fxml"));
+            Stage sign_in_stage = (Stage) add_plant_btn.getScene().getWindow();
+            // Show the loading screen
+            Handle_Transitions transitions = new Handle_Transitions();
+            transitions.showLoadingScreen(sign_in_stage);
+            // Load the actual scene with data
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_Plants_Add.fxml"));
+            Parent root = loader.load();
+            Admin_Plants_AddController controller = loader.getController();
             Scene scene = new Scene(root);
-            //scene.getStylesheets().add("/styles/admin_animal_add.css");
-            sign_in_stage.setScene(scene);
-            Stage stage = (Stage) add_plant_btn.getScene().getWindow();
-            stage.close();
-            sign_in_stage.show();
+            // Switch to the actual scene after the loading screen
+            transitions.switchSceneWithLoading(scene, sign_in_stage);
         } catch (IOException ex) {
             Logger.getLogger(AdminHomeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -568,8 +514,6 @@ public class AdminHomeDashboardController implements Initializable {
         }
     }
 
-
-
     @FXML
     void remove_animal(ActionEvent event) {
         Modeltable_animals selectedAnimal = animal_table.getSelectionModel().getSelectedItem();
@@ -601,7 +545,6 @@ public class AdminHomeDashboardController implements Initializable {
             alert.setTitle("Confirmation");
             alert.setHeaderText("Delete Plant");
             alert.setContentText("Are you sure you want to delete this plant?");
-
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 deletePlant(selectedPlant.idProperty().get());
@@ -616,7 +559,6 @@ public class AdminHomeDashboardController implements Initializable {
         }
     }
 
-
     private void deleteAnimal(int animalId) {
         String deleteQuery = "DELETE FROM animals WHERE animal_id = ?";
         String insertQuery = "INSERT INTO removed_animals SELECT * FROM animals WHERE animal_id = ?";
@@ -626,7 +568,6 @@ public class AdminHomeDashboardController implements Initializable {
                 insertStatement.setInt(1, animalId);
                 insertStatement.executeUpdate();
             }
-
             // Delete the record from animals table
             try (PreparedStatement deleteStatement = connection.prepareStatement(deleteQuery)) {
                 deleteStatement.setInt(1, animalId);
@@ -638,7 +579,6 @@ public class AdminHomeDashboardController implements Initializable {
         }
     }
 
-
     private void deletePlant(int plantId) {
         String deleteQuery = "DELETE FROM plants WHERE plant_id = ?";
         String insertQuery = "INSERT INTO removed_plants SELECT * FROM plants WHERE plant_id = ?";
@@ -648,7 +588,6 @@ public class AdminHomeDashboardController implements Initializable {
                 insertStatement.setInt(1, plantId);
                 insertStatement.executeUpdate();
             }
-
             // Delete the record from plants table
             try (PreparedStatement deleteStatement = connection.prepareStatement(deleteQuery)) {
                 deleteStatement.setInt(1, plantId);
@@ -659,7 +598,6 @@ public class AdminHomeDashboardController implements Initializable {
             e.printStackTrace();
         }
     }
-
     @FXML
     void go_to_map(ActionEvent event) {
         try {

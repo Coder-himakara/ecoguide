@@ -30,7 +30,7 @@
          <children>
             <ImageView fitHeight="494.0" fitWidth="886.0" pickOnBounds="true">
                <image>
-                  <Image url="@images/animal_add/animal_map.jpg" />
+                  <Image url="@images/map_grid/animal_map.jpg" />
                </image>
             </ImageView>
             <ImageView fitHeight="494.0" fitWidth="880.0" layoutX="3.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="0.0">

@@ -17,15 +17,23 @@ public class AdminMapController {
 
     @FXML
     void back_to_dashboard(ActionEvent event) throws IOException {
-        Stage sign_in_stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("AdminHomeDashboard.fxml"));
+        Stage sign_in_stage = (Stage) back_btn.getScene().getWindow();
+        // Show the loading screen
+        showLoadingScreen(sign_in_stage);
+        // Load the actual scene with data
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminHomeDashboard.fxml"));
+        Parent root = loader.load();
         Scene scene = new Scene(root);
-        //scene.getStylesheets().add("/com/ecosupport/styles/admin_animal_add.css");
+        // Switch to the actual scene after the loading screen
         sign_in_stage.setScene(scene);
-        Stage stage = (Stage) back_btn.getScene().getWindow();
-        stage.close();
         sign_in_stage.setResizable(false);
         sign_in_stage.show();
     }
 
+    private void showLoadingScreen(Stage stage) throws IOException {
+        Parent loadingRoot = FXMLLoader.load(getClass().getResource("LoadingScreen.fxml"));
+        Scene loadingScene = new Scene(loadingRoot);
+        stage.setScene(loadingScene);
+        stage.show();
+    }
 }

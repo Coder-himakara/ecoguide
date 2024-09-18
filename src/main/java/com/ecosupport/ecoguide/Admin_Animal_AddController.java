@@ -34,7 +34,6 @@ public class Admin_Animal_AddController extends Animal_super_controller implemen
     private TextField a_name;
     @FXML
     private TextField a_science_name;
-
     @FXML
     private TextField population;
     @FXML
@@ -45,13 +44,11 @@ public class Admin_Animal_AddController extends Animal_super_controller implemen
     private Button submit_btn;
     @FXML
     private Label error_label;
-
     private String active_selected = "";
     @FXML
     private ImageView animal_photo;
     @FXML
     private Button add_img;
-
     @FXML
     private Button reset_btn;
     @FXML
@@ -74,16 +71,13 @@ public class Admin_Animal_AddController extends Animal_super_controller implemen
 
     @FXML
     private void add_animal(ActionEvent event) {
-
         PreparedStatement statement;
         ResultSet resultSet = null;
         Image a_image = animal_photo.getImage();
-
         String name = a_name.getText();
         String science_name = a_science_name.getText();
         String status = con_status.getValue();
         String pop = population.getText();
-
         String food = diet.getText();
         Toggle active = active_time.getSelectedToggle();
         String summary = intro.getText();
@@ -99,7 +93,6 @@ public class Admin_Animal_AddController extends Animal_super_controller implemen
         int fields = fields_empty(name, science_name, status, pop, food, active_selected);
         if (fields == 1) {  //Check whether all the data has been added
             error_label.setText("Mandotary Fields are Empty");
-
         } else if (a_image == null) {   //Check whether an image is added
             error_label.setText("Add an image");
         } else if (isVisible == false) {
@@ -108,13 +101,10 @@ public class Admin_Animal_AddController extends Animal_super_controller implemen
             String query = "INSERT INTO `animals`(`name`,`scientific_name`,`status`,`population`,`diet`,`active`,`intro`,`x_position`,`y_position`)"
                     + "VALUES(?,?,?,?,?,?,?,?,?)";
             int pop_size = Integer.parseInt(pop);
-
             Point2D finalCoordinates = getPointerFinalCoordinates(); // Assuming this method gets pointer coordinates
-
             try {
                 Connection connection = DbConfig.getConnection(); // Assuming DbConfig.getConnection() returns a valid database connection
                 statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-
                 statement.setString(1, name);
                 statement.setString(2, science_name);
                 statement.setString(3, status);
@@ -133,7 +123,6 @@ public class Admin_Animal_AddController extends Animal_super_controller implemen
                         primaryKeyValue = generatedKeys.getInt(1);
                         saveImageToDatabase(selectedFile);// Assuming the primary key is an integer
                         error_label.setText("Done");
-
                         // Reset form fields
                         a_name.setText("");
                         a_science_name.setText("");
@@ -144,7 +133,6 @@ public class Admin_Animal_AddController extends Animal_super_controller implemen
                         intro.setText("");
                         animal_photo.setImage(null);
                         pointerImageView.setVisible(false);
-
                         // Now you have the primary key (primaryKey) for the inserted row
                     } else {
                         error_label.setText("Failed to retrieve primary key");
@@ -164,7 +152,6 @@ public class Admin_Animal_AddController extends Animal_super_controller implemen
             } catch (Exception e) {
                 System.out.println(e);
             }
-
         }
     }
 
@@ -177,7 +164,6 @@ public class Admin_Animal_AddController extends Animal_super_controller implemen
             return 0;
         }
     }
-
 
     //below method is to store the added animal image in the database
     private void saveImageToDatabase(File imageFile) {
@@ -202,7 +188,6 @@ public class Admin_Animal_AddController extends Animal_super_controller implemen
         }
     }
 
-
     // You can call this method to get the final coordinates of the pointer
     private void getFinalPointerCoordinates() {
         Point2D finalCoordinates = getPointerFinalCoordinates();
@@ -215,7 +200,6 @@ public class Admin_Animal_AddController extends Animal_super_controller implemen
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.OK, ButtonType.CANCEL);
         alert.setHeaderText("Are you sure?");
         alert.setContentText("Do you want to reset all things?");
-
         Optional<ButtonType> result = alert.showAndWait();
         result.ifPresent(res -> {
             if (res == ButtonType.OK) {
@@ -237,16 +221,22 @@ public class Admin_Animal_AddController extends Animal_super_controller implemen
 
     @FXML
     private void return_dashboard(ActionEvent event) throws IOException {
-        Stage sign_in_stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("AdminHomeDashboard.fxml"));
+        Stage sign_in_stage = (Stage) back_btn.getScene().getWindow();
+        // Show the loading screen
+        showLoadingScreen(sign_in_stage);
+        // Load the actual scene with data
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminHomeDashboard.fxml"));
+        Parent root = loader.load();
         Scene scene = new Scene(root);
-        //scene.getStylesheets().add("/com/ecosupport/styles/admin_animal_add.css");
+        // Switch to the actual scene after the loading screen
         sign_in_stage.setScene(scene);
-        Stage stage = (Stage) back_btn.getScene().getWindow();
-        stage.close();
         sign_in_stage.setResizable(false);
         sign_in_stage.show();
     }
-
-
+    private void showLoadingScreen(Stage stage) throws IOException {
+        Parent loadingRoot = FXMLLoader.load(getClass().getResource("LoadingScreen.fxml"));
+        Scene loadingScene = new Scene(loadingRoot);
+        stage.setScene(loadingScene);
+        stage.show();
+    }
 }

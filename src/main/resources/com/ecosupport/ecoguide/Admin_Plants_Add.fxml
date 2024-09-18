@@ -102,7 +102,7 @@
                   <Button fx:id="reset_btn" layoutX="93.0" layoutY="1237.0" mnemonicParsing="false" onAction="#reset_all" prefHeight="47.0" prefWidth="145.0" styleClass="wildlife-button" stylesheets="@../styles/admin_plant_add.css" text="Reset" />
                   <ImageView fitHeight="494.0" fitWidth="886.0" layoutX="45.0" layoutY="731.0" pickOnBounds="true">
                      <image>
-                        <Image url="@images/animal_add/animal_map.jpg" />
+                        <Image url="@images/map_grid/animal_map.jpg" />
                      </image>
                   </ImageView>
                   <AnchorPane fx:id="mapImageView" layoutX="45.0" layoutY="731.0" onMouseClicked="#handleMapClick" onMouseDragged="#handlePointerDragged" onMousePressed="#handlePointerPressed" onMouseReleased="#handlePointerReleased" prefHeight="491.0" prefWidth="883.0">
