@@ -46,5 +46,12 @@ the locations of animals and plants in the forests they oversee. Other users who
    mvn compile
    ```
 6. Run 'HelloApplication' class  to start the application
+  #### Note
+  The database and the relevant tables  will be created automatically once you run the application for the first time. Otherwise, you can use the scripts included in the
+  'DbConfig' class file for creating the database and tables manually.
 
 ### Create Admin Account
+- Only the users mentioned in the 'approved_admin' table can sign up for the application.
+- First you have to add authorized users for the 'approved_admin' table manually using your Database management system.
+- After that use the 'admin_id' related to a user in 'approved_admin' table to sign up for the application.
+- Only one user account can be created for one 'admin_id'.
