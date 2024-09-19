@@ -23,7 +23,6 @@ public class DbConfig {
         String sqlUseDatabase = "USE ecoguidedb";
         statement.execute(sqlUseDatabase);
 
-        // Create the tables if they do not exist
         String sqlCreateAnimalsTable = "CREATE TABLE IF NOT EXISTS animals (" +
                 "animal_id INT PRIMARY KEY AUTO_INCREMENT, " +
                 "name CHAR(30), " +
@@ -34,7 +33,7 @@ public class DbConfig {
                 "active VARCHAR(50), " +
                 "intro TEXT NULL, " +
                 "x_position DOUBLE, " +
-                "y_position DOUBLE)";
+                "y_position DOUBLE) ENGINE=InnoDB";
         statement.execute(sqlCreateAnimalsTable);
 
         String sqlCreatePlantsTable = "CREATE TABLE IF NOT EXISTS plants (" +
@@ -48,7 +47,7 @@ public class DbConfig {
                 "root_system VARCHAR(20), " +
                 "intro TEXT NULL, " +
                 "x_position DOUBLE, " +
-                "y_position DOUBLE)";
+                "y_position DOUBLE) ENGINE=InnoDB";
         statement.execute(sqlCreatePlantsTable);
 
         String sqlCreatePlantsImageTable = "CREATE TABLE IF NOT EXISTS plant_images (" +
@@ -56,7 +55,8 @@ public class DbConfig {
                 "plant_name CHAR(30), " +
                 "image_data LONGBLOB NULL, " +
                 "plant_fid INT," +
-                "FOREIGN KEY (plant_fid) REFERENCES plants(plant_id))";
+                "FOREIGN KEY (plant_fid) REFERENCES plants(plant_id)ON DELETE CASCADE ON UPDATE CASCADE) " +
+                "ENGINE=InnoDB";
 
         statement.execute(sqlCreatePlantsImageTable);
 
@@ -65,7 +65,8 @@ public class DbConfig {
                 "animal_name CHAR(30), " +
                 "image_data LONGBLOB NULL, " +
                 "animal_fid INT," +
-                "FOREIGN KEY (animal_fid) REFERENCES animals(animal_id))";
+                "FOREIGN KEY (animal_fid) REFERENCES animals(animal_id)ON DELETE CASCADE ON UPDATE CASCADE) " +
+                "ENGINE=InnoDB";
 
         statement.execute(sqlCreateAnimalsImageTable);
 
@@ -78,8 +79,16 @@ public class DbConfig {
 
         statement.execute(sqlCreateFeedbackTable);
 
+        //Admins approved by the Institute
+        String sqlCreateApprovedAdminTable = "CREATE TABLE IF NOT EXISTS approved_admin  (" +
+                "admin_pid CHAR(20) PRIMARY KEY, " +
+                "first_name VARCHAR(30), " +
+                "last_name VARCHAR(30))ENGINE=InnoDB";
+
+        statement.execute(sqlCreateApprovedAdminTable);
+
         String sqlCreateNewAdminTable = "CREATE TABLE IF NOT EXISTS new_admin (" +
-                "id_no  VARCHAR(20) PRIMARY KEY, " +
+                "id_no  CHAR(20) PRIMARY KEY, " +
                 "first_name VARCHAR(30), " +
                 "last_name VARCHAR(30), " +
                 "email VARCHAR(50), " +
@@ -87,8 +96,9 @@ public class DbConfig {
                 "password VARCHAR(30), " +
                 "phone_no VARCHAR(30) NULL, " +
                 "job_role VARCHAR(30) NULL, " +
-                "img_data LONGBLOB NULL)";
-
+                "img_data LONGBLOB NULL," +
+                "FOREIGN KEY (id_no) REFERENCES approved_admin(admin_pid) ON DELETE CASCADE ON UPDATE CASCADE) " +
+                "ENGINE=InnoDB";
 
         statement.execute(sqlCreateNewAdminTable);
 
@@ -105,7 +115,6 @@ public class DbConfig {
                 "x_position DOUBLE, " +
                 "y_position DOUBLE)";
         statement.execute(sqlCreateDeleteAnimalsTable);
-
 
         String sqlCreateDeletePlantsTable = "CREATE TABLE IF NOT EXISTS removed_plants (" +
                 "plant_id INT PRIMARY KEY, " +

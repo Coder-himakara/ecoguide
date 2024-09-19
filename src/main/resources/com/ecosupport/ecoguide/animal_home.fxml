@@ -19,7 +19,7 @@
     <children>
         <BorderPane prefHeight="680.0" prefWidth="980.0">
             <center>
-                <ScrollPane maxWidth="-Infinity" prefHeight="600.0" prefWidth="980.0" BorderPane.alignment="CENTER">
+                <ScrollPane fitToWidth="true" prefHeight="650.0" prefWidth="980.0" vvalue="0.01" BorderPane.alignment="CENTER">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1860.0" prefWidth="980.0" style="-fx-background-color: black;">
                             <children>
@@ -38,9 +38,9 @@
                                         <Image url="@plant_animal_home_image/Rectangle%20105.png" />
                                     </image>
                                 </ImageView>
-                                <ScrollPane layoutX="78.0" layoutY="931.0">
-                                    <content>
-                                        <TableView fx:id="table" prefHeight="314.0" prefWidth="654.0" style="-fx-border-color: black;" stylesheets="@../styles/table_view_style.css">
+                        <AnchorPane layoutX="78.0" layoutY="931.0">
+                           <children>
+                                        <TableView fx:id="table" prefHeight="314.0" prefWidth="654.0" stylesheets="@../styles/table_view_style.css">
                                             <columns>
                                                 <TableColumn id="name" fx:id="name" prefWidth="271.0" text="Name" />
                                                 <TableColumn id="Secientific_name" fx:id="scientific_name" minWidth="0.0" prefWidth="381.0" style="-fx-text-size: 20;" text="Scientific Name" />
@@ -50,8 +50,8 @@
                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                             </columnResizePolicy>
                                         </TableView>
-                                    </content>
-                                </ScrollPane>
+                           </children>
+                        </AnchorPane>
                                 <Button id="animal_view" fx:id="viewData" layoutX="800.0" layoutY="1063.0" mnemonicParsing="false" onAction="#viewAnimalData" prefHeight="47.0" prefWidth="92.0" styleClass="wildlife-button" stylesheets="@../styles/animal_home.css" text="View" />
                         <ImageView fx:id="mapView" fitHeight="543.0" fitWidth="974.0" layoutX="5.0" layoutY="1306.0" pickOnBounds="true" preserveRatio="true">
                            <image>

@@ -219,7 +219,9 @@ public class Plant_homeController implements Initializable {
             //gc.fillOval(x - radius, y - radius, 2 * radius, 2 * radius);
 
             Image image = new Image(getClass().getResourceAsStream(imagePath));
-            gc.drawImage(image, x, y);
+            double width = 57;
+            double height = 53;
+            gc.drawImage(image, x, y, width, height);
 
         }
         stackpane.getChildren().add(canvas);

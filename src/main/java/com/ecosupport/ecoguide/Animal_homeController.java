@@ -187,46 +187,41 @@ public class Animal_homeController implements Initializable {
         scientific_name.setCellValueFactory(new PropertyValueFactory<>("scientific_name"));
 
         population.setCellValueFactory(new PropertyValueFactory<>("population"));
-
         try {
             oblist = DbConfig.getDatausers();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
         table.setItems(oblist);
 
     }
 
-    public void mapMarking(){
-        Canvas canvas = new Canvas(mapView.getImage().getWidth() , mapView.getImage().getHeight());
-
+    public void mapMarking() {
+        Canvas canvas = new Canvas(mapView.getImage().getWidth(), mapView.getImage().getHeight());
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        int i ;
-        int last;
-        last = oblist.size();
-        //System.out.println(last);
-
-        //gc.setFill(javafx.scene.paint.Color.RED);
-        //double radius = 5;
+        int last = oblist.size();
         String imagePath = "images/animal_add/pointer_icon.png";
 
-        for(i = 0 ; i<=last-1 ; i++) {
-            double x =oblist.get(i).x_position;
-            double y =oblist.get(i).y_position;
+        for (int i = 0; i <= last - 1; i++) {
+            double x = oblist.get(i).x_position;
+            double y = oblist.get(i).y_position;
+            String name = oblist.get(i).name;
 
-            //System.out.println(x);
-            //System.out.println(y);
+            // Draw the pointer image
+            Image image = new Image(String.valueOf(getClass().getResource(imagePath)));
+            double width = 57;
+            double height = 53;
+            gc.drawImage(image, x, y, width, height);
 
-            //gc.fillOval(x - radius, y - radius, 2 * radius, 2 * radius);
-
-            Image image = new Image(getClass().getResourceAsStream(imagePath));
-            gc.drawImage(image, x, y);
-
+            // Create and position the label above the pointer image
+            Label animal_name_label = new Label(name);
+            animal_name_label.setLayoutX(x);
+            animal_name_label.setLayoutY(y - height); // Position above the pointer image
+            animal_name_label.setStyle("-fx-text-fill: white; -fx-background-color: black;"); // Ensure the label is visible
+            stackpane.getChildren().add(animal_name_label);
         }
         stackpane.getChildren().add(canvas);
-
     }
 
     private static IntegerProperty getIdForRowNumber(ObservableList<Modeltable_animals> dataList, int rowNumber) {
