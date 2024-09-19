@@ -22,3 +22,29 @@ the locations of animals and plants in the forests they oversee. Other users who
   - Install MySQL Server and MySQL Workbench for database management. Or you can use the WAMP server or XAMPP.
 * MySQL Connector/J:
   - Ensure you have the MySQL Connector/J library added to your Maven dependencies. This is required for connecting your JavaFX application to the MySQL database
+    
+### Installation
+1. Clone the repo
+   ```
+   https://github.com/Coder-himakara/ecoguide.git
+   ```
+2. Open project using IntelliJ IDEA
+3. Go to 'Project Struture' in 'File' tab and ensure SDK is set to 21.
+4. Ensure you have the MySQL Connector library added to the pom.xml file
+   ```
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.33</version>
+    </dependency>
+   ```
+5. Execute following Maven Goals
+   ```
+   mvn install
+   ```
+   ```
+   mvn compile
+   ```
+6. Run 'HelloApplication' class  to start the application
+
+### Create Admin Account
