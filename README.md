@@ -29,8 +29,8 @@ the locations of animals and plants in the forests they oversee. Other users who
    https://github.com/Coder-himakara/ecoguide.git
    ```
 2. Open project using IntelliJ IDEA
-3. Go to 'Project Struture' in 'File' tab and ensure SDK is set to 21.
-4. Ensure you have the MySQL Connector library added to the pom.xml file
+3. Go to `Project Struture` in `File` tab and ensure SDK is set to 21.
+4. Ensure you have the MySQL Connector library added to the `pom.xml` file
    ```
     <dependency>
       <groupId>mysql</groupId>
@@ -45,13 +45,16 @@ the locations of animals and plants in the forests they oversee. Other users who
    ```
    mvn compile
    ```
-6. Run 'HelloApplication' class  to start the application
+6. Run `HelloApplication` class  to start the application
   #### Note
   The database and the relevant tables  will be created automatically once you run the application for the first time. Otherwise, you can use the scripts included in the
-  'DbConfig' class file for creating the database and tables manually.
+  `DbConfig` class file for creating the database and tables manually.
 
-### Create Admin Account
-- Only the users mentioned in the 'approved_admin' table can sign up for the application.
-- First you have to add authorized users for the 'approved_admin' table manually using your Database management system.
-- After that use the 'admin_id' related to a user in 'approved_admin' table to sign up for the application.
-- Only one user account can be created for one 'admin_id'.
+### Create an Admin Account
+- Only the users mentioned in the `approved_admin` table can sign up for the application.
+- First you have to add authorized users for the `approved_admin` table manually using your Database management system.
+- After that use the `admin_pid` related to a user in `approved_admin` table to sign up for the application.
+- Only one admin account can be created for one `admin_pid`.
+
+#### Note
+To delete an admin account, you have to manullay delete the record from the `approved_admin` table using your Database management system.
