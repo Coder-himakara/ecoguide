@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -27,6 +28,9 @@
                                     <image>
                                         <Image url="@images/animal_home.jpg" />
                                     </image>
+                           <effect>
+                              <ColorAdjust brightness="-0.07" contrast="-0.1" saturation="0.18" />
+                           </effect>
                                 </ImageView>
                                 <ImageView fitHeight="164.76" fitWidth="980.0" layoutY="544.86" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -146,7 +150,10 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <AnchorPane layoutX="20.0" layoutY="296.0" opacity="0.27" prefHeight="241.0" prefWidth="932.0" style="-fx-background-color: white;" />
+                        <AnchorPane layoutX="20.0" layoutY="296.0" opacity="0.3" prefHeight="241.0" prefWidth="932.0" style="-fx-background-color: white;">
+                           <effect>
+                              <ColorAdjust contrast="1.0" hue="0.02" />
+                           </effect></AnchorPane>
                             </children>
                         </AnchorPane>
                     </content>

@@ -215,11 +215,11 @@ public class Animal_homeController implements Initializable {
             gc.drawImage(image, x, y, width, height);
 
             // Create and position the label above the pointer image
-            Label animal_name_label = new Label(name);
-            animal_name_label.setLayoutX(x);
-            animal_name_label.setLayoutY(y - height); // Position above the pointer image
-            animal_name_label.setStyle("-fx-text-fill: white; -fx-background-color: black;"); // Ensure the label is visible
-            stackpane.getChildren().add(animal_name_label);
+//            Label animal_name_label = new Label(name);
+//            animal_name_label.setLayoutX(x);
+//            animal_name_label.setLayoutY(y - height); // Position above the pointer image
+//            animal_name_label.setStyle("-fx-text-fill: white; -fx-background-color: black;"); // Ensure the label is visible
+//            stackpane.getChildren().add(animal_name_label);
         }
         stackpane.getChildren().add(canvas);
     }
