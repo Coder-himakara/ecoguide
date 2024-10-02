@@ -20,7 +20,8 @@ public class Animal_super_controller {
 
     @FXML
     ChoiceBox<String> con_status;
-    String[] conversation = {"Endangered", "Critically Endangered", "Vulnerable", "Extinct", "Near threatened", "Not Evaluated", "None"};
+    String[] conversation = {"Endangered", "Critically Endangered", "Vulnerable",
+            "Extinct", "Near threatened", "Not Evaluated", "None"};
     double pointerX;
     double pointerY;
     @FXML

@@ -67,6 +67,7 @@ public class Homepage1ControllerwithMenu {
         }
         Scene scene = new Scene(root);
 
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
 

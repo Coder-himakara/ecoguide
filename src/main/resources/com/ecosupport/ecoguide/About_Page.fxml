@@ -33,14 +33,14 @@
                         <Image url="@images/Main%20view.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="255.0" layoutY="7.0" prefHeight="100.0" prefWidth="404.0" text="About Us" textFill="#59974c">
+                <Label layoutX="255.0" layoutY="7.0" prefHeight="100.0" prefWidth="404.0" text="About Us" textFill="#7acd67">
                     <font>
                         <Font name="Century Schoolbook Bold Italic" size="60.0" />
                     </font>
                 </Label>
-                <Text fill="WHITE" layoutX="94.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to our encyclopedia, your passport to the vibrant tapestry of life on Earth. Immerse yourself in the fascinating world of animals and plants, where every page unveils intricate details and hidden wonders waiting to be discovered. With the power of technology at your fingertips, journey across continents and delve into the rich biodiversity of our planet. From the lush rainforests of the Amazon to the serene depths of the coral reefs, explore the intricate web of life and uncover the unique habitats that sustain it. So, whether you're a budding naturalist or a seasoned explorer, come chart a course through our digital atlas and witness the marvels of nature unfold before your eyes." wrappingWidth="610.2080078125">
+                <Text fill="WHITE" layoutX="94.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Eco Guide is a JavaFX-based desktop application developed by Computer Science undergraduates from the University of Ruhuna. The application serves as an Animal/Plant Details and Location Prediction System, offering users detailed insights into species distribution and abundance. By integrating data from various sources, including sightings, habitat maps, and environmental factors, Eco Guide provides a comprehensive resource for understanding wildlife and plant biodiversity.&quot;" wrappingWidth="610.2080078125">
                     <font>
-                        <Font name="System Italic" size="18.0" />
+                        <Font name="System Bold Italic" size="21.0" />
                     </font>
                 </Text>
                 <Button fx:id="continueBtn" layoutX="633.0" layoutY="360.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="129.0" styleClass="mainButton" stylesheets="@../styles/HomepageMenuCSS.css" text="Continue..." visible="false">
