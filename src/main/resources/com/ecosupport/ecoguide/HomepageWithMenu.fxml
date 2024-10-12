@@ -43,7 +43,7 @@
                         <Font name="Arial" size="15.0" />
                     </font>
                 </Text>
-                <Button fx:id="animalBtn1" layoutX="48.0" layoutY="311.0" mnemonicParsing="false" onAction="#goToAnimal" prefHeight="29.0" prefWidth="90.0" styleClass="mainButton" stylesheets="@../styles/HomepageMenuCSS.css" text="Animal">
+                <Button fx:id="animalBtn1" layoutX="48.0" layoutY="311.0" mnemonicParsing="false" onAction="#goToAnimal" prefHeight="29.0" prefWidth="90.0" styleClass="mainButton" stylesheets="@../styles/HomepageMenuCSS.css" text="Animals">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
